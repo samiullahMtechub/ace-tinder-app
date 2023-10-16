@@ -16,6 +16,12 @@ import OnBoarding7 from '../screens/auth/OnBoarding7';
 import Instructions from '../screens/auth/Instructions';
 import AddName from '../screens/auth/AddName';
 import AddAge from '../screens/auth/AddAge';
+import AddPhotos from '../screens/auth/AddPhotos';
+import AddProfile from '../screens/auth/AddProfile';
+import AddLocation from '../screens/auth/AddLocation';
+import PreviewProfile from '../screens/auth/PreviewProfile';
+import ProfileProcessing from '../screens/auth/ProfileProcessing';
+import BottomTabs from './bottomTab/BottomTab';
 
 export default function MainStack() {
   const Stack = createNativeStackNavigator();
@@ -38,6 +44,12 @@ export default function MainStack() {
         <Stack.Screen name="Instructions" component={Instructions} />
         <Stack.Screen name="AddName" component={AddName} />
         <Stack.Screen name="AddAge" component={AddAge} />
+        <Stack.Screen name="AddPhotos" component={AddPhotos} />
+        <Stack.Screen name="AddProfile" component={AddProfile} />
+        <Stack.Screen name="AddLocation" component={AddLocation} />
+        <Stack.Screen name="PreviewProfile" component={PreviewProfile} />
+        <Stack.Screen name="ProfileProcessing" component={ProfileProcessing} />
+        <Stack.Screen name="Tabs" component={BottomTabs} />
       </Stack.Navigator>
     </NavigationContainer>
   );
