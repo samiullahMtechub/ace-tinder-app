@@ -13,6 +13,7 @@ import {
 } from 'native-base';
 import React from 'react';
 import AButtons from '../../components/button/AButtons';
+import Header from '../../components/Header/Header';
 
 const OnBoarding2 = ({navigation}) => {
   return (
@@ -21,12 +22,13 @@ const OnBoarding2 = ({navigation}) => {
       source={require('../../assets/bgContinue.png')}
       style={{flex: 1}}
       resizeMode="cover">
+      <Header color={'black'} />
       <View mx={5} mt={5}>
         <Row
           justifyContent={'space-between'}
           alignItems={'center'}
           mx={-10}
-          mt={24}>
+          mt={16}>
           <Stack alignSelf={'flex-start'}>
             <Avatar
               source={require('../../assets/onBoarding1.png')}

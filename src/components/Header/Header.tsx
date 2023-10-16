@@ -36,7 +36,7 @@ const Header = props => {
           {/* <Pressable onPress={() => navigation.goBack()}> */}
           {props?.right ? (
             <Pressable onPress={() => navigation.navigate('Instructions')}>
-              <AntDesign name="infocirlce" color={'white'} size={30} />
+              <AntDesign name="infocirlce" color={'white'} size={20} />
             </Pressable>
           ) : (
             <Entypo name="chevron-left" size={30} color={'transparent'} />

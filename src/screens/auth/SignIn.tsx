@@ -22,11 +22,11 @@ const SignIn = ({navigation}) => {
       source={require('../../assets/bg.png')}
       style={{flex: 1}}
       resizeMode="cover">
-      <Header />
+      <Header color={'black'} />
       <ScrollView mx={5}>
         <View mt={12}>
           <Text fontSize={30} color={'white'} fontFamily={'Jost-SemiBold'}>
-            SignIn
+            Sign In
           </Text>
           <Text
             fontSize={16}
@@ -56,7 +56,12 @@ const SignIn = ({navigation}) => {
           </TouchableOpacity>
 
           <View mt={'40%'}>
-            <AButtons label={'Sign In'} />
+            <AButtons
+              label={'Sign In'}
+              onPress={() => {
+                navigation.navigate('Tabs', {screen: 'Home'});
+              }}
+            />
           </View>
           <Row alignSelf={'center'} my={5} mt={10}>
             <Text

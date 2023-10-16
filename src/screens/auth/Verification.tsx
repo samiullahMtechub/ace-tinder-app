@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Text, View} from 'native-base';
+import {ScrollView, Text, View} from 'native-base';
 import {StyleSheet, ImageBackground} from 'react-native';
 
 import {
@@ -9,6 +9,7 @@ import {
   useClearByFocusCell,
 } from 'react-native-confirmation-code-field';
 import AButtons from '../../components/button/AButtons';
+import Header from '../../components/Header/Header';
 // import JdButton from '../../components/button/Buttons';
 // import Header from '../../components/Header/Header';
 
@@ -54,50 +55,52 @@ const Verification = ({navigation}) => {
       style={{flex: 1}}
       resizeMode="cover">
       <View position={'absolute'} top={0} left={0}>
-        {/* <Header /> */}
+        <Header />
       </View>
-      <View mt={100} mx={5}>
-        <Text
-          fontSize={30}
-          fontWeight={'700'}
-          color={'white'}
-          textAlign={'left'}>
-          Verification
-        </Text>
-        <Text color={'grey.400'} textAlign={'left'} mt={2} mb={50}>
-          Enter the code that you received on example@gmai.com
-        </Text>
-      </View>
-      <CodeField
-        ref={ref}
-        {...props}
-        // Use `caretHidden={false}` when users can't paste a text value, because context menu doesn't appear
-        value={value}
-        onChangeText={setValue}
-        cellCount={CELL_COUNT}
-        rootStyle={styles.codeFieldRoot}
-        keyboardType="number-pad"
-        textContentType="oneTimeCode"
-        renderCell={({index, symbol, isFocused}) => (
+      <ScrollView>
+        <View mt={32} mx={5}>
           <Text
-            key={index}
-            style={[styles.cell, isFocused && styles.focusCell]}
-            onLayout={getCellOnLayoutHandler(index)}>
-            {symbol || (isFocused ? <Cursor /> : null)}
+            fontSize={30}
+            fontWeight={'700'}
+            color={'white'}
+            textAlign={'left'}>
+            Verification
           </Text>
-        )}
-      />
-      <Text fontSize={16} textAlign={'center'} color={'pro'} mt={5}>
-        Resend Code
-      </Text>
-      <View mx={5} mb={'20%'} mt={'35%'}>
-        <AButtons
-          label={'Verify'}
-          onPress={() => {
-            navigation.navigate('ResetPassword');
-          }}
+          <Text color={'grey.400'} textAlign={'left'} mt={2} mb={50}>
+            Enter the code that you received on your email
+          </Text>
+        </View>
+        <CodeField
+          ref={ref}
+          {...props}
+          // Use `caretHidden={false}` when users can't paste a text value, because context menu doesn't appear
+          value={value}
+          onChangeText={setValue}
+          cellCount={CELL_COUNT}
+          rootStyle={styles.codeFieldRoot}
+          keyboardType="number-pad"
+          textContentType="oneTimeCode"
+          renderCell={({index, symbol, isFocused}) => (
+            <Text
+              key={index}
+              style={[styles.cell, isFocused && styles.focusCell]}
+              onLayout={getCellOnLayoutHandler(index)}>
+              {symbol || (isFocused ? <Cursor /> : null)}
+            </Text>
+          )}
         />
-      </View>
+        <Text fontSize={16} textAlign={'center'} color={'pro'} mt={5}>
+          Resend Code
+        </Text>
+        <View mx={5} mb={'20%'} mt={'35%'}>
+          <AButtons
+            label={'Verify'}
+            onPress={() => {
+              navigation.navigate('ResetPassword');
+            }}
+          />
+        </View>
+      </ScrollView>
     </ImageBackground>
   );
 };

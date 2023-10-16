@@ -14,44 +14,77 @@ import React from 'react';
 import AButtons from '../../components/button/AButtons';
 import TextField from '../../components/TextField';
 import Header from '../../components/Header/Header';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import ProfilePicComp from '../../components/ProfilePhotosCom/ProfilePicComp';
 
-const AddAge = ({navigation}) => {
+const AddPhotos = ({navigation}) => {
+  const data = [
+    {
+      id: 1,
+    },
+    {
+      id: 2,
+    },
+
+    {
+      id: 3,
+    },
+
+    {
+      id: 4,
+    },
+
+    {
+      id: 5,
+    },
+
+    {
+      id: 6,
+    },
+
+    {
+      id: 7,
+    },
+
+    {
+      id: 8,
+    },
+
+    {
+      id: 9,
+    },
+  ];
   return (
     // <View flex={1}>
     <ImageBackground
       source={require('../../assets/bg.png')}
       style={{flex: 1}}
       resizeMode="cover">
-      <Header />
-      <ScrollView mx={5} mt={5}>
-        <View mt={12}>
+      <View mx={4}>
+        <Header />
+      </View>
+      <ScrollView ml={3}>
+        <View mt={5} mx={5}>
           <Text fontSize={32} color={'white'} fontFamily={'Jost-SemiBold'}>
-            Your Age
+            {`Add your best ${'\n'}Photos`}
           </Text>
           <Text
             fontSize={16}
             color={'txtColor'}
             textAlign={'left'}
             fontFamily={'Jost-Regular'}
-            w={'90%'}
+            // w={'90%'}
             mb={10}
             mt={2}>
-            Your age will be visible to other users
+            {`The photo in your album must be a picture ${'\n'}of you.`}
           </Text>
-          <TextField label={'Age'} />
-
-          <View mt={'65%'}>
-            <AButtons
-              label={'Next'}
-              onPress={() => navigation.navigate('AddPhotos')}
-            />
-          </View>
+          <ProfilePicComp data={data} label={'Next'} />
         </View>
       </ScrollView>
     </ImageBackground>
   );
 };
 
-export default AddAge;
+export default AddPhotos;
 
 const styles = StyleSheet.create({});

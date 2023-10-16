@@ -19,7 +19,7 @@ const TextField = props => {
         outlineColor="#0000001F"
         activeOutlineColor="#F94449"
         secureTextEntry={show === true ? true : false}
-        outlineStyle={{borderRadius: 20}}
+        outlineStyle={{borderRadius: 25}}
         right={
           props?.label === 'Password' || props?.label === 'Confirm Password' ? (
             <TextInput.Icon

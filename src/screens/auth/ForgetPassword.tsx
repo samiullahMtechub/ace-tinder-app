@@ -24,7 +24,7 @@ const ForgetPassword = ({navigation}) => {
       resizeMode="cover">
       <Header />
       <ScrollView mx={5} mt={5}>
-        <View mt={100}>
+        <View mt={16}>
           <Text fontSize={32} color={'white'} fontFamily={'Jost-SemiBold'}>
             Forget Password
           </Text>

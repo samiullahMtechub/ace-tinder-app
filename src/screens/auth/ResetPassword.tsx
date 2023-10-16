@@ -14,6 +14,7 @@ import React from 'react';
 import AButtons from '../../components/button/AButtons';
 import TextField from '../../components/TextField';
 import CustomSnackbar from '../../components/customSnackBar/CustomSnackBar';
+import Header from '../../components/Header/Header';
 
 const ResetPassword = ({navigation}) => {
   const [visible, setVisible] = React.useState(false);
@@ -23,6 +24,7 @@ const ResetPassword = ({navigation}) => {
       source={require('../../assets/bg.png')}
       style={{flex: 1}}
       resizeMode="cover">
+      <Header />
       <CustomSnackbar
         message={'Success'}
         visible={visible}
@@ -34,7 +36,7 @@ const ResetPassword = ({navigation}) => {
         messageDescription={'Password reset Successfully'}
       />
       <ScrollView mx={5} mt={5}>
-        <View mt={100}>
+        <View mt={16}>
           <Text fontSize={32} color={'white'} fontFamily={'Jost-SemiBold'}>
             Reset Password
           </Text>

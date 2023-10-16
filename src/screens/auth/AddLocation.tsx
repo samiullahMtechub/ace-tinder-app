@@ -5,6 +5,7 @@ import {
   Center,
   Circle,
   Image,
+  Pressable,
   Row,
   ScrollView,
   Text,
@@ -15,7 +16,7 @@ import AButtons from '../../components/button/AButtons';
 import TextField from '../../components/TextField';
 import Header from '../../components/Header/Header';
 
-const AddAge = ({navigation}) => {
+const AddLocation = ({navigation}) => {
   return (
     // <View flex={1}>
     <ImageBackground
@@ -24,9 +25,9 @@ const AddAge = ({navigation}) => {
       resizeMode="cover">
       <Header />
       <ScrollView mx={5} mt={5}>
-        <View mt={12}>
+        <View mt={8}>
           <Text fontSize={32} color={'white'} fontFamily={'Jost-SemiBold'}>
-            Your Age
+            Your Location
           </Text>
           <Text
             fontSize={16}
@@ -36,15 +37,32 @@ const AddAge = ({navigation}) => {
             w={'90%'}
             mb={10}
             mt={2}>
-            Your age will be visible to other users
+            We will need your location to give you better experience
           </Text>
-          <TextField label={'Age'} />
+          <Image
+            mt={10}
+            alignSelf={'center'}
+            source={require('../../assets/location.png')}
+            size={'xl'}
+            resizeMode="contain"
+            alt={'img'}
+          />
 
-          <View mt={'65%'}>
+          <View mt={'40%'}>
             <AButtons
-              label={'Next'}
-              onPress={() => navigation.navigate('AddPhotos')}
+              label={'Use my Current Location'}
+              onPress={() => navigation.navigate('PreviewProfile')}
             />
+            <Pressable onPress={() => navigation.navigate('PreviewProfile')}>
+              <Text
+                my={5}
+                color={'pro'}
+                fontSize={16}
+                fontFamily={'Jost-Medium'}
+                textAlign={'center'}>
+                Maybe Later
+              </Text>
+            </Pressable>
           </View>
         </View>
       </ScrollView>
@@ -52,6 +70,6 @@ const AddAge = ({navigation}) => {
   );
 };
 
-export default AddAge;
+export default AddLocation;
 
 const styles = StyleSheet.create({});
