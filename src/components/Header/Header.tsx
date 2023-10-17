@@ -30,7 +30,7 @@ const Header = props => {
         </View>
       ) : (
         <>
-          <Text fontSize={22} fontFamily={'NotoSans-SemiBold'}>
+          <Text fontSize={22} color={'white'} fontFamily={'Jost-SemiBold'}>
             {props?.title}
           </Text>
           {/* <Pressable onPress={() => navigation.goBack()}> */}

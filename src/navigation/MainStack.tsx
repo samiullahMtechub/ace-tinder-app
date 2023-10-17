@@ -22,6 +22,12 @@ import AddLocation from '../screens/auth/AddLocation';
 import PreviewProfile from '../screens/auth/PreviewProfile';
 import ProfileProcessing from '../screens/auth/ProfileProcessing';
 import BottomTabs from './bottomTab/BottomTab';
+import Notifications from '../screens/notifications/Notifications';
+import SearchScreen from '../screens/Dashboard/SearchScreen';
+import DisqualifyUser from '../screens/Dashboard/DisqualifyUser';
+import OtherUser from '../screens/Dashboard/OtherUser';
+import ReportUser from '../screens/Dashboard/Report';
+import Games from '../screens/Dashboard/Games';
 
 export default function MainStack() {
   const Stack = createNativeStackNavigator();
@@ -50,6 +56,12 @@ export default function MainStack() {
         <Stack.Screen name="PreviewProfile" component={PreviewProfile} />
         <Stack.Screen name="ProfileProcessing" component={ProfileProcessing} />
         <Stack.Screen name="Tabs" component={BottomTabs} />
+        <Stack.Screen name="Notifications" component={Notifications} />
+        <Stack.Screen name="Search" component={SearchScreen} />
+        <Stack.Screen name="Disqualify" component={DisqualifyUser} />
+        <Stack.Screen name="OtherUser" component={OtherUser} />
+        <Stack.Screen name="Report" component={ReportUser} />
+        <Stack.Screen name="Games" component={Games} />
       </Stack.Navigator>
     </NavigationContainer>
   );
