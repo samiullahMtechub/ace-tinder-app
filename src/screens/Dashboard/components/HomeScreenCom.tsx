@@ -79,25 +79,27 @@ const HomeScreenComp = props => {
                   </Text>
                 </View>
               </ImageBackground>
-              <Pressable
-                onPress={() => setActive(true)}
-                zIndex={99}
-                position={'absolute'}
-                alignItems={'center'}
-                justifyContent={'center'}
-                top={2}
-                right={1}>
-                <View
-                  bg={'pro'}
-                  // p={2}
-                  rounded={'full'}
-                  h={6}
-                  w={6}>
-                  <Text color={'white'} textAlign={'center'} fontSize={14}>
-                    i
-                  </Text>
-                </View>
-              </Pressable>
+              {props?.fromSearches ? null : (
+                <Pressable
+                  onPress={() => setActive(true)}
+                  zIndex={99}
+                  position={'absolute'}
+                  alignItems={'center'}
+                  justifyContent={'center'}
+                  top={2}
+                  right={1}>
+                  <View
+                    bg={'pro'}
+                    // p={2}
+                    rounded={'full'}
+                    h={6}
+                    w={6}>
+                    <Text color={'white'} textAlign={'center'} fontSize={14}>
+                      i
+                    </Text>
+                  </View>
+                </Pressable>
+              )}
             </ImageBackground>
           </Pressable>
         );
@@ -108,7 +110,7 @@ const HomeScreenComp = props => {
           setActive(false);
         }}
         heading={'Disqualify'}
-        message={'Are you sure you want to disqualify sofia'}
+        message={'Are you sure you want to disqualify sofia?'}
         btntxt1={'Disqualify'}
         btntxt2
         onPress={() => {

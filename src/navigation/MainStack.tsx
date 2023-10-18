@@ -28,6 +28,15 @@ import DisqualifyUser from '../screens/Dashboard/DisqualifyUser';
 import OtherUser from '../screens/Dashboard/OtherUser';
 import ReportUser from '../screens/Dashboard/Report';
 import Games from '../screens/Dashboard/Games';
+import DisqualifiedUsers from '../screens/Dashboard/DisqualifiedUsers';
+import Chatting from '../screens/chat/Chatting';
+import AllConnections from '../screens/Dashboard/AllConnections';
+import CallHistory from '../screens/chat/CallHistory';
+import UpdateProfile from '../screens/settings/UpdateProfile';
+import UpdatePassword from '../screens/settings/UpdatePassword';
+import AI from '../screens/settings/AI';
+import AiTip from '../screens/settings/AiTip';
+import PrivacyPolicy from '../screens/settings/PrivacyPolicy';
 
 export default function MainStack() {
   const Stack = createNativeStackNavigator();
@@ -62,6 +71,15 @@ export default function MainStack() {
         <Stack.Screen name="OtherUser" component={OtherUser} />
         <Stack.Screen name="Report" component={ReportUser} />
         <Stack.Screen name="Games" component={Games} />
+        <Stack.Screen name="Disqualified" component={DisqualifiedUsers} />
+        <Stack.Screen name="Chatting" component={Chatting} />
+        <Stack.Screen name="AllConnections" component={AllConnections} />
+        <Stack.Screen name="Callhistory" component={CallHistory} />
+        <Stack.Screen name="UpdateProfile" component={UpdateProfile} />
+        <Stack.Screen name="UpdatePassword" component={UpdatePassword} />
+        <Stack.Screen name="AI" component={AI} />
+        <Stack.Screen name="AiTip" component={AiTip} />
+        <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
       </Stack.Navigator>
     </NavigationContainer>
   );

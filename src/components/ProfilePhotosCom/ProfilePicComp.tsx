@@ -15,20 +15,7 @@ const ProfilePicComp = props => {
   const navigation = useNavigation();
   const bottomSheetRef = React.useRef(null);
   const [active, setActive] = React.useState(false);
-  const [imageUrl, setImageUrl] = React.useState();
-  const [id, setId] = React.useState(0);
-  const openBottomSheet = (id: string) => {
-    if (bottomSheetRef.current) {
-      bottomSheetRef.current.open();
-      //   setTimeout(() => {
-      //     // setActive(true);
-      //   }, 1000);
-    }
-    //  (bottomSheetRef.current) {
-    //     bottomSheetRef.current.close()
-    // console.error(id);
-    //   setPostId(id);
-  };
+  const [id, setId] = React.useState('1');
   const [imgurl1, setImgurl1] = React.useState();
   const [imgurl2, setImgurl2] = React.useState();
   const [imgurl3, setImgurl3] = React.useState();
@@ -38,6 +25,22 @@ const ProfilePicComp = props => {
   const [imgurl7, setImgurl7] = React.useState();
   const [imgurl8, setImgurl8] = React.useState();
   const [camera, setCamera] = React.useState();
+  const [imageUrl, setImageUrl] = React.useState();
+  const openBottomSheet = (uid: string) => {
+    if (bottomSheetRef.current) {
+      bottomSheetRef.current.open();
+      setId(uid);
+
+      //   setTimeout(() => {
+      //     // setActive(true);
+      //   }, 1000);
+    }
+    //  (bottomSheetRef.current) {
+    //     bottomSheetRef.current.close()
+    // console.error(id);
+    //   setPostId(id);
+  };
+
   const handlePickImage = React.useCallback(async () => {
     const options = {
       maxHeight: 200,
@@ -56,29 +59,58 @@ const ProfilePicComp = props => {
       } else if (response.customButton) {
         // console.log('User tapped custom button:', response.customButton);
       } else {
-        const source = response.assets?.[0]?.base64 || '';
+        let source = response.assets?.[0]?.base64 || '';
         // console.log("source",source);
-        if (id === 1) {
-          console.log('id');
-          setImageUrl(`data:image/png;base64,${source}`);
-        } else if (id === 2) {
-          console.log('2');
-          setImgurl1(`data:image/png;base64,${source}`);
-        } else if (id === 3) {
-          console.log('3');
-          setImgurl2(`data:image/png;base64,${source}`);
-        } else if (id === 4) {
-          setImgurl3(`data:image/png;base64,${source}`);
-        } else if (id === 5) {
-          setImgurl4(`data:image/png;base64,${source}`);
-        } else if (id === 6) {
-          setImgurl5(`data:image/png;base64,${source}`);
-        } else if (id === 7) {
-          setImgurl6(`data:image/png;base64,${source}`);
-        } else if (id === 8) {
-          setImgurl7(`data:image/png;base64,${source}`);
-        } else if (id === 9) {
-          setImgurl8(`data:image/png;base64,${source}`);
+        switch (id) {
+          case '1':
+            // code block
+            console.log('id', id);
+            setImageUrl(`data:image/png;base64,${source}`);
+
+            break;
+          case '2':
+            // code block
+            console.log('id', id);
+            setImgurl1(`data:image/png;base64,${source}`);
+
+            break;
+          case '3':
+            console.log('id', id);
+            setImgurl2(`data:image/png;base64,${source}`);
+
+            break;
+          case '4':
+            console.log('id', id);
+            setImgurl3(`data:image/png;base64,${source}`);
+
+            break;
+          case '5':
+            console.log('id', id);
+            setImgurl4(`data:image/png;base64,${source}`);
+
+            break;
+          case '6':
+            console.log('id', id);
+            setImgurl5(`data:image/png;base64,${source}`);
+
+            break;
+          case '7':
+            console.log('id', id);
+            setImgurl6(`data:image/png;base64,${source}`);
+
+            break;
+          case '8':
+            console.log('id', id);
+            setImgurl7(`data:image/png;base64,${source}`);
+
+            break;
+          case '9':
+            console.log('id', id);
+            setImgurl8(`data:image/png;base64,${source}`);
+
+            break;
+
+          // code block
         }
       }
     });
@@ -101,35 +133,53 @@ const ProfilePicComp = props => {
       } else if (response.customButton) {
         // console.log('User tapped custom button:', response.customButton);
       } else {
-        const source = response.assets?.[0]?.base64 || '';
+        let source = response.assets?.[0]?.base64 || '';
         // console.log("source",source);
-        if (id === 1) {
-          setImageUrl(`data:image/png;base64,${source}`);
-          bottomSheetRef.current.close();
-        } else if (id === 2) {
-          setImgurl1(`data:image/png;base64,${source}`);
-          bottomSheetRef.current.close();
-        } else if (id === 3) {
-          setImgurl2(`data:image/png;base64,${source}`);
-        } else if (id === 4) {
-          setImgurl3(`data:image/png;base64,${source}`);
-        } else if (id === 5) {
-          setImgurl4(`data:image/png;base64,${source}`);
-        } else if (id === 6) {
-          setImgurl5(`data:image/png;base64,${source}`);
-        } else if (id === 7) {
-          setImgurl6(`data:image/png;base64,${source}`);
-        } else if (id === 8) {
-          setImgurl7(`data:image/png;base64,${source}`);
-        } else if (id === 9) {
-          setImgurl8(`data:image/png;base64,${source}`);
+        switch (id) {
+          case '1':
+            // code block
+            setImageUrl(`data:image/png;base64,${source}`);
+
+            break;
+          case '2':
+            // code block
+            setImgurl1(`data:image/png;base64,${source}`);
+
+            break;
+          case '3':
+            setImgurl2(`data:image/png;base64,${source}`);
+
+            break;
+          case '4':
+            setImgurl3(`data:image/png;base64,${source}`);
+
+            break;
+          case '5':
+            setImgurl4(`data:image/png;base64,${source}`);
+
+            break;
+          case '6':
+            setImgurl5(`data:image/png;base64,${source}`);
+
+            break;
+          case '7':
+            setImgurl6(`data:image/png;base64,${source}`);
+
+            break;
+          case '8':
+            setImgurl7(`data:image/png;base64,${source}`);
+            break;
+          case '9':
+            setImgurl8(`data:image/png;base64,${source}`);
+            break;
+
+          // code block
         }
 
         // Process the selected video
       }
     });
   }, []);
-  console.log(imgurl1);
 
   return (
     <>
@@ -138,8 +188,7 @@ const ProfilePicComp = props => {
         {/* return ( */}
         <Pressable
           onPress={() => {
-            setId(1);
-            openBottomSheet();
+            openBottomSheet('1');
           }}>
           <View
             mb={4}
@@ -186,8 +235,7 @@ const ProfilePicComp = props => {
         </Pressable>
         <Pressable
           onPress={() => {
-            setId(2);
-            openBottomSheet();
+            openBottomSheet('2');
           }}>
           <View
             mb={4}
@@ -220,7 +268,7 @@ const ProfilePicComp = props => {
                       right={-4}
                       bg={'pro'}
                       rounded={'full'}
-                      top={-7}
+                      bottom={20}
 
                       // borderWidth={2}
                     >
@@ -236,8 +284,7 @@ const ProfilePicComp = props => {
         </Pressable>
         <Pressable
           onPress={() => {
-            setId(3);
-            openBottomSheet();
+            openBottomSheet('3');
           }}>
           <View
             mb={4}
@@ -284,8 +331,7 @@ const ProfilePicComp = props => {
         </Pressable>
         <Pressable
           onPress={() => {
-            setId(4);
-            openBottomSheet();
+            openBottomSheet('4');
           }}>
           <View
             mb={4}
@@ -332,8 +378,7 @@ const ProfilePicComp = props => {
         </Pressable>
         <Pressable
           onPress={() => {
-            setId(5);
-            openBottomSheet();
+            openBottomSheet('5');
           }}>
           <View
             mb={4}
@@ -380,8 +425,7 @@ const ProfilePicComp = props => {
         </Pressable>
         <Pressable
           onPress={() => {
-            setId(6);
-            openBottomSheet();
+            openBottomSheet('6');
           }}>
           <View
             mb={4}
@@ -428,8 +472,7 @@ const ProfilePicComp = props => {
         </Pressable>
         <Pressable
           onPress={() => {
-            setId(7);
-            openBottomSheet();
+            openBottomSheet('7');
           }}>
           <View
             mb={4}
@@ -476,8 +519,7 @@ const ProfilePicComp = props => {
         </Pressable>
         <Pressable
           onPress={() => {
-            setId(8);
-            openBottomSheet();
+            openBottomSheet('8');
           }}>
           <View
             mb={4}
@@ -524,8 +566,7 @@ const ProfilePicComp = props => {
         </Pressable>
         <Pressable
           onPress={() => {
-            setId(9);
-            openBottomSheet();
+            openBottomSheet('9');
           }}>
           <View
             mb={4}

@@ -9,7 +9,7 @@ const AButtons = props => {
       {props?.label !== 'Get Started' ? (
         <TouchableOpacity
           onPressIn={props?.onPress}
-          style={{height: 50}}
+          style={{height: 40}}
           //   activeOpacity={0.7}
           onPress={() => {}}>
           <LinearGradient

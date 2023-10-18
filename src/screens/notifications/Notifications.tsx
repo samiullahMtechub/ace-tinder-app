@@ -15,8 +15,8 @@ const Notifications = () => {
     },
     {
       id: 2,
-      title: 'Sarah Disqualified you',
-      message: `Our interests and values didn't quite align.....`,
+      title: 'New message from sarah',
+      message: `Do you have time in sunday ?`,
       time: '12:20 AM',
       img: require('../../assets/notifi.png'),
       status: 'early',
@@ -30,8 +30,8 @@ const Notifications = () => {
     },
     {
       id: 4,
-      title: 'Sarah Disqualified you',
-      message: `Our interests and values didn't quite align.....`,
+      title: 'New message from sarah',
+      message: `Do you have time in sunday ?`,
       time: '12:20 AM',
       img: require('../../assets/notifi.png'),
     },
@@ -44,8 +44,8 @@ const Notifications = () => {
     },
     {
       id: 6,
-      title: 'Sarah Disqualified you',
-      message: `Our interests and values didn't quite align.....`,
+      title: 'New message from sarah',
+      message: `Do you have time in sunday ?`,
       time: '12:20 AM',
       img: require('../../assets/notifi.png'),
     },
@@ -58,8 +58,8 @@ const Notifications = () => {
     },
     {
       id: 8,
-      title: 'Sarah Disqualified you',
-      message: `Our interests and values didn't quite align.....`,
+      title: 'New message from sarah',
+      message: `Do you have time in sunday ?`,
       time: '12:20 AM',
       img: require('../../assets/notifi.png'),
     },

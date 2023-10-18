@@ -9,6 +9,9 @@ import OnBoarding from '../../screens/auth/OnBoarding';
 import AddAge from '../../screens/auth/AddAge';
 import OnBoarding3 from '../../screens/auth/OnBoarding3';
 import HomeScreen from '../../screens/Dashboard/HomeScreen';
+import AllChats from '../../screens/chat/AllChats';
+import Premium from '../../screens/Premium/Premium';
+import Settings from '../../screens/settings/Settings';
 
 const Tab = createBottomTabNavigator();
 
@@ -19,7 +22,7 @@ const BottomTabs = () => {
         headerShown: false,
         tabBarHideOnKeyboard: true,
         tabBarActiveTintColor: '#F94449',
-        // tabBarShowLabel: false,
+        tabBarShowLabel: false,
         headerShadowVisible: false,
         tabBarStyle: [
           {
@@ -45,8 +48,8 @@ const BottomTabs = () => {
         }}
       />
       <Tab.Screen
-        name="Schedule"
-        component={AddAge}
+        name="Chat"
+        component={AllChats}
         options={{
           tabBarIcon: ({focused}) => (
             <View alignItems={'center'} justifyContent={'center'}>
@@ -70,8 +73,8 @@ const BottomTabs = () => {
         }}
       />
       <Tab.Screen
-        name="Adjust Availability"
-        component={OnBoarding}
+        name="Premium"
+        component={Premium}
         options={{
           tabBarIcon: ({focused}) => (
             <View alignItems={'center'} justifyContent={'center'}>
@@ -97,7 +100,7 @@ const BottomTabs = () => {
 
       <Tab.Screen
         name="Settings"
-        component={SignIn}
+        component={Settings}
         options={{
           tabBarIcon: ({focused}) => (
             <View alignItems={'center'} justifyContent={'center'}>

@@ -96,10 +96,13 @@ const OtherUser = ({navigation}) => {
                   resizeMode={'contain'}
                   alignSelf={'center'}
                   left={30}
-                  top={4}
+                  top={3}
                 />
               </View>
-              <AButtons label={'Start Conversation'} />
+              <AButtons
+                label={'Start Conversation'}
+                onPress={() => navigation.navigate('Chatting')}
+              />
             </View>
             <Pressable onPress={() => navigation.navigate('Games')}>
               <Image
