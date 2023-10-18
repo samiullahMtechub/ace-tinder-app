@@ -25,9 +25,12 @@ const styles = StyleSheet.create({
   cell: {
     width: 60,
     height: 50,
-    lineHeight: 38,
+    lineHeight: 40,
     fontSize: 24,
-    // borderWidth: 2,
+    // borderWidth: 2,\C
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: '#CCCCCC',
     borderRadius: 30,
     borderColor: '#00000030',
     textAlign: 'center',

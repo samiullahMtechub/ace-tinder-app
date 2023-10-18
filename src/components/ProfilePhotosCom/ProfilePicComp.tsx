@@ -15,7 +15,8 @@ const ProfilePicComp = props => {
   const navigation = useNavigation();
   const bottomSheetRef = React.useRef(null);
   const [active, setActive] = React.useState(false);
-  const [imageUrl, setImageUrl] = React.useState<string>();
+  const [imageUrl, setImageUrl] = React.useState();
+  const [id, setId] = React.useState(0);
   const openBottomSheet = (id: string) => {
     if (bottomSheetRef.current) {
       bottomSheetRef.current.open();
@@ -28,6 +29,15 @@ const ProfilePicComp = props => {
     // console.error(id);
     //   setPostId(id);
   };
+  const [imgurl1, setImgurl1] = React.useState();
+  const [imgurl2, setImgurl2] = React.useState();
+  const [imgurl3, setImgurl3] = React.useState();
+  const [imgurl4, setImgurl4] = React.useState();
+  const [imgurl5, setImgurl5] = React.useState();
+  const [imgurl6, setImgurl6] = React.useState();
+  const [imgurl7, setImgurl7] = React.useState();
+  const [imgurl8, setImgurl8] = React.useState();
+  const [camera, setCamera] = React.useState();
   const handlePickImage = React.useCallback(async () => {
     const options = {
       maxHeight: 200,
@@ -48,8 +58,28 @@ const ProfilePicComp = props => {
       } else {
         const source = response.assets?.[0]?.base64 || '';
         // console.log("source",source);
-
-        setImageUrl(`data:image/png;base64,${source}`); // Process the selected video
+        if (id === 1) {
+          console.log('id');
+          setImageUrl(`data:image/png;base64,${source}`);
+        } else if (id === 2) {
+          console.log('2');
+          setImgurl1(`data:image/png;base64,${source}`);
+        } else if (id === 3) {
+          console.log('3');
+          setImgurl2(`data:image/png;base64,${source}`);
+        } else if (id === 4) {
+          setImgurl3(`data:image/png;base64,${source}`);
+        } else if (id === 5) {
+          setImgurl4(`data:image/png;base64,${source}`);
+        } else if (id === 6) {
+          setImgurl5(`data:image/png;base64,${source}`);
+        } else if (id === 7) {
+          setImgurl6(`data:image/png;base64,${source}`);
+        } else if (id === 8) {
+          setImgurl7(`data:image/png;base64,${source}`);
+        } else if (id === 9) {
+          setImgurl8(`data:image/png;base64,${source}`);
+        }
       }
     });
   }, []);
@@ -73,43 +103,118 @@ const ProfilePicComp = props => {
       } else {
         const source = response.assets?.[0]?.base64 || '';
         // console.log("source",source);
+        if (id === 1) {
+          setImageUrl(`data:image/png;base64,${source}`);
+          bottomSheetRef.current.close();
+        } else if (id === 2) {
+          setImgurl1(`data:image/png;base64,${source}`);
+          bottomSheetRef.current.close();
+        } else if (id === 3) {
+          setImgurl2(`data:image/png;base64,${source}`);
+        } else if (id === 4) {
+          setImgurl3(`data:image/png;base64,${source}`);
+        } else if (id === 5) {
+          setImgurl4(`data:image/png;base64,${source}`);
+        } else if (id === 6) {
+          setImgurl5(`data:image/png;base64,${source}`);
+        } else if (id === 7) {
+          setImgurl6(`data:image/png;base64,${source}`);
+        } else if (id === 8) {
+          setImgurl7(`data:image/png;base64,${source}`);
+        } else if (id === 9) {
+          setImgurl8(`data:image/png;base64,${source}`);
+        }
 
-        setImageUrl(`data:image/png;base64,${source}`); // Process the selected video
+        // Process the selected video
       }
     });
-    bottomSheetRef.current.close();
   }, []);
+  console.log(imgurl1);
+
   return (
     <>
       <View flexDir={'row'} flexWrap={'wrap'} flex={1}>
-        {props?.data?.map(item => {
-          return (
-            <Pressable
-              onPress={() => {
-                openBottomSheet();
-              }}>
-              <View
-                mb={4}
-                borderStyle={'dashed'}
-                borderWidth={imageUrl ? 0 : 2}
-                mr={5}
-                bg={'grey.500'}
-                borderColor={'txtColor'}
-                h={'24'}
-                borderRadius={20}
-                alignItems={'center'}
-                justifyContent={'center'}
-                w={20}>
-                {imageUrl ? (
-                  <Stack>
-                    <Image
-                      source={{uri: imageUrl}}
-                      alt={'img'}
-                      h={24}
-                      w={20}
-                      borderRadius={20}
-                      resizeMode={'contain'}
-                    />
+        {/* {props?.data?.map((item, index) => { */}
+        {/* return ( */}
+        <Pressable
+          onPress={() => {
+            setId(1);
+            openBottomSheet();
+          }}>
+          <View
+            mb={4}
+            borderStyle={'dashed'}
+            borderWidth={imageUrl ? 0 : 2}
+            mr={5}
+            bg={'grey.500'}
+            borderColor={'txtColor'}
+            h={'24'}
+            borderRadius={20}
+            alignItems={'center'}
+            justifyContent={'center'}
+            w={20}>
+            {imageUrl ? (
+              <>
+                <Stack>
+                  <Image
+                    source={{
+                      uri: imageUrl,
+                    }}
+                    alt={'img'}
+                    h={24}
+                    w={20}
+                    borderRadius={20}
+                    resizeMode={'contain'}
+                  />
+                  <View
+                    position={'absolute'}
+                    right={-4}
+                    bg={'pro'}
+                    rounded={'full'}
+                    top={-7}
+
+                    // borderWidth={2}
+                  >
+                    <Entypo name={'cross'} color={'black'} size={18} />
+                  </View>
+                </Stack>
+              </>
+            ) : (
+              <AntDesign name="pluscircleo" color={'#CCCCCC'} size={30} />
+            )}
+          </View>
+        </Pressable>
+        <Pressable
+          onPress={() => {
+            setId(2);
+            openBottomSheet();
+          }}>
+          <View
+            mb={4}
+            borderStyle={'dashed'}
+            borderWidth={imgurl1 ? 0 : 2}
+            mr={5}
+            bg={'grey.500'}
+            borderColor={'txtColor'}
+            h={'24'}
+            borderRadius={20}
+            alignItems={'center'}
+            justifyContent={'center'}
+            w={20}>
+            {imgurl1 ? (
+              <>
+                <Stack>
+                  <Image
+                    source={{
+                      uri: imgurl1,
+                    }}
+                    alt={'img'}
+                    h={24}
+                    w={20}
+                    borderRadius={20}
+                    resizeMode={'contain'}
+                  />
+                  <Pressable>
                     <View
                       position={'absolute'}
                       right={-4}
@@ -121,14 +226,350 @@ const ProfilePicComp = props => {
                     >
                       <Entypo name={'cross'} color={'black'} size={18} />
                     </View>
-                  </Stack>
-                ) : (
-                  <AntDesign name="pluscircleo" color={'#CCCCCC'} size={30} />
-                )}
-              </View>
-            </Pressable>
-          );
-        })}
+                  </Pressable>
+                </Stack>
+              </>
+            ) : (
+              <AntDesign name="pluscircleo" color={'#CCCCCC'} size={30} />
+            )}
+          </View>
+        </Pressable>
+        <Pressable
+          onPress={() => {
+            setId(3);
+            openBottomSheet();
+          }}>
+          <View
+            mb={4}
+            borderStyle={'dashed'}
+            borderWidth={imgurl2 ? 0 : 2}
+            mr={5}
+            bg={'grey.500'}
+            borderColor={'txtColor'}
+            h={'24'}
+            borderRadius={20}
+            alignItems={'center'}
+            justifyContent={'center'}
+            w={20}>
+            {imgurl2 ? (
+              <>
+                <Stack>
+                  <Image
+                    source={{
+                      uri: imgurl2,
+                    }}
+                    alt={'img'}
+                    h={24}
+                    w={20}
+                    borderRadius={20}
+                    resizeMode={'contain'}
+                  />
+                  <View
+                    position={'absolute'}
+                    right={-4}
+                    bg={'pro'}
+                    rounded={'full'}
+                    top={-7}
+
+                    // borderWidth={2}
+                  >
+                    <Entypo name={'cross'} color={'black'} size={18} />
+                  </View>
+                </Stack>
+              </>
+            ) : (
+              <AntDesign name="pluscircleo" color={'#CCCCCC'} size={30} />
+            )}
+          </View>
+        </Pressable>
+        <Pressable
+          onPress={() => {
+            setId(4);
+            openBottomSheet();
+          }}>
+          <View
+            mb={4}
+            borderStyle={'dashed'}
+            borderWidth={imgurl3 ? 0 : 2}
+            mr={5}
+            bg={'grey.500'}
+            borderColor={'txtColor'}
+            h={'24'}
+            borderRadius={20}
+            alignItems={'center'}
+            justifyContent={'center'}
+            w={20}>
+            {imgurl3 ? (
+              <>
+                <Stack>
+                  <Image
+                    source={{
+                      uri: imgurl3,
+                    }}
+                    alt={'img'}
+                    h={24}
+                    w={20}
+                    borderRadius={20}
+                    resizeMode={'contain'}
+                  />
+                  <View
+                    position={'absolute'}
+                    right={-4}
+                    bg={'pro'}
+                    rounded={'full'}
+                    top={-7}
+
+                    // borderWidth={2}
+                  >
+                    <Entypo name={'cross'} color={'black'} size={18} />
+                  </View>
+                </Stack>
+              </>
+            ) : (
+              <AntDesign name="pluscircleo" color={'#CCCCCC'} size={30} />
+            )}
+          </View>
+        </Pressable>
+        <Pressable
+          onPress={() => {
+            setId(5);
+            openBottomSheet();
+          }}>
+          <View
+            mb={4}
+            borderStyle={'dashed'}
+            borderWidth={imgurl4 ? 0 : 2}
+            mr={5}
+            bg={'grey.500'}
+            borderColor={'txtColor'}
+            h={'24'}
+            borderRadius={20}
+            alignItems={'center'}
+            justifyContent={'center'}
+            w={20}>
+            {imgurl4 ? (
+              <>
+                <Stack>
+                  <Image
+                    source={{
+                      uri: imgurl4,
+                    }}
+                    alt={'img'}
+                    h={24}
+                    w={20}
+                    borderRadius={20}
+                    resizeMode={'contain'}
+                  />
+                  <View
+                    position={'absolute'}
+                    right={-4}
+                    bg={'pro'}
+                    rounded={'full'}
+                    top={-7}
+
+                    // borderWidth={2}
+                  >
+                    <Entypo name={'cross'} color={'black'} size={18} />
+                  </View>
+                </Stack>
+              </>
+            ) : (
+              <AntDesign name="pluscircleo" color={'#CCCCCC'} size={30} />
+            )}
+          </View>
+        </Pressable>
+        <Pressable
+          onPress={() => {
+            setId(6);
+            openBottomSheet();
+          }}>
+          <View
+            mb={4}
+            borderStyle={'dashed'}
+            borderWidth={imgurl5 ? 0 : 2}
+            mr={5}
+            bg={'grey.500'}
+            borderColor={'txtColor'}
+            h={'24'}
+            borderRadius={20}
+            alignItems={'center'}
+            justifyContent={'center'}
+            w={20}>
+            {imgurl5 ? (
+              <>
+                <Stack>
+                  <Image
+                    source={{
+                      uri: imgurl5,
+                    }}
+                    alt={'img'}
+                    h={24}
+                    w={20}
+                    borderRadius={20}
+                    resizeMode={'contain'}
+                  />
+                  <View
+                    position={'absolute'}
+                    right={-4}
+                    bg={'pro'}
+                    rounded={'full'}
+                    top={-7}
+
+                    // borderWidth={2}
+                  >
+                    <Entypo name={'cross'} color={'black'} size={18} />
+                  </View>
+                </Stack>
+              </>
+            ) : (
+              <AntDesign name="pluscircleo" color={'#CCCCCC'} size={30} />
+            )}
+          </View>
+        </Pressable>
+        <Pressable
+          onPress={() => {
+            setId(7);
+            openBottomSheet();
+          }}>
+          <View
+            mb={4}
+            borderStyle={'dashed'}
+            borderWidth={imgurl6 ? 0 : 2}
+            mr={5}
+            bg={'grey.500'}
+            borderColor={'txtColor'}
+            h={'24'}
+            borderRadius={20}
+            alignItems={'center'}
+            justifyContent={'center'}
+            w={20}>
+            {imgurl6 ? (
+              <>
+                <Stack>
+                  <Image
+                    source={{
+                      uri: imgurl6,
+                    }}
+                    alt={'img'}
+                    h={24}
+                    w={20}
+                    borderRadius={20}
+                    resizeMode={'contain'}
+                  />
+                  <View
+                    position={'absolute'}
+                    right={-4}
+                    bg={'pro'}
+                    rounded={'full'}
+                    top={-7}
+
+                    // borderWidth={2}
+                  >
+                    <Entypo name={'cross'} color={'black'} size={18} />
+                  </View>
+                </Stack>
+              </>
+            ) : (
+              <AntDesign name="pluscircleo" color={'#CCCCCC'} size={30} />
+            )}
+          </View>
+        </Pressable>
+        <Pressable
+          onPress={() => {
+            setId(8);
+            openBottomSheet();
+          }}>
+          <View
+            mb={4}
+            borderStyle={'dashed'}
+            borderWidth={imgurl7 ? 0 : 2}
+            mr={5}
+            bg={'grey.500'}
+            borderColor={'txtColor'}
+            h={'24'}
+            borderRadius={20}
+            alignItems={'center'}
+            justifyContent={'center'}
+            w={20}>
+            {imgurl7 ? (
+              <>
+                <Stack>
+                  <Image
+                    source={{
+                      uri: imgurl7,
+                    }}
+                    alt={'img'}
+                    h={24}
+                    w={20}
+                    borderRadius={20}
+                    resizeMode={'contain'}
+                  />
+                  <View
+                    position={'absolute'}
+                    right={-4}
+                    bg={'pro'}
+                    rounded={'full'}
+                    top={-7}
+
+                    // borderWidth={2}
+                  >
+                    <Entypo name={'cross'} color={'black'} size={18} />
+                  </View>
+                </Stack>
+              </>
+            ) : (
+              <AntDesign name="pluscircleo" color={'#CCCCCC'} size={30} />
+            )}
+          </View>
+        </Pressable>
+        <Pressable
+          onPress={() => {
+            setId(9);
+            openBottomSheet();
+          }}>
+          <View
+            mb={4}
+            borderStyle={'dashed'}
+            borderWidth={imgurl8 ? 0 : 2}
+            mr={5}
+            bg={'grey.500'}
+            borderColor={'txtColor'}
+            h={'24'}
+            borderRadius={20}
+            alignItems={'center'}
+            justifyContent={'center'}
+            w={20}>
+            {imgurl8 ? (
+              <>
+                <Stack>
+                  <Image
+                    source={{
+                      uri: imgurl8,
+                    }}
+                    alt={'img'}
+                    h={24}
+                    w={20}
+                    borderRadius={20}
+                    resizeMode={'contain'}
+                  />
+                  <View
+                    position={'absolute'}
+                    right={-4}
+                    bg={'pro'}
+                    rounded={'full'}
+                    top={-7}
+
+                    // borderWidth={2}
+                  >
+                    <Entypo name={'cross'} color={'black'} size={18} />
+                  </View>
+                </Stack>
+              </>
+            ) : (
+              <AntDesign name="pluscircleo" color={'#CCCCCC'} size={30} />
+            )}
+          </View>
+        </Pressable>
       </View>
       <BottomSheet
         defaultOff={true}
@@ -150,6 +591,7 @@ const ProfilePicComp = props => {
           mt={10}
           onPress={() => {
             handleCamera();
+            setCamera(true);
             bottomSheetRef.current.close();
           }}>
           <Row alignItems={'center'}>
@@ -167,6 +609,7 @@ const ProfilePicComp = props => {
         <Pressable
           onPress={() => {
             handlePickImage();
+            setCamera(false);
             bottomSheetRef.current.close();
           }}>
           <Row alignItems={'center'}>
@@ -197,7 +640,18 @@ const ProfilePicComp = props => {
         <AButtons
           label={props?.label}
           onPress={() => {
-            if (!props?.fromPreview && !imageUrl) {
+            if (
+              !props?.fromPreview &&
+              !imageUrl &&
+              !imgurl1 &&
+              !imgurl2 &&
+              !imgurl3 &&
+              !imgurl4 &&
+              !imgurl5 &&
+              !imgurl6 &&
+              !imgurl7 &&
+              !imgurl8
+            ) {
               setActive(true);
             } else if (props?.fromPreview) {
               navigation.navigate('ProfileProcessing');

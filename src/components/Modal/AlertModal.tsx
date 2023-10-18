@@ -7,6 +7,7 @@ import {
   Row,
   View,
   Image,
+  Pressable,
 } from 'native-base';
 import React from 'react';
 import AButtons from '../button/AButtons';
@@ -21,13 +22,14 @@ export default function ({
   children,
   onPress,
   fromSettings,
+  cancelPress,
 }) {
   // const [modalVisible, setModalVisible] = React.useState();
   return (
     <Modal isOpen={modalVisible}>
       <Modal.Content
         w={'80%'}
-        h={'35%'}
+        h={btntxt2 ? '40%' : '35%'}
         _light={{bg: 'black'}}
         // alignItems={'flex-start'}
         _dark={{bg: 'black'}}>
@@ -50,12 +52,33 @@ export default function ({
           {heading}
         </Text>
 
-        <Text mt={4} fontSize={14} mx={5} textAlign={'center'} color={'white'}>
+        <Text mt={3} fontSize={14} mx={5} textAlign={'center'} color={'white'}>
           {message}
         </Text>
-        <View w={'60%'} alignSelf={'center'} my={8}>
+        {/* <View w={'60%'} alignSelf={'center'} my={6}>
           <AButtons label={'Ok'} onPress={onPress} />
-        </View>
+        </View> */}
+        {btntxt2 ? (
+          <View
+            flexDir={'row'}
+            mt={5}
+            alignItems={'center'}
+            justifyContent={'space-around'}
+            mx={5}>
+            <Pressable onPress={cancelPress}>
+              <Text color={'pro'} fontSize={16}>
+                Cancel
+              </Text>
+            </Pressable>
+            <View w={'60%'}>
+              <AButtons label={btntxt1} onPress={onPress} />
+            </View>
+          </View>
+        ) : (
+          <View w={'60%'} alignSelf={'center'} my={6}>
+            <AButtons label={'Ok'} onPress={onPress} />
+          </View>
+        )}
         {/* </View> */}
       </Modal.Content>
     </Modal>

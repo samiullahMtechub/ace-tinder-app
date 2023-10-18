@@ -6,6 +6,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 const TextField = props => {
   const [signin_ShowPassword1, setsignin_ShowPassword1] = React.useState(true);
   const [show, setShow] = useState(false);
+  const [focused, setFocused] = useState(false);
 
   return (
     <>
@@ -16,7 +17,7 @@ const TextField = props => {
         style={styles.ti}
         placeholderTextColor={'#ABABAB'}
         textColor="#ABABAB"
-        outlineColor="#0000001F"
+        outlineColor={'#0000001F'}
         activeOutlineColor="#F94449"
         secureTextEntry={show === true ? true : false}
         outlineStyle={{borderRadius: 25}}
