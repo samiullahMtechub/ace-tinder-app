@@ -6,7 +6,7 @@ import LinearGradient from 'react-native-linear-gradient';
 const AButtons = props => {
   return (
     <>
-      {props?.label !== 'Get Started' ? (
+      {props?.label !== 'Get Started' || props?.fromChat ? (
         <TouchableOpacity
           onPressIn={props?.onPress}
           style={{height: 40}}
