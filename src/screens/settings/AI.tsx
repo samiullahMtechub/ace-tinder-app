@@ -16,7 +16,7 @@ const AI = ({navigation}) => {
       source={require('../../assets/bg.png')}
       style={{flex: 1}}
       resizeMode="cover">
-      <Header right />
+      <Header right fromAi />
       <ScrollView mx={5} mt={5}>
         <OnBoardingComp
           fromSettings

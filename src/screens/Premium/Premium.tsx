@@ -1,16 +1,25 @@
-import {Text, Image, View} from 'native-base';
-import React, {useState} from 'react';
+import {Text, Image, View, ScrollView, Row} from 'native-base';
+import React, {useEffect, useState} from 'react';
 import {
-  ScrollView,
   //   Image,
   StyleSheet,
   Dimensions,
   ImageBackground,
 } from 'react-native';
 import AButtons from '../../components/button/AButtons';
+import AlertModal from '../../components/Modal/AlertModal';
 
-const Premium = () => {
+const Premium = ({navigation}) => {
   const [currentPage, setCurrentPage] = useState(0);
+  const [active, setActive] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      if (active === true) {
+        setActive(false);
+        navigation.navigate('Tabs', {screen: 'Home'});
+      }
+    }, 2000);
+  });
   const width = Dimensions.get('window').width;
 
   const handlePageChange = event => {
@@ -18,7 +27,24 @@ const Premium = () => {
     const currentPage = Math.floor(offset / width);
     setCurrentPage(currentPage);
   };
-
+  const data = [
+    {
+      id: 1,
+      img: require('../../assets/p1.png'),
+    },
+    {
+      id: 2,
+      img: require('../../assets/p2.png'),
+    },
+    {
+      id: 3,
+      img: require('../../assets/p4.png'),
+    },
+    {
+      id: 4,
+      img: require('../../assets/p3.png'),
+    },
+  ];
   return (
     <ImageBackground
       source={require('../../assets/bg.png')}
@@ -30,26 +56,29 @@ const Premium = () => {
       </View>
 
       <ScrollView
-        horizontal
-        // pagingEnabled
+        mx={5}
+        horizontal={true}
         showsHorizontalScrollIndicator={false}
         onScroll={handlePageChange}>
-        {/* Add your images here */}
-        <Image
-          source={require('../../assets/p1.png')}
-          resizeMode={'contain'}
-          h={500}
-        />
-        <Image
-          source={require('../../assets/p2.png')}
-          resizeMode={'contain'}
-          h={500}
-        />
-        <Image
-          source={require('../../assets/p4.png')}
-          resizeMode={'contain'}
-          h={500}
-        />
+        <Row h={500}>
+          {/* Add your images here */}
+          {data?.map(item => {
+            return (
+              <Image
+                alt="img"
+                source={item?.img}
+                // size={'2xl'}
+                borderRadius={20}
+                mx={2}
+                h={490}
+                w={300}
+                // flex={1}
+                // h={500}
+                resizeMode={'cover'}
+              />
+            );
+          })}
+        </Row>
         {/* <View
           position={'absolute'}
           bottom={24}
@@ -70,9 +99,21 @@ const Premium = () => {
         </View> */}
         {/* Add more images as needed */}
       </ScrollView>
-      <View mx={7}>
-        <AButtons label={'Pay Now'} />
+      {/* </View> */}
+      <View mx={7} mb={5}>
+        <AButtons label={'Pay Now'} onPress={() => setActive(true)} />
       </View>
+      <AlertModal
+        modalVisible={active}
+        // cancelPress={() => {
+        //   setActive(false);
+        // }}
+        fromPremium
+        heading={'Subscription Paid'}
+        message={'Updating your application'}
+
+        // btntxt2
+      ></AlertModal>
       {/* Add pagination dots */}
     </ImageBackground>
   );

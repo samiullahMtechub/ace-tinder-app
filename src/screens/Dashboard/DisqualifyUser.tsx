@@ -36,7 +36,7 @@ const DisqualifyUser = ({navigation}) => {
         </View>
         <AlertModal
           modalVisible={active}
-          heading={'Disqualify'}
+          heading={'Disqualified'}
           message={'Next match will appeaar in 24 hours'}
           onPress={() => {
             navigation.goBack();

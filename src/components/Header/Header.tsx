@@ -16,7 +16,14 @@ const Header = props => {
       flexDir={'row'}
       alignItems={'center'}
       justifyContent={props?.load ? null : 'space-between'}>
-      <Pressable onPress={() => navigation.goBack()}>
+      <Pressable
+        onPress={() => {
+          if (props?.fromAiTip) {
+            navigation.navigate('Tabs', {screen: 'Settings'});
+          } else {
+            navigation.goBack();
+          }
+        }}>
         <Entypo
           name={'chevron-left'}
           size={30}
@@ -35,7 +42,14 @@ const Header = props => {
           </Text>
           {/* <Pressable onPress={() => navigation.goBack()}> */}
           {props?.right ? (
-            <Pressable onPress={() => navigation.navigate('Instructions')}>
+            <Pressable
+              onPress={() => {
+                if (props?.fromAi) {
+                  navigation.navigate('Instructions', props?.fromAi);
+                } else {
+                  navigation.navigate('Instructions');
+                }
+              }}>
               <AntDesign name="infocirlce" color={'white'} size={20} />
             </Pressable>
           ) : (
