@@ -682,6 +682,7 @@ const ProfilePicComp = props => {
           label={props?.label}
           onPress={() => {
             if (
+              !props?.label === 'Update' &&
               !props?.fromPreview &&
               !imageUrl &&
               !imgurl1 &&
@@ -696,6 +697,8 @@ const ProfilePicComp = props => {
               setActive(true);
             } else if (props?.fromPreview) {
               navigation.navigate('ProfileProcessing');
+            } else if (props?.label === 'Update') {
+              navigation.goBack();
             } else {
               // let fromAddPhoto=true;
               navigation.navigate('AddProfile', imageUrl);

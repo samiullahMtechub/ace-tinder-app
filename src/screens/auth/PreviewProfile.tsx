@@ -134,18 +134,20 @@ const PreviewProfile = ({navigation}) => {
       source={require('../../assets/bg.png')}
       style={{flex: 1}}
       resizeMode="cover">
-      <View
-        mt={5}
-        ml={5}
-        bg={'pro'}
-        rounded={'full'}
-        p={1}
-        h={8}
-        w={8}
-        alignItems={'center'}
-        justifyContent={'center'}>
-        <Entypo name="chevron-left" size={20} color={'black'} />
-      </View>
+      <Pressable onPress={() => navigation.goBack()}>
+        <View
+          mt={5}
+          ml={5}
+          bg={'pro'}
+          rounded={'full'}
+          p={1}
+          h={8}
+          w={8}
+          alignItems={'center'}
+          justifyContent={'center'}>
+          <Entypo name="chevron-left" size={20} color={'black'} />
+        </View>
+      </Pressable>
       <ScrollView mx={5} mt={3}>
         <View mt={5}>
           <Text fontSize={32} color={'white'} fontFamily={'Jost-SemiBold'}>

@@ -13,7 +13,8 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import React from 'react';
 import AButtons from '../../components/button/AButtons';
 
-const OtherUser = ({navigation}) => {
+const OtherUser = ({navigation, route}) => {
+  const fromSettings = route?.params;
   const [active, setActive] = React.useState(false);
   return (
     <ImageBackground
@@ -48,8 +49,8 @@ const OtherUser = ({navigation}) => {
               <View h={1} w={9} borderRadius={10} bg={'txtColor'} ml={2}></View>
             </Row>
           </View>
-          <View position={'absolute'} bottom={20}>
-            <Row>
+          <View position={'absolute'} bottom={fromSettings === true ? 10 : 20}>
+            <Row alignItems={'center'}>
               <Avatar
                 source={require('../../assets/home1.png')}
                 size={'md'}
@@ -57,20 +58,27 @@ const OtherUser = ({navigation}) => {
                 borderWidth={1}
                 mb={2}
               />
-              <Pressable onPress={() => navigation.navigate('Report')}>
-                <View
-                  bg={'#F9444933'}
-                  h={10}
-                  w={16}
-                  rounded={'full'}
-                  ml={3}
-                  alignItems={'center'}
-                  justifyContent={'center'}>
-                  <Text color={'pro'} fontSize={14} fontFamily={'Jost-Medium'}>
-                    Report
-                  </Text>
-                </View>
-              </Pressable>
+              {fromSettings === true ? null : (
+                <Pressable
+                  onPress={() => navigation.navigate('Report')}
+                  alignItems={'center'}>
+                  <View
+                    bg={'#F9444933'}
+                    h={8}
+                    w={20}
+                    rounded={'full'}
+                    ml={3}
+                    alignItems={'center'}
+                    justifyContent={'center'}>
+                    <Text
+                      color={'pro'}
+                      fontSize={14}
+                      fontFamily={'Jost-Medium'}>
+                      Report
+                    </Text>
+                  </View>
+                </Pressable>
+              )}
             </Row>
             <Text fontSize={18} fontFamily={'Jost-SemiBold'} color={'white'}>
               Jenny Wilson, 22
@@ -84,35 +92,40 @@ const OtherUser = ({navigation}) => {
               Santorini, a picturesque island in the southern Aegean Sea
             </Text>
           </View>
-
-          <Row position={'absolute'} bottom={0} left={0} alignItems={'center'}>
-            <View w={'80%'}>
-              <View position={'absolute'} zIndex={5}>
-                <Image
-                  source={require('../../assets/unSelectedChat.png')}
-                  h={5}
-                  w={5}
-                  alt={'chat'}
-                  resizeMode={'contain'}
-                  alignSelf={'center'}
-                  left={30}
-                  top={3}
+          {fromSettings === true ? null : (
+            <Row
+              position={'absolute'}
+              bottom={0}
+              left={0}
+              alignItems={'center'}>
+              <View w={'80%'}>
+                <View position={'absolute'} zIndex={5}>
+                  <Image
+                    source={require('../../assets/unSelectedChat.png')}
+                    h={5}
+                    w={5}
+                    alt={'chat'}
+                    resizeMode={'contain'}
+                    alignSelf={'center'}
+                    left={30}
+                    top={3}
+                  />
+                </View>
+                <AButtons
+                  label={'Start Conversation'}
+                  onPress={() => navigation.navigate('Chatting')}
                 />
               </View>
-              <AButtons
-                label={'Start Conversation'}
-                onPress={() => navigation.navigate('Chatting')}
-              />
-            </View>
-            <Pressable onPress={() => navigation.navigate('Games')}>
-              <Image
-                source={require('../../assets/games.png')}
-                h={20}
-                w={20}
-                alt={'img'}
-              />
-            </Pressable>
-          </Row>
+              <Pressable onPress={() => navigation.navigate('Games')}>
+                <Image
+                  source={require('../../assets/games.png')}
+                  h={20}
+                  w={20}
+                  alt={'img'}
+                />
+              </Pressable>
+            </Row>
+          )}
         </View>
       </Pressable>
     </ImageBackground>

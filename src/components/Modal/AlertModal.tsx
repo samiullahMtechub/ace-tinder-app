@@ -129,7 +129,7 @@ export default function ({
                     Cancel
                   </Text>
                 </Pressable>
-                <View w={'60%'}>
+                <View w={'50%'}>
                   <AButtons label={btntxt1} onPress={onPress} />
                 </View>
               </View>

@@ -63,7 +63,7 @@ const OnBoardingComp = props => {
         </Pressable>
       </Row>
       <TextArea
-        placeholder={props?.listen}
+        placeholder={`e.g ${props?.listen}`}
         value={
           props?.fromSettings && assist === true
             ? `Dating can be an exciting and fulfilling experience when approached with the right mindset and strategies. This guide will provide you with practical tips and advice to help you navigate the world of dating effectively. Whether you're just starting out or looking to enhance your dating experiences, these principles can help you build healthy and meaningful connections.
@@ -89,7 +89,7 @@ Stay safe while dating online by following best practices`
         }
         mt={10}
         bg={'grey.500'}
-        placeholderTextColor={'txtColor'}
+        placeholderTextColor={'grey.400'}
         p={4}
         h={props?.fromSettings && assist === true ? 'full' : 40}
         color={'txtColor'}

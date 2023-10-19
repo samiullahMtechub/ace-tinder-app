@@ -23,7 +23,7 @@ const Settings = ({navigation}) => {
       id: 3,
       name: 'My Photos',
       img: require('../../assets/gallery.png'),
-      screen: 'AddPhotos',
+      screen: 'MyPhotos',
     },
     {
       id: 4,
@@ -46,7 +46,7 @@ const Settings = ({navigation}) => {
   ];
   return (
     <ImageBackground source={require('../../assets/bg.png')} style={{flex: 1}}>
-      <View m={5}>
+      <View m={5} flex={1}>
         <Text color={'pro'} fontSize={24} fontFamily={'Jost-SemiBold'}>
           Settings
         </Text>
@@ -57,7 +57,11 @@ const Settings = ({navigation}) => {
             start={{x: 0, y: 0}}
             end={{x: 1, y: 1}}>
             <Row p={2} justifyContent={'space-between'} alignItems={'center'}>
-              <Pressable onPress={() => navigation.navigate('OtherUser')}>
+              <Pressable
+                onPress={() => {
+                  let fromSettings = true;
+                  navigation.navigate('OtherUser', fromSettings);
+                }}>
                 <Row alignItems={'center'}>
                   <Avatar
                     source={require('../../assets/home1.png')}

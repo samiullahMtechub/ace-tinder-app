@@ -24,7 +24,7 @@ const UpdatePassword = ({navigation}) => {
       source={require('../../assets/bg.png')}
       style={{flex: 1}}
       resizeMode="cover">
-      <Header title={'update Password'} />
+      <Header title={'Update Password'} />
       <CustomSnackbar
         message={'Success'}
         visible={visible}
