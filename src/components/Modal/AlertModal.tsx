@@ -23,6 +23,7 @@ export default function ({
   onPress,
   fromSettings,
   cancelPress,
+  fromChat,
 }) {
   // const [modalVisible, setModalVisible] = React.useState();
   return (
@@ -36,8 +37,8 @@ export default function ({
         <Image
           mt={3}
           alignSelf={'center'}
-          source={require('../../assets/warning.png')}
-          size={'xs'}
+          source={require('../../assets/bot.png')}
+          size={'sm'}
           alt={'img'}
           resizeMode="contain"
         />
@@ -76,7 +77,11 @@ export default function ({
           </View>
         ) : (
           <View w={'60%'} alignSelf={'center'} my={6}>
-            <AButtons label={'Ok'} onPress={onPress} />
+            <AButtons
+              label={btntxt1 === 'Get Started' ? btntxt1 : 'Ok'}
+              onPress={onPress}
+              fromChat
+            />
           </View>
         )}
         {/* </View> */}

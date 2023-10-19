@@ -37,6 +37,8 @@ import UpdatePassword from '../screens/settings/UpdatePassword';
 import AI from '../screens/settings/AI';
 import AiTip from '../screens/settings/AiTip';
 import PrivacyPolicy from '../screens/settings/PrivacyPolicy';
+import Terms from '../screens/settings/Terms';
+import AiFeedback from '../screens/chat/AiFeedback';
 
 export default function MainStack() {
   const Stack = createNativeStackNavigator();
@@ -80,6 +82,8 @@ export default function MainStack() {
         <Stack.Screen name="AI" component={AI} />
         <Stack.Screen name="AiTip" component={AiTip} />
         <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
+        <Stack.Screen name="Terms" component={Terms} />
+        <Stack.Screen name="AiFeedback" component={AiFeedback} />
       </Stack.Navigator>
     </NavigationContainer>
   );

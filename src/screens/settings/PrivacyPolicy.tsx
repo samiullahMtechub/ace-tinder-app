@@ -11,7 +11,7 @@ const PrivacyPolicy = () => {
         <ScrollView>
           <Text
             color={'txtColor'}
-            fontSize={16}
+            fontSize={15}
             fontFamily={'Jost-Regular'}
             mb={5}>
             This Privacy Policy applies only to our online activities and is
@@ -25,7 +25,7 @@ const PrivacyPolicy = () => {
           </Text>
           <Text
             color={'txtColor'}
-            fontSize={16}
+            fontSize={15}
             fontFamily={'Jost-Regular'}
             mb={5}>
             The personal information that you are asked to provide, and the
@@ -45,70 +45,74 @@ const PrivacyPolicy = () => {
           <Text color={'white'} mb={5} fontFamily={'Jost-Regular'}>
             We use the information we collect in various ways, including to.
           </Text>
-          <Row alignItems={'center'}>
-            <Text color={'white'} alignSelf={'flex-start'}>
-              .
-            </Text>
-            <Text color={'txtColor'}>
-              Provide, operate, and maintain our website
-            </Text>
-          </Row>
-          <Row alignItems={'center'} my={2}>
-            <Text color={'white'} alignSelf={'flex-start'}>
-              .
-            </Text>
-            <Text color={'txtColor'}>
-              Improve, personalize, and expand our website
-            </Text>
-          </Row>
-          <Row alignItems={'center'}>
-            <Text color={'white'} alignSelf={'flex-start'}>
-              .
-            </Text>
-            <Text color={'txtColor'}>
-              Understand and analyze how you use our website
-            </Text>
-          </Row>
-          <Row alignItems={'center'}>
-            <Text color={'white'} alignSelf={'flex-start'}>
-              .
-            </Text>
-            <Text color={'txtColor'} my={2}>
-              Develop new products, services, features, and functionality
-            </Text>
-          </Row>
-          <Row alignItems={'center'}>
-            <Text color={'white'} alignSelf={'flex-start'}>
-              .
-            </Text>
-            <Text color={'txtColor'}>
-              Communicate with you, either directly or through one of our
-              partners, including for customer service, to provide you with
-              updates and other information relating to the website, and for
-              marketing and promotional purposes
-            </Text>
-          </Row>
-          <Row alignItems={'center'}>
-            <Text color={'white'} alignSelf={'flex-start'}>
-              .
-            </Text>
-            <Text color={'txtColor'} my={2}>
-              Send you emails
-            </Text>
-          </Row>
-          <Row alignItems={'center'} mb={5}>
-            <Text color={'white'} alignSelf={'flex-start'}>
-              .
-            </Text>
-            <Text color={'txtColor'}>Find and prevent fraud</Text>
-          </Row>
+          <View ml={2}>
+            <Row alignItems={'center'}>
+              <Text color={'white'} alignSelf={'flex-start'} mr={2}>
+                .
+              </Text>
+              <Text color={'txtColor'} my={1}>
+                Provide, operate, and maintain our website
+              </Text>
+            </Row>
+            <Row alignItems={'center'}>
+              <Text color={'white'} alignSelf={'flex-start'} mr={2}>
+                .
+              </Text>
+              <Text color={'txtColor'} my={1}>
+                Improve, personalize, and expand our website
+              </Text>
+            </Row>
+            <Row alignItems={'center'}>
+              <Text color={'white'} alignSelf={'flex-start'} mr={2}>
+                .
+              </Text>
+              <Text color={'txtColor'} my={1}>
+                Understand and analyze how you use our website
+              </Text>
+            </Row>
+            <Row alignItems={'center'}>
+              <Text color={'white'} alignSelf={'flex-start'} mr={2}>
+                .
+              </Text>
+              <Text color={'txtColor'} my={1}>
+                Develop new products, services, features, and functionality
+              </Text>
+            </Row>
+            <Row alignItems={'center'}>
+              <Text color={'white'} alignSelf={'flex-start'} mr={2}>
+                .
+              </Text>
+              <Text color={'txtColor'} my={1}>
+                Communicate with you, either directly or through one of our
+                partners, including for customer service, to provide you with
+                updates and other information relating to the website, and for
+                marketing and promotional purposes
+              </Text>
+            </Row>
+            <Row alignItems={'center'}>
+              <Text color={'white'} alignSelf={'flex-start'} mr={2}>
+                .
+              </Text>
+              <Text color={'txtColor'} my={1}>
+                Send you emails
+              </Text>
+            </Row>
+            <Row alignItems={'center'} mb={5}>
+              <Text color={'white'} alignSelf={'flex-start'} mr={2}>
+                .
+              </Text>
+              <Text color={'txtColor'} my={1}>
+                Find and prevent fraud
+              </Text>
+            </Row>
+          </View>
 
           <Text color={'white'} fontSize={18} fontFamily={'Jost-Medium'} mb={5}>
             Log Files
           </Text>
           <Text
             color={'txtColor'}
-            fontSize={16}
+            fontSize={15}
             fontFamily={'Jost-Regular'}
             mb={5}>
             standard procedure of using log files. These files log visitors when
@@ -127,7 +131,7 @@ const PrivacyPolicy = () => {
           </Text>
           <Text
             color={'txtColor'}
-            fontSize={16}
+            fontSize={15}
             fontFamily={'Jost-Regular'}
             mb={5}>
             Like any other website, mtechub llc uses 'cookies'. These cookies

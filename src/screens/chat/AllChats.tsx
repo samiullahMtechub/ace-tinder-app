@@ -38,7 +38,7 @@ function AllChats({navigation}) {
       message: 'Okay see you soon',
       time: '12:32 AM',
       recieved: '2',
-      status: 'rec',
+      status: 'online',
     },
     {
       id: 2,
@@ -47,7 +47,7 @@ function AllChats({navigation}) {
       message: 'Thankyou Alex after interested',
       time: '12:22 AM',
       sent: '2',
-      status: 'sent',
+      status: 'offline',
     },
     {
       id: 3,
@@ -56,7 +56,7 @@ function AllChats({navigation}) {
       message: 'Do you have time in sunday ?',
       time: '12:20 AM',
       sent: '2',
-      status: 'seen',
+      status: 'online',
     },
     {
       id: 4,
@@ -65,7 +65,7 @@ function AllChats({navigation}) {
       message: 'Where your home ? I want . . .',
       time: '12:08 AM',
       sent: '2',
-      status: 'seen',
+      status: 'offline',
     },
     {
       id: 5,
@@ -74,7 +74,7 @@ function AllChats({navigation}) {
       message: 'Okee makasih yaa waktunya',
       time: '12:08 AM',
       sent: '2',
-      status: 'sent',
+      status: 'online',
     },
     {
       id: 6,
@@ -83,7 +83,7 @@ function AllChats({navigation}) {
       message: 'Maaf yaa kalo pernah ngerepotin',
       time: '12:32 AM',
       sent: '2',
-      status: 'sent',
+      status: 'online',
     },
   ]);
   return (
@@ -150,7 +150,19 @@ function AllChats({navigation}) {
                   key={item?.id}
                   mr={4}
                   ml={item?.id === 1 ? 6 : 0}>
-                  <Avatar source={item?.img} size={'md'} />
+                  <Stack>
+                    <Avatar source={item?.img} size={'md'} />
+                    {item?.status === 'online' ? (
+                      <Stack
+                        h={2}
+                        w={2}
+                        rounded={'full'}
+                        position={'absolute'}
+                        bottom={0}
+                        right={2}
+                        bg={'#04C200'}></Stack>
+                    ) : null}
+                  </Stack>
                   <Text
                     mt={2}
                     color={'white'}
@@ -293,8 +305,20 @@ function Basic() {
           px={4}
           alignItems={'center'}
           justifyContent={'space-between'}>
-          <HStack>
-            <Avatar size={'sm'} source={item?.img} />
+          <HStack alignItems={'center'}>
+            <Stack>
+              <Avatar size={'sm'} source={item?.img} />
+              {item?.id === 1 ? (
+                <Stack
+                  h={2}
+                  w={2}
+                  rounded={'full'}
+                  position={'absolute'}
+                  bottom={0}
+                  right={0}
+                  bg={'#04C200'}></Stack>
+              ) : null}
+            </Stack>
             <Box ml={5}>
               <Text color={'white'} fontFamily={'Jost-SemiBold'} fontSize={14}>
                 {item?.name}
@@ -305,7 +329,7 @@ function Basic() {
             </Box>
           </HStack>
           <Box alignItems={'center'}>
-            <Text color={'txtColor'} mb={3} fontSize={10} numberOfLines={1}>
+            <Text color={'txtColor'} mb={1} fontSize={10} numberOfLines={1}>
               {item?.time}
             </Text>
             {item?.status === 'sent' ? (

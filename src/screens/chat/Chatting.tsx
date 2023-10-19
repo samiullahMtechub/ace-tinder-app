@@ -13,10 +13,12 @@ import React from 'react';
 import ChatScreen from './components/ChatScreen';
 import {useFocusEffect} from '@react-navigation/native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import AlertModal from '../../components/Modal/AlertModal';
 
-const Chatting = () => {
+const Chatting = ({navigation}) => {
   const scrollRef = React.useRef(null);
   const [focus, setFocus] = React.useState(false);
+  const [visible, setVisible] = React.useState(false);
   const chat = [
     {
       id: 1,
@@ -65,37 +67,42 @@ const Chatting = () => {
         w={'85%'}
         mb={5}
         alignSelf={item?.sent ? 'flex-start' : 'flex-end'}>
-        {item?.sent ? (
-          <Text
-            fontSize={13}
-            fontFamily={'Jost-Medium'}
-            color={item?.sent ? 'white' : 'black'}>
-            {item?.sent}
-          </Text>
-        ) : (
-          <Text color={item?.recieved ? 'white' : 'black'}>
-            {item?.recieved}
-          </Text>
-        )}
+        <Pressable onPress={() => setVisible(true)}>
+          {item?.sent ? (
+            <Text
+              fontSize={13}
+              fontFamily={'Jost-Medium'}
+              color={item?.sent ? 'white' : 'black'}>
+              {item?.sent}
+            </Text>
+          ) : (
+            <Text color={item?.recieved ? 'white' : 'black'}>
+              {item?.recieved}
+            </Text>
+          )}
 
-        <Row alignSelf={'flex-end'} alignItems={'center'} mt={4}>
-          <Text color={item?.sent ? 'txtColor' : 'black'} mr={2} fontSize={10}>
-            {item?.time}
-          </Text>
-          {item?.recieved ? (
-            <Icon
-              size="4"
-              _light={{
-                color: 'black',
-              }}
-              _dark={{
-                color: 'coolGray.400',
-              }}
-              as={MaterialIcons}
-              name={'done-all'}
-            />
-          ) : null}
-        </Row>
+          <Row alignSelf={'flex-end'} alignItems={'center'} mt={4}>
+            <Text
+              color={item?.sent ? 'txtColor' : 'black'}
+              mr={2}
+              fontSize={10}>
+              {item?.time}
+            </Text>
+            {item?.recieved ? (
+              <Icon
+                size="4"
+                _light={{
+                  color: 'black',
+                }}
+                _dark={{
+                  color: 'coolGray.400',
+                }}
+                as={MaterialIcons}
+                name={'done-all'}
+              />
+            ) : null}
+          </Row>
+        </Pressable>
       </View>
     );
   };
@@ -156,6 +163,19 @@ const Chatting = () => {
           />
         </Pressable>
       </Row>
+      <AlertModal
+        modalVisible={visible}
+        cancelPress={() => {
+          setVisible(false);
+        }}
+        fromChat
+        heading={'Speak to AI'}
+        message={'Let’s speak to AI about John Doe'}
+        btntxt1={'Get Started'}
+        onPress={() => {
+          navigation.navigate('AiFeedback');
+          setVisible(false);
+        }}></AlertModal>
     </View>
     // </View>
   );

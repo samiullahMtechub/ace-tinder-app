@@ -41,7 +41,7 @@ const Settings = ({navigation}) => {
       id: 6,
       name: 'Terms & Conditions',
       img: require('../../assets/terms.png'),
-      screen: 'Terms & Conditions',
+      screen: 'Terms',
     },
   ];
   return (
