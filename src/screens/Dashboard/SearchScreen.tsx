@@ -71,7 +71,12 @@ const SearchScreen = ({navigation}) => {
     },
   ];
   const [searchText, setSearchText] = React.useState('');
-  const [searchHistory, setSearchHistory] = React.useState([]);
+  const [searchHistory, setSearchHistory] = React.useState([
+    'Sofia Rodriguez',
+    'Sofia Lopez',
+    'Sofia Ramirez',
+    'Sofia Morales',
+  ]);
   const [found, setFound] = React.useState();
 
   const handleSearch = () => {
@@ -93,7 +98,11 @@ const SearchScreen = ({navigation}) => {
     if (!lowerCaseSearchText) {
       // No search text, return the original item
       return (
-        <Pressable onPress={() => setFocued(false)}>
+        <Pressable
+          onPress={() => {
+            navigation.navigate('OtherUser');
+            setFocued(false);
+          }}>
           <Text style={styles.historyItem}>{item}</Text>
           <Divider my={2} />
         </Pressable>
@@ -104,7 +113,11 @@ const SearchScreen = ({navigation}) => {
     const parts = item.split(new RegExp(`(${lowerCaseSearchText})`, 'gi'));
 
     return (
-      <Pressable onPress={() => setFocued(false)}>
+      <Pressable
+        onPress={() => {
+          navigation.navigate('OtherUser');
+          setFocued(false);
+        }}>
         <Text style={styles.historyItem}>
           {parts.map((part, index) =>
             part.toLowerCase() === lowerCaseSearchText ? (
