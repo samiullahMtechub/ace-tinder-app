@@ -9,7 +9,8 @@ const ChatScreen = props => {
     <>
       <Row justifyContent={'space-between'} alignItems={'center'}>
         <Row alignItems={'center'}>
-          <Pressable onPress={() => navigation.goBack()}>
+          <Pressable
+            onPress={() => navigation.navigate('Tabs', {screen: 'AllChats'})}>
             <Entypo name={'chevron-left'} size={30} color={'white'} />
           </Pressable>
           <Avatar source={require('../../../assets/home1.png')} h={10} w={10} />
@@ -23,21 +24,25 @@ const ChatScreen = props => {
           </View>
         </Row>
         <Row alignItems={'center'}>
-          <Image
-            h={4}
-            w={4}
-            resizeMode={'contain'}
-            alt={'audio'}
-            mr={5}
-            source={require('../../../assets/call.png')}
-          />
-          <Image
-            h={7}
-            w={8}
-            resizeMode={'contain'}
-            alt={'audio'}
-            source={require('../../../assets/video.png')}
-          />
+          <Pressable onPress={() => navigation.navigate('AudioCall')}>
+            <Image
+              h={4}
+              w={4}
+              resizeMode={'contain'}
+              alt={'audio'}
+              mr={5}
+              source={require('../../../assets/call.png')}
+            />
+          </Pressable>
+          <Pressable onPress={() => navigation.navigate('VideoCall')}>
+            <Image
+              h={7}
+              w={8}
+              resizeMode={'contain'}
+              alt={'audio'}
+              source={require('../../../assets/video.png')}
+            />
+          </Pressable>
         </Row>
       </Row>
     </>

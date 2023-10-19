@@ -39,7 +39,7 @@ const AiTip = ({navigation}) => {
         style={{flex: 1}}
         resizeMode="cover">
         <View mb={5}>
-          <Header right />
+          <Header right fromAiTip />
         </View>
         <ScrollView mx={5} mb={2}>
           <Row>

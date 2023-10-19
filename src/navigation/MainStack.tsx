@@ -39,6 +39,8 @@ import AiTip from '../screens/settings/AiTip';
 import PrivacyPolicy from '../screens/settings/PrivacyPolicy';
 import Terms from '../screens/settings/Terms';
 import AiFeedback from '../screens/chat/AiFeedback';
+import AudioCall from '../screens/chat/AudioCall';
+import VideoCall from '../screens/chat/VideoCall';
 
 export default function MainStack() {
   const Stack = createNativeStackNavigator();
@@ -84,6 +86,8 @@ export default function MainStack() {
         <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
         <Stack.Screen name="Terms" component={Terms} />
         <Stack.Screen name="AiFeedback" component={AiFeedback} />
+        <Stack.Screen name="AudioCall" component={AudioCall} />
+        <Stack.Screen name="VideoCall" component={VideoCall} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -5,7 +5,8 @@ import Header from '../../components/Header/Header';
 import OnBoardingComp from '../../components/OnBoardingComp/OnBoardingComp';
 import AButtons from '../../components/button/AButtons';
 
-const Instructions = ({navigation}) => {
+const Instructions = ({navigation, route}) => {
+  const fromAi = route?.params;
   const [pressed, setPressed] = React.useState(false);
   return (
     // <ImageBa>
@@ -44,7 +45,11 @@ const Instructions = ({navigation}) => {
         <AButtons
           label={'Ok, i got it'}
           onPress={() => {
-            navigation.goBack();
+            if (fromAi) {
+              navigation.navigate('AiTip');
+            } else {
+              navigation.goBack();
+            }
           }}
         />
       </View>

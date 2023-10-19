@@ -10,7 +10,7 @@ import {
 import React from 'react';
 import Header from '../../components/Header/Header';
 
-const callHistory = () => {
+const callHistory = ({navigation}) => {
   const data = [
     {
       id: 1,
@@ -104,21 +104,25 @@ const callHistory = () => {
                     </View>
                   </Row>
                   <Row alignItems={'center'}>
-                    <Image
-                      h={4}
-                      w={4}
-                      resizeMode={'contain'}
-                      alt={'audio'}
-                      mr={5}
-                      source={require('../../assets/call.png')}
-                    />
-                    <Image
-                      h={6}
-                      w={6}
-                      resizeMode={'contain'}
-                      alt={'audio'}
-                      source={require('../../assets/video.png')}
-                    />
+                    <Pressable onPress={() => navigation.navigate('AudioCall')}>
+                      <Image
+                        h={4}
+                        w={4}
+                        resizeMode={'contain'}
+                        alt={'audio'}
+                        mr={5}
+                        source={require('../../assets/call.png')}
+                      />
+                    </Pressable>
+                    <Pressable onPress={() => navigation.navigate('VideoCall')}>
+                      <Image
+                        h={6}
+                        w={6}
+                        resizeMode={'contain'}
+                        alt={'audio'}
+                        source={require('../../assets/video.png')}
+                      />
+                    </Pressable>
                   </Row>
                 </Row>
               </View>
