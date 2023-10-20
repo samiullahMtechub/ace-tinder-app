@@ -1,12 +1,13 @@
-import {StyleSheet, ImageBackground} from 'react-native';
+import {StyleSheet, ImageBackground, Dimensions} from 'react-native';
 import {ScrollView, Text, View, Pressable, Image} from 'native-base';
 import React from 'react';
 import Header from '../../components/Header/Header';
 import OnBoardingComp from '../../components/OnBoardingComp/OnBoardingComp';
 import AButtons from '../../components/button/AButtons';
-
+var {width, height} = Dimensions.get('window');
 const AI = ({navigation}) => {
   const [pressed, setPressed] = React.useState(false);
+  const [layer, setLayer] = React.useState(false);
   return (
     // <ImageBa>
     //   <Header right />
@@ -21,15 +22,34 @@ const AI = ({navigation}) => {
         <OnBoardingComp
           fromSettings
           title={`Hi, I'm here your dating coach. How can i assist you?`}
-          listen={`e.g ‘Could you please provide a guide on effective dating tip?’`}
+          listen={`Could you please provide a guide on effective dating tip?’`}
           onPress={() => setPressed(!pressed)}
           pressed={pressed}
+          close={() => {
+            setLayer(false);
+          }}
+          open={() => {
+            setLayer(true);
+          }}
         />
       </ScrollView>
+      {layer === true ? (
+        <View style={[styles.overlay, {height: height}]} />
+      ) : null}
     </ImageBackground>
   );
 };
 
 export default AI;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  overlay: {
+    flex: 1,
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    opacity: 0.7,
+    backgroundColor: 'black',
+    width: width,
+  },
+});

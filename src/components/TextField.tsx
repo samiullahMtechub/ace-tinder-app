@@ -15,6 +15,8 @@ const TextField = props => {
         label={props?.label}
         // placeholder={props?.label}
         theme={{colors: {onSurfaceVariant: '#ABABAB'}}}
+        value={props?.value}
+        onChangeText={props?.onChangeText}
         style={styles.ti}
         placeholderTextColor={'#ABABAB'}
         textColor="#ABABAB"

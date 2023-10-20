@@ -15,7 +15,8 @@ const ProfilePicComp = props => {
   const navigation = useNavigation();
   const bottomSheetRef = React.useRef(null);
   const [active, setActive] = React.useState(false);
-  const [id, setId] = React.useState('1');
+  const [id, setId] = React.useState();
+  const [change, setChange] = React.useState();
   const [imgurl1, setImgurl1] = React.useState();
   const [imgurl2, setImgurl2] = React.useState();
   const [imgurl3, setImgurl3] = React.useState();
@@ -26,15 +27,19 @@ const ProfilePicComp = props => {
   const [imgurl8, setImgurl8] = React.useState();
   const [camera, setCamera] = React.useState();
   const [imageUrl, setImageUrl] = React.useState();
-  const openBottomSheet = (uid: string) => {
+  const openBottomSheet = uid => {
+    // setId(uid);
+
+    setId(uid);
+    setChange(uid);
     if (bottomSheetRef.current) {
       bottomSheetRef.current.open();
-      setId(uid);
 
       //   setTimeout(() => {
       //     // setActive(true);
       //   }, 1000);
     }
+    // setId();
     //  (bottomSheetRef.current) {
     //     bottomSheetRef.current.close()
     // console.error(id);
@@ -62,59 +67,55 @@ const ProfilePicComp = props => {
         let source = response.assets?.[0]?.base64 || '';
         // console.log("source",source);
         switch (id) {
-          case '1':
-            // code block
-            console.log('id', id);
+          case 1:
             setImageUrl(`data:image/png;base64,${source}`);
 
             break;
-          case '2':
-            // code block
-            console.log('id', id);
+
+          case 2:
             setImgurl1(`data:image/png;base64,${source}`);
 
             break;
-          case '3':
-            console.log('id', id);
+
+          case 3:
             setImgurl2(`data:image/png;base64,${source}`);
 
             break;
-          case '4':
-            console.log('id', id);
+
+          case 4:
             setImgurl3(`data:image/png;base64,${source}`);
 
             break;
-          case '5':
-            console.log('id', id);
-            setImgurl4(`data:image/png;base64,${source}`);
 
+          case 5:
+            setImgurl4(`data:image/png;base64,${source}`);
             break;
-          case '6':
-            console.log('id', id);
+
+          case 6:
             setImgurl5(`data:image/png;base64,${source}`);
 
             break;
-          case '7':
-            console.log('id', id);
+
+          case 7:
             setImgurl6(`data:image/png;base64,${source}`);
 
             break;
-          case '8':
-            console.log('id', id);
+
+          case 8:
             setImgurl7(`data:image/png;base64,${source}`);
-
+            setId();
             break;
-          case '9':
-            console.log('id', id);
-            setImgurl8(`data:image/png;base64,${source}`);
 
+          case 9:
+            setImgurl8(`data:image/png;base64,${source}`);
+            setId();
             break;
 
           // code block
         }
       }
     });
-  }, []);
+  }, [change]);
   const handleCamera = React.useCallback(async () => {
     const options = {
       maxHeight: 200,
@@ -134,53 +135,65 @@ const ProfilePicComp = props => {
         // console.log('User tapped custom button:', response.customButton);
       } else {
         let source = response.assets?.[0]?.base64 || '';
-        // console.log("source",source);
+
+        // code block
+        // setImageUrl(`data:image/png;base64,${source}`);
+        console.log('id', change);
         switch (id) {
-          case '1':
-            // code block
+          case 1:
             setImageUrl(`data:image/png;base64,${source}`);
 
             break;
-          case '2':
-            // code block
+
+          case 2:
             setImgurl1(`data:image/png;base64,${source}`);
 
             break;
-          case '3':
+
+          case 3:
             setImgurl2(`data:image/png;base64,${source}`);
 
             break;
-          case '4':
+
+          case 4:
             setImgurl3(`data:image/png;base64,${source}`);
 
             break;
-          case '5':
-            setImgurl4(`data:image/png;base64,${source}`);
 
+          case 5:
+            setImgurl4(`data:image/png;base64,${source}`);
             break;
-          case '6':
+
+          case 6:
             setImgurl5(`data:image/png;base64,${source}`);
 
             break;
-          case '7':
+
+          case 7:
             setImgurl6(`data:image/png;base64,${source}`);
 
             break;
-          case '8':
+
+          case 8:
             setImgurl7(`data:image/png;base64,${source}`);
+            setId();
             break;
-          case '9':
+
+          case 9:
             setImgurl8(`data:image/png;base64,${source}`);
+            setId();
             break;
 
           // code block
         }
-
         // Process the selected video
       }
     });
-  }, []);
+  }, [change]);
 
+  React.useEffect(() => {
+    console.log('change', change);
+  }, [change]);
   return (
     <>
       <View flexDir={'row'} flexWrap={'wrap'} flex={1}>
@@ -188,7 +201,7 @@ const ProfilePicComp = props => {
         {/* return ( */}
         <Pressable
           onPress={() => {
-            openBottomSheet('1');
+            openBottomSheet(1);
           }}>
           <View
             mb={4}
@@ -215,17 +228,20 @@ const ProfilePicComp = props => {
                     borderRadius={20}
                     resizeMode={'contain'}
                   />
-                  <View
+                  <Pressable
+                    onPress={() => setImageUrl()}
                     position={'absolute'}
                     right={-4}
-                    bg={'pro'}
-                    rounded={'full'}
-                    top={-7}
+                    top={-7}>
+                    <View
+                      bg={'pro'}
+                      rounded={'full'}
 
-                    // borderWidth={2}
-                  >
-                    <Entypo name={'cross'} color={'black'} size={18} />
-                  </View>
+                      // borderWidth={2}
+                    >
+                      <Entypo name={'cross'} color={'black'} size={18} />
+                    </View>
+                  </Pressable>
                 </Stack>
               </>
             ) : (
@@ -235,7 +251,7 @@ const ProfilePicComp = props => {
         </Pressable>
         <Pressable
           onPress={() => {
-            openBottomSheet('2');
+            openBottomSheet(2);
           }}>
           <View
             mb={4}
@@ -262,13 +278,14 @@ const ProfilePicComp = props => {
                     borderRadius={20}
                     resizeMode={'contain'}
                   />
-                  <Pressable>
+                  <Pressable
+                    onPress={() => setImgurl1()}
+                    position={'absolute'}
+                    right={-4}
+                    top={-7}>
                     <View
-                      position={'absolute'}
-                      right={-4}
                       bg={'pro'}
                       rounded={'full'}
-                      bottom={20}
 
                       // borderWidth={2}
                     >
@@ -284,7 +301,7 @@ const ProfilePicComp = props => {
         </Pressable>
         <Pressable
           onPress={() => {
-            openBottomSheet('3');
+            openBottomSheet(3);
           }}>
           <View
             mb={4}
@@ -311,17 +328,20 @@ const ProfilePicComp = props => {
                     borderRadius={20}
                     resizeMode={'contain'}
                   />
-                  <View
+                  <Pressable
+                    onPress={() => setImgurl2()}
                     position={'absolute'}
                     right={-4}
-                    bg={'pro'}
-                    rounded={'full'}
-                    top={-7}
+                    top={-7}>
+                    <View
+                      bg={'pro'}
+                      rounded={'full'}
 
-                    // borderWidth={2}
-                  >
-                    <Entypo name={'cross'} color={'black'} size={18} />
-                  </View>
+                      // borderWidth={2}
+                    >
+                      <Entypo name={'cross'} color={'black'} size={18} />
+                    </View>
+                  </Pressable>
                 </Stack>
               </>
             ) : (
@@ -331,7 +351,7 @@ const ProfilePicComp = props => {
         </Pressable>
         <Pressable
           onPress={() => {
-            openBottomSheet('4');
+            openBottomSheet(4);
           }}>
           <View
             mb={4}
@@ -358,17 +378,20 @@ const ProfilePicComp = props => {
                     borderRadius={20}
                     resizeMode={'contain'}
                   />
-                  <View
+                  <Pressable
+                    onPress={() => setImgurl3()}
                     position={'absolute'}
                     right={-4}
-                    bg={'pro'}
-                    rounded={'full'}
-                    top={-7}
+                    top={-7}>
+                    <View
+                      bg={'pro'}
+                      rounded={'full'}
 
-                    // borderWidth={2}
-                  >
-                    <Entypo name={'cross'} color={'black'} size={18} />
-                  </View>
+                      // borderWidth={2}
+                    >
+                      <Entypo name={'cross'} color={'black'} size={18} />
+                    </View>
+                  </Pressable>
                 </Stack>
               </>
             ) : (
@@ -378,7 +401,7 @@ const ProfilePicComp = props => {
         </Pressable>
         <Pressable
           onPress={() => {
-            openBottomSheet('5');
+            openBottomSheet(5);
           }}>
           <View
             mb={4}
@@ -405,17 +428,20 @@ const ProfilePicComp = props => {
                     borderRadius={20}
                     resizeMode={'contain'}
                   />
-                  <View
+                  <Pressable
+                    onPress={() => setImgurl4()}
                     position={'absolute'}
                     right={-4}
-                    bg={'pro'}
-                    rounded={'full'}
-                    top={-7}
+                    top={-7}>
+                    <View
+                      rounded={'full'}
+                      bg={'pro'}
 
-                    // borderWidth={2}
-                  >
-                    <Entypo name={'cross'} color={'black'} size={18} />
-                  </View>
+                      // borderWidth={2}
+                    >
+                      <Entypo name={'cross'} color={'black'} size={18} />
+                    </View>
+                  </Pressable>
                 </Stack>
               </>
             ) : (
@@ -425,7 +451,7 @@ const ProfilePicComp = props => {
         </Pressable>
         <Pressable
           onPress={() => {
-            openBottomSheet('6');
+            openBottomSheet(6);
           }}>
           <View
             mb={4}
@@ -452,17 +478,20 @@ const ProfilePicComp = props => {
                     borderRadius={20}
                     resizeMode={'contain'}
                   />
-                  <View
+                  <Pressable
+                    onPress={() => setImgurl5()}
                     position={'absolute'}
                     right={-4}
-                    bg={'pro'}
-                    rounded={'full'}
-                    top={-7}
+                    top={-7}>
+                    <View
+                      bg={'pro'}
+                      rounded={'full'}
 
-                    // borderWidth={2}
-                  >
-                    <Entypo name={'cross'} color={'black'} size={18} />
-                  </View>
+                      // borderWidth={2}
+                    >
+                      <Entypo name={'cross'} color={'black'} size={18} />
+                    </View>
+                  </Pressable>
                 </Stack>
               </>
             ) : (
@@ -472,7 +501,7 @@ const ProfilePicComp = props => {
         </Pressable>
         <Pressable
           onPress={() => {
-            openBottomSheet('7');
+            openBottomSheet(7);
           }}>
           <View
             mb={4}
@@ -499,17 +528,20 @@ const ProfilePicComp = props => {
                     borderRadius={20}
                     resizeMode={'contain'}
                   />
-                  <View
+                  <Pressable
+                    onPress={() => setImgurl6()}
                     position={'absolute'}
                     right={-4}
-                    bg={'pro'}
-                    rounded={'full'}
-                    top={-7}
+                    top={-7}>
+                    <View
+                      bg={'pro'}
+                      rounded={'full'}
 
-                    // borderWidth={2}
-                  >
-                    <Entypo name={'cross'} color={'black'} size={18} />
-                  </View>
+                      // borderWidth={2}
+                    >
+                      <Entypo name={'cross'} color={'black'} size={18} />
+                    </View>
+                  </Pressable>
                 </Stack>
               </>
             ) : (
@@ -519,7 +551,7 @@ const ProfilePicComp = props => {
         </Pressable>
         <Pressable
           onPress={() => {
-            openBottomSheet('8');
+            openBottomSheet(8);
           }}>
           <View
             mb={4}
@@ -546,17 +578,20 @@ const ProfilePicComp = props => {
                     borderRadius={20}
                     resizeMode={'contain'}
                   />
-                  <View
+                  <Pressable
+                    onPress={() => setImgurl7()}
                     position={'absolute'}
                     right={-4}
-                    bg={'pro'}
-                    rounded={'full'}
-                    top={-7}
+                    top={-7}>
+                    <View
+                      bg={'pro'}
+                      rounded={'full'}
 
-                    // borderWidth={2}
-                  >
-                    <Entypo name={'cross'} color={'black'} size={18} />
-                  </View>
+                      // borderWidth={2}
+                    >
+                      <Entypo name={'cross'} color={'black'} size={18} />
+                    </View>
+                  </Pressable>
                 </Stack>
               </>
             ) : (
@@ -566,7 +601,7 @@ const ProfilePicComp = props => {
         </Pressable>
         <Pressable
           onPress={() => {
-            openBottomSheet('9');
+            openBottomSheet(9);
           }}>
           <View
             mb={4}
@@ -593,17 +628,20 @@ const ProfilePicComp = props => {
                     borderRadius={20}
                     resizeMode={'contain'}
                   />
-                  <View
+                  <Pressable
+                    onPress={() => setImgurl8()}
                     position={'absolute'}
                     right={-4}
-                    bg={'pro'}
-                    rounded={'full'}
-                    top={-7}
+                    top={-7}>
+                    <View
+                      bg={'pro'}
+                      rounded={'full'}
 
-                    // borderWidth={2}
-                  >
-                    <Entypo name={'cross'} color={'black'} size={18} />
-                  </View>
+                      // borderWidth={2}
+                    >
+                      <Entypo name={'cross'} color={'black'} size={18} />
+                    </View>
+                  </Pressable>
                 </Stack>
               </>
             ) : (
@@ -616,6 +654,8 @@ const ProfilePicComp = props => {
         defaultOff={true}
         height={'20%'}
         width="100%"
+        onClose={() => props.close && props.close('open')}
+        onOpen={() => props.open && props.open('open')}
         openBottom={bottomSheetRef}>
         {/* <View> */}
         <Pressable onPress={() => bottomSheetRef.current.close()}>
@@ -675,6 +715,7 @@ const ProfilePicComp = props => {
         heading={'Error'}
         message={'Upload atleast one image to continue'}
         onPress={() => {
+          props.close && props.close('open');
           setActive(false);
         }}></AlertModal>
       <View mx={5} ml={-2} my={5}>
@@ -682,7 +723,7 @@ const ProfilePicComp = props => {
           label={props?.label}
           onPress={() => {
             if (
-              !props?.label === 'Update' &&
+              props?.label !== 'Update' &&
               !props?.fromPreview &&
               !imageUrl &&
               !imgurl1 &&
@@ -694,6 +735,7 @@ const ProfilePicComp = props => {
               !imgurl7 &&
               !imgurl8
             ) {
+              props.open && props.open('open');
               setActive(true);
             } else if (props?.fromPreview) {
               navigation.navigate('ProfileProcessing');

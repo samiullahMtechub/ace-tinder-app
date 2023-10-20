@@ -8,7 +8,8 @@ import {
 } from 'react-native';
 import AButtons from '../../components/button/AButtons';
 import AlertModal from '../../components/Modal/AlertModal';
-
+import Swiper from 'react-native-swiper';
+var {width, height} = Dimensions.get('window');
 const Premium = ({navigation}) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [active, setActive] = useState(false);
@@ -54,51 +55,68 @@ const Premium = ({navigation}) => {
           Go Premium
         </Text>
       </View>
+      <Swiper
+        // ref={swiper}
+        showsPagination={false}
+        showsButtons={false}
+        style={{marginHorizontal: 19}}
+        paginationStyle={{
+          bottom: '6%',
+          // marginHorizontal: 50,
+          paddingBottom: 20,
+        }}
+        // activeDotColor={CustomeTheme.colors.button}
+        loop={false}>
+        <Image
+          alt="img"
+          source={require('../../assets/p1.png')}
+          // size={'2xl'}
+          borderRadius={20}
+          mx={2}
+          h={490}
+          w={300}
+          // flex={1}
+          // h={500}
+          resizeMode={'cover'}
+        />
+        <Image
+          alt="img"
+          source={require('../../assets/p2.png')}
+          // size={'2xl'}
+          borderRadius={20}
+          mx={2}
+          h={490}
+          w={300}
+          // flex={1}
+          // h={500}
+          resizeMode={'cover'}
+        />
+        <Image
+          alt="img"
+          source={require('../../assets/p4.png')}
+          // size={'2xl'}
+          borderRadius={20}
+          mx={2}
+          h={490}
+          w={300}
+          // flex={1}
+          // h={500}
+          resizeMode={'cover'}
+        />
+        <Image
+          alt="img"
+          source={require('../../assets/p3.png')}
+          // size={'2xl'}
+          borderRadius={20}
+          mx={2}
+          h={490}
+          w={300}
+          // flex={1}
+          // h={500}
+          resizeMode={'cover'}
+        />
+      </Swiper>
 
-      <ScrollView
-        mx={5}
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-        onScroll={handlePageChange}>
-        <Row h={500}>
-          {/* Add your images here */}
-          {data?.map(item => {
-            return (
-              <Image
-                alt="img"
-                source={item?.img}
-                // size={'2xl'}
-                borderRadius={20}
-                mx={2}
-                h={490}
-                w={300}
-                // flex={1}
-                // h={500}
-                resizeMode={'cover'}
-              />
-            );
-          })}
-        </Row>
-        {/* <View
-          position={'absolute'}
-          bottom={24}
-          flexDir={'row'}
-          alignSelf={'center'}>
-          {[...Array(3).keys()].map(index => (
-            <View
-              key={index}
-              style={[
-                styles.dot,
-                {
-                  backgroundColor:
-                    index === currentPage ? '#3498db' : '#ABABAB',
-                },
-              ]}
-            />
-          ))}
-        </View> */}
-        {/* Add more images as needed */}
-      </ScrollView>
       {/* </View> */}
       <View mx={7} mb={5}>
         <AButtons label={'Pay Now'} onPress={() => setActive(true)} />
@@ -115,6 +133,9 @@ const Premium = ({navigation}) => {
         // btntxt2
       ></AlertModal>
       {/* Add pagination dots */}
+      {active === true ? (
+        <View style={[styles.overlay, {height: height}]} />
+      ) : null}
     </ImageBackground>
   );
 };
@@ -139,6 +160,65 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginHorizontal: 5,
   },
+  overlay: {
+    flex: 1,
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    opacity: 0.7,
+    backgroundColor: 'black',
+    width: width,
+  },
 });
 
 export default Premium;
+//  <ScrollView
+//    mx={5}
+//    horizontal={true}
+//    showsHorizontalScrollIndicator={false}
+//    onScroll={handlePageChange}>
+//    <Row h={500}>
+//      {/* Add your images here */}
+//      {data?.map(item => {
+//        return (
+//          <Image
+//            alt="img"
+//            source={item?.img}
+//            // size={'2xl'}
+//            borderRadius={20}
+//            mx={2}
+//            h={490}
+//            w={300}
+//            // flex={1}
+//            // h={500}
+//            resizeMode={'cover'}
+//          />
+//        );
+//      })}
+//    </Row>
+{
+  /* <View
+          position={'absolute'}
+          bottom={24}
+          flexDir={'row'}
+          alignSelf={'center'}>
+          {[...Array(3).keys()].map(index => (
+            <View
+              key={index}
+              style={[
+                styles.dot,
+                {
+                  backgroundColor:
+                    index === currentPage ? '#3498db' : '#ABABAB',
+                },
+              ]}
+            />
+          ))}
+        </View> */
+}
+{
+  /* Add more images as needed */
+}
+{
+  /* </ScrollView>; */
+}

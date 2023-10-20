@@ -9,6 +9,8 @@ interface Props {
   defaultOff?: boolean;
   height: string;
   width: string;
+  onClose?: () => void;
+  onOpen?: () => void;
 }
 
 const BottomSheet = ({
@@ -17,6 +19,8 @@ const BottomSheet = ({
   height,
   openBottom,
   width,
+  onClose,
+  onOpen,
 }: Props) => {
   // useEffect(() => {
   //   if (!defaultOff) openBottomSheet();
@@ -40,6 +44,8 @@ const BottomSheet = ({
       closeOnPressMask={defaultOff ? true : false}
       closeOnPressBack={true}
       openDuration={250}
+      onClose={onClose}
+      onOpen={onOpen}
       customStyles={{
         wrapper: styles.wrapper,
         container: [

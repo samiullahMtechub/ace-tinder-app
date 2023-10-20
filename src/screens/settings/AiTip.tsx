@@ -12,14 +12,15 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import BottomSheet from '../../components/bottomSheet/BottomSheet';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Header from '../../components/Header/Header';
-import {StyleSheet, ImageBackground} from 'react-native';
-
+import {StyleSheet, ImageBackground, Dimensions} from 'react-native';
+var {width, height} = Dimensions.get('window');
 const AiTip = ({navigation}) => {
   const bottomSheetRef = React.useRef(null);
   const [active, setActive] = React.useState(false);
   const [assist, setAssist] = React.useState(false);
   const [pressed, setPressed] = React.useState(false);
   const [focused, setFocused] = React.useState(false);
+  const [layer, setLayer] = React.useState(false);
   const openBottomSheet = (id: string) => {
     if (bottomSheetRef.current) {
       bottomSheetRef.current.open();
@@ -117,6 +118,8 @@ Stay safe while dating online by following best practices`}
           defaultOff={true}
           height={'41%'}
           width="100%"
+          onOpen={() => setLayer(true)}
+          onClose={() => setLayer(false)}
           openBottom={bottomSheetRef}>
           {/* <View> */}
           <Pressable onPress={() => bottomSheetRef.current.close()}>
@@ -196,7 +199,21 @@ Stay safe while dating online by following best practices`}
           </View>
         </Pressable>
       )}
+      {layer === true ? (
+        <View style={[styles.overlay, {height: height}]} />
+      ) : null}
     </>
   );
 };
 export default AiTip;
+const styles = StyleSheet.create({
+  overlay: {
+    flex: 1,
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    opacity: 0.7,
+    backgroundColor: 'black',
+    width: width,
+  },
+});

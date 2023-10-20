@@ -75,7 +75,7 @@ const MyPhotos = ({navigation}) => {
             mt={2}>
             {`The photo in your album must be a picture ${'\n'}of you.`}
           </Text>
-          <ProfilePicComp data={data} label={'Update'} />
+          <ProfilePicComp data={data} label={'Update'} changeable />
         </View>
       </ScrollView>
     </ImageBackground>

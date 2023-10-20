@@ -10,7 +10,7 @@ import {
 import React from 'react';
 import Header from '../../components/Header/Header';
 
-const callHistory = ({navigation}) => {
+const CallHistory = ({navigation}) => {
   const data = [
     {
       id: 1,
@@ -133,4 +133,4 @@ const callHistory = ({navigation}) => {
     </View>
   );
 };
-export default callHistory;
+export default CallHistory;

@@ -185,7 +185,12 @@ const PreviewProfile = ({navigation}) => {
           <TextField label={'Age'} />
           <TextField label={'Full Name'} />
           <View ml={5} mt={8}>
-            <ProfilePicComp data={data} label={'Create Profile'} fromPreview />
+            <ProfilePicComp
+              data={data}
+              label={'Create Profile'}
+              fromPreview
+              changeable
+            />
           </View>
         </View>
       </ScrollView>
