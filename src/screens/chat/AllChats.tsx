@@ -4,6 +4,7 @@ import {
   TouchableOpacity,
   View,
   ImageBackground,
+  StyleSheet,
 } from 'react-native';
 import {
   NativeBaseProvider,
@@ -27,9 +28,11 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {useNavigation} from '@react-navigation/native';
 import AlertModal from '../../components/Modal/AlertModal';
+var {width, height} = Dimensions.get('window');
 
 function AllChats({navigation}) {
   const [mode, setMode] = useState('Basic');
+  const [layer, setLayer] = React.useState(false);
   const [connections, setConnections] = useState([
     {
       id: 1,
@@ -93,7 +96,7 @@ function AllChats({navigation}) {
           Chat
         </Text>
         <Row alignItems={'center'}>
-          <Pressable onPress={() => navigation.navigate('Callhistory')}>
+          <Pressable onPress={() => navigation.navigate('CallHistory')}>
             <Image
               source={require('../../assets/callhistory.png')}
               h={5}
@@ -186,7 +189,14 @@ function AllChats({navigation}) {
           Converstations
         </Text>
 
-        <Basic />
+        <Basic
+          close={() => {
+            setLayer(false);
+          }}
+          open={() => {
+            setLayer(true);
+          }}
+        />
       </ScrollView>
       <Pressable
         onPress={() => navigation.navigate('Games')}
@@ -200,11 +210,24 @@ function AllChats({navigation}) {
           alt={'img'}
         />
       </Pressable>
+      {layer === true ? (
+        <View style={[styles.overlay, {height: height}]} />
+      ) : null}
     </ImageBackground>
   );
 }
-
-function Basic() {
+const styles = StyleSheet.create({
+  overlay: {
+    flex: 1,
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    opacity: 0.7,
+    backgroundColor: 'black',
+    width: width,
+  },
+});
+function Basic(props) {
   const navigation = useNavigation();
   const [active, setActive] = useState(false);
   const [listData, setListData] = useState([
@@ -408,7 +431,10 @@ function Basic() {
         borderRadius={10}
         bg="#F9444933"
         justifyContent="center"
-        onPress={() => setActive(true)}
+        onPress={() => {
+          props.open && props.open('open');
+          setActive(true);
+        }}
         _pressed={{
           opacity: 0.5,
         }}>
@@ -438,6 +464,7 @@ function Basic() {
       <AlertModal
         modalVisible={active}
         cancelPress={() => {
+          props.close && props.close('open');
           setActive(false);
         }}
         heading={'Delete Chat'}
@@ -445,6 +472,8 @@ function Basic() {
         btntxt1={'Delete'}
         btntxt2
         onPress={() => {
+          props.close && props.close('open');
+
           setActive(false);
         }}></AlertModal>
     </Box>

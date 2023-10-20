@@ -79,7 +79,7 @@ export default function MainStack() {
         <Stack.Screen name="Disqualified" component={DisqualifiedUsers} />
         <Stack.Screen name="Chatting" component={Chatting} />
         <Stack.Screen name="AllConnections" component={AllConnections} />
-        <Stack.Screen name="Callhistory" component={CallHistory} />
+        <Stack.Screen name="CallHistory" component={CallHistory} />
         <Stack.Screen name="UpdateProfile" component={UpdateProfile} />
         <Stack.Screen name="UpdatePassword" component={UpdatePassword} />
         <Stack.Screen name="AI" component={AI} />

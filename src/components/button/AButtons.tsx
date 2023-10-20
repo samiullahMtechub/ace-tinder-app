@@ -46,12 +46,12 @@ const AButtons = props => {
               flexDir={'row'}
               alignItems={'center'}
               justifyContent={'space-between'}>
-              <View bg={'white'} rounded={'full'} p={1}>
+              <View bg={'white'} rounded={'full'} p={1} alignItems={'center'}>
                 <Image
                   source={require('../../assets/heart.png')}
                   alt={'img'}
-                  h={6}
-                  w={6}
+                  h={5}
+                  w={5}
                   resizeMode="contain"
                 />
               </View>

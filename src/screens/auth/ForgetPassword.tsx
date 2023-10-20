@@ -14,8 +14,15 @@ import React from 'react';
 import AButtons from '../../components/button/AButtons';
 import TextField from '../../components/TextField';
 import Header from '../../components/Header/Header';
-
+import {Formik} from 'formik';
+import * as Yup from 'yup';
 const ForgetPassword = ({navigation}) => {
+  const formSchema = Yup.object().shape({
+    email: Yup.string().email('Invalid email').required('Email is required'),
+  });
+  const handleCreate = em => {
+    navigation.navigate('Verification');
+  };
   return (
     // <View flex={1}>
     <ImageBackground
@@ -38,14 +45,45 @@ const ForgetPassword = ({navigation}) => {
             mt={2}>
             Lost Your Way? Let's Get You Back In!
           </Text>
-          <TextField label={'Email Address'} />
+          <Formik
+            initialValues={{
+              email: '',
+            }}
+            validationSchema={formSchema}
+            onSubmit={values => handleCreate(values.email)}>
+            {({
+              values,
+              handleChange,
 
-          <View mt={'50%'}>
-            <AButtons
-              label={'Send Code'}
-              onPress={() => navigation.navigate('Verification')}
-            />
-          </View>
+              handleSubmit,
+
+              errors,
+            }) => (
+              <>
+                <TextField
+                  label={'Email Address'}
+                  value={values.email}
+                  onChangeText={handleChange('email')}
+                />
+                {errors.email && (
+                  <View flexDir={'row'} alignItems={'center'} mt={1} ml={1}>
+                    <View
+                      bg={'red.500'}
+                      h={1}
+                      w={1}
+                      rounded={'full'}
+                      mr={1}></View>
+                    <Text color={'red.500'} fontSize={12}>
+                      {errors.email}
+                    </Text>
+                  </View>
+                )}
+                <View mt={'50%'}>
+                  <AButtons label={'Send Code'} onPress={handleSubmit} />
+                </View>
+              </>
+            )}
+          </Formik>
         </View>
       </ScrollView>
     </ImageBackground>

@@ -8,17 +8,18 @@ import {
   Icon,
   Pressable,
 } from 'native-base';
-import {FlatList} from 'react-native';
+import {FlatList, Dimensions, StyleSheet} from 'react-native';
 import React from 'react';
 import ChatScreen from './components/ChatScreen';
 import {useFocusEffect} from '@react-navigation/native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AlertModal from '../../components/Modal/AlertModal';
-
+var {width, height} = Dimensions.get('window');
 const Chatting = ({navigation}) => {
   const scrollRef = React.useRef(null);
   const [focus, setFocus] = React.useState(false);
   const [visible, setVisible] = React.useState(false);
+  const [layer, setLayer] = React.useState(false);
   const chat = [
     {
       id: 1,
@@ -176,8 +177,23 @@ const Chatting = ({navigation}) => {
           navigation.navigate('AiFeedback');
           setVisible(false);
         }}></AlertModal>
+      {visible === true ? (
+        <View style={[styles.overlay, {height: height}]} />
+      ) : null}
     </View>
     // </View>
   );
 };
 export default Chatting;
+
+const styles = StyleSheet.create({
+  overlay: {
+    flex: 1,
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    opacity: 0.7,
+    backgroundColor: 'black',
+    width: width,
+  },
+});

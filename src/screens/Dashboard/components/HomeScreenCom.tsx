@@ -81,7 +81,10 @@ const HomeScreenComp = props => {
               </ImageBackground>
               {props?.fromSearches ? null : (
                 <Pressable
-                  onPress={() => setActive(true)}
+                  onPress={() => {
+                    props.open && props.open('open');
+                    setActive(true);
+                  }}
                   zIndex={99}
                   position={'absolute'}
                   alignItems={'center'}
@@ -107,6 +110,7 @@ const HomeScreenComp = props => {
       <AlertModal
         modalVisible={active}
         cancelPress={() => {
+          props.close && props.close('open');
           setActive(false);
         }}
         heading={'Disqualify'}
@@ -114,6 +118,7 @@ const HomeScreenComp = props => {
         btntxt1={'Disqualify'}
         btntxt2
         onPress={() => {
+          props.close && props.close('open');
           navigation.navigate('Disqualify');
         }}></AlertModal>
     </View>

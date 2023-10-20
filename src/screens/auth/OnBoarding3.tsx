@@ -1,12 +1,14 @@
-import {StyleSheet, ImageBackground} from 'react-native';
+import {StyleSheet, ImageBackground, Dimensions} from 'react-native';
 import {ScrollView, Text, View} from 'native-base';
 import React from 'react';
 import Header from '../../components/Header/Header';
 import OnBoardingComp from '../../components/OnBoardingComp/OnBoardingComp';
 import AButtons from '../../components/button/AButtons';
-
+import {BlurView} from '@react-native-community/blur';
+var {width, height} = Dimensions.get('window');
 const OnBoarding3 = ({navigation}) => {
   const [pressed, setPressed] = React.useState(false);
+  const [layer, setLayer] = React.useState(false);
   return (
     // <ImageBa>
     //   <Header right />
@@ -23,7 +25,14 @@ const OnBoarding3 = ({navigation}) => {
           listen={`I've been single/AIvailable for approximately 2,347,892,107 nanoseconds, but who's counting?`}
           onPress={() => setPressed(!pressed)}
           pressed={pressed}
+          close={() => {
+            setLayer(false);
+          }}
+          open={() => {
+            setLayer(true);
+          }}
         />
+
         <View mt={20} mb={5}>
           <AButtons
             label={'Next'}
@@ -33,10 +42,38 @@ const OnBoarding3 = ({navigation}) => {
           />
         </View>
       </ScrollView>
+      {layer === true ? (
+        <View style={[styles.overlay, {height: height}]} />
+      ) : null}
+
+      {/* <BlurView
+        style={styles.absolute}
+        blurType="dark"
+        blurAmount={10}
+        reducedTransparencyFallbackColor="black"
+      /> */}
     </ImageBackground>
   );
 };
 
 export default OnBoarding3;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  absolute: {
+    position: 'absolute',
+    flex: 1,
+    top: -100,
+    left: -200,
+    bottom: -20,
+    right: -20,
+  },
+  overlay: {
+    flex: 1,
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    opacity: 0.7,
+    backgroundColor: 'black',
+    width: width,
+  },
+});

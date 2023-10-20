@@ -10,12 +10,21 @@ import {
   Text,
   View,
 } from 'native-base';
+import * as Yup from 'yup';
+import {Formik} from 'formik';
 import React from 'react';
 import AButtons from '../../components/button/AButtons';
 import TextField from '../../components/TextField';
 import Header from '../../components/Header/Header';
 
 const SignIn = ({navigation}) => {
+  const formSchema = Yup.object().shape({
+    email: Yup.string().email('Invalid email').required('Email is required'),
+    password: Yup.string().required(`Password is required`),
+  });
+  const handleCreate = () => {
+    navigation.navigate('Tabs', {screen: 'Home'});
+  };
   return (
     // <View flex={1}>
     <ImageBackground
@@ -38,31 +47,82 @@ const SignIn = ({navigation}) => {
             mt={2}>
             Ready to Dive In? Sign In and Let the Magic Begin!
           </Text>
-          <TextField label={'Email'} />
-          <TextField label={'Password'} />
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('ForgetPassword');
-            }}>
-            <Text
-              fontSize={'16'}
-              mr={2}
-              textAlign={'right'}
-              color={'pro'}
-              mt={4}
-              fontFamily={'Jost-Medium'}>
-              Forget Password?
-            </Text>
-          </TouchableOpacity>
+          <Formik
+            initialValues={{
+              name: '',
+              email: '',
+              password: '',
+            }}
+            validationSchema={formSchema}
+            onSubmit={values =>
+              handleCreate(values.email, values.password, values.name)
+            }>
+            {({
+              values,
+              handleChange,
 
-          <View mt={'40%'}>
-            <AButtons
-              label={'Sign In'}
-              onPress={() => {
-                navigation.navigate('Tabs', {screen: 'Home'});
-              }}
-            />
-          </View>
+              handleSubmit,
+
+              errors,
+            }) => (
+              <>
+                <TextField
+                  label={'Email'}
+                  onChangeText={handleChange('email')}
+                  value={values.email}
+                />
+                {errors.email && (
+                  <View flexDir={'row'} alignItems={'center'} mt={1} ml={2}>
+                    <View
+                      bg={'red.500'}
+                      h={1}
+                      w={1}
+                      rounded={'full'}
+                      mx={1}></View>
+                    <Text color={'red.500'} fontSize={12}>
+                      {errors.email}
+                    </Text>
+                  </View>
+                )}
+                <TextField
+                  label={'Password'}
+                  onChangeText={handleChange('password')}
+                  value={values.password}
+                />
+                {errors.password && (
+                  <View flexDir={'row'} alignItems={'center'} mt={1} ml={1}>
+                    <View
+                      bg={'red.500'}
+                      h={1}
+                      w={1}
+                      rounded={'full'}
+                      mx={1}></View>
+                    <Text color={'red.500'} fontSize={12}>
+                      {errors.password}
+                    </Text>
+                  </View>
+                )}
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.navigate('ForgetPassword');
+                  }}>
+                  <Text
+                    fontSize={'16'}
+                    mr={2}
+                    textAlign={'right'}
+                    color={'pro'}
+                    mt={4}
+                    fontFamily={'Jost-Medium'}>
+                    Forget Password?
+                  </Text>
+                </TouchableOpacity>
+
+                <View mt={'40%'}>
+                  <AButtons label={'Sign In'} onPress={handleSubmit} />
+                </View>
+              </>
+            )}
+          </Formik>
           <Row alignSelf={'center'} my={5} mt={10}>
             <Text
               fontSize={16}

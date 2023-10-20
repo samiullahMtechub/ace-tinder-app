@@ -1,5 +1,5 @@
 // da/``
-import {ImageBackground, StyleSheet} from 'react-native';
+import {ImageBackground, StyleSheet, Dimensions} from 'react-native';
 import {
   Box,
   Center,
@@ -19,7 +19,7 @@ import Header from '../../components/Header/Header';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import HomeScreenComp from './components/HomeScreenCom';
 import LinearGradient from 'react-native-linear-gradient';
-
+var {width, height} = Dimensions.get('window');
 const HomeScreen = ({navigation}) => {
   const data = [
     {
@@ -75,6 +75,7 @@ const HomeScreen = ({navigation}) => {
       status: 'online',
     },
   ];
+  const [layer, setLayer] = React.useState(false);
   return (
     // <View flex={1}>
     <ImageBackground
@@ -133,8 +134,21 @@ const HomeScreen = ({navigation}) => {
             </Pressable>
           </Row>
         </Row>
-        <HomeScreenComp data={data} />
+        <HomeScreenComp
+          data={data}
+          close={() => {
+            console.log('ok');
+            setLayer(false);
+          }}
+          open={() => {
+            console.log('open');
+            setLayer(true);
+          }}
+        />
       </ScrollView>
+      {layer === true ? (
+        <View style={[styles.overlay, {height: height}]} />
+      ) : null}
       {/* <LinearGradient
         colors={['#C30010', '#F94449']}
         style={{
@@ -168,4 +182,14 @@ const HomeScreen = ({navigation}) => {
 
 export default HomeScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  overlay: {
+    flex: 1,
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    opacity: 0.7,
+    backgroundColor: 'black',
+    width: width,
+  },
+});

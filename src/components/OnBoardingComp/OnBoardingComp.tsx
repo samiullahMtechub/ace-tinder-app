@@ -22,6 +22,10 @@ const OnBoardingComp = props => {
     // console.error(id);
     //   setPostId(id);
   };
+  console.log(
+    'ok',
+    bottomSheetRef?.current?._reactInternals?.memoizedState?.modalVisible,
+  );
   return (
     <>
       <Row>
@@ -123,6 +127,8 @@ Stay safe while dating online by following best practices`
         defaultOff={true}
         height={'41%'}
         width="100%"
+        onClose={() => props.close && props.close('ok')}
+        onOpen={() => props.open && props.open('open')}
         openBottom={bottomSheetRef}>
         {/* <View> */}
         <Pressable onPress={() => bottomSheetRef.current.close()}>

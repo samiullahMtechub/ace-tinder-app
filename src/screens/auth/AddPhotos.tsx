@@ -1,5 +1,5 @@
 // da/``
-import {ImageBackground, StyleSheet} from 'react-native';
+import {ImageBackground, StyleSheet, Dimensions} from 'react-native';
 import {
   Box,
   Center,
@@ -16,7 +16,7 @@ import TextField from '../../components/TextField';
 import Header from '../../components/Header/Header';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import ProfilePicComp from '../../components/ProfilePhotosCom/ProfilePicComp';
-
+var {width, height} = Dimensions.get('window');
 const AddPhotos = ({navigation}) => {
   const data = [
     {
@@ -54,6 +54,7 @@ const AddPhotos = ({navigation}) => {
       id: 9,
     },
   ];
+  const [layer, setLayer] = React.useState(false);
   return (
     // <View flex={1}>
     <ImageBackground
@@ -78,13 +79,35 @@ const AddPhotos = ({navigation}) => {
             mt={2}>
             {`The photo in your album must be a picture ${'\n'}of you.`}
           </Text>
-          <ProfilePicComp data={data} label={'Next'} />
+          <ProfilePicComp
+            data={data}
+            label={'Next'}
+            close={() => {
+              setLayer(false);
+            }}
+            open={() => {
+              setLayer(true);
+            }}
+          />
         </View>
       </ScrollView>
+      {layer === true ? (
+        <View style={[styles.overlay, {height: height}]} />
+      ) : null}
     </ImageBackground>
   );
 };
 
 export default AddPhotos;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  overlay: {
+    flex: 1,
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    opacity: 0.7,
+    backgroundColor: 'black',
+    width: width,
+  },
+});

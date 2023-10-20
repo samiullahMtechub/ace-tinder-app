@@ -26,8 +26,16 @@ import ProfilePicComp from '../../components/ProfilePhotosCom/ProfilePicComp';
 import BottomSheet from '../../components/bottomSheet/BottomSheet';
 import {launchImageLibrary, launchCamera} from 'react-native-image-picker';
 import CustomSnackbar from '../../components/customSnackBar/CustomSnackBar';
-
+import * as Yup from 'yup';
+import {Formik} from 'formik';
 const UpdateProfile = ({navigation}) => {
+  const formSchema = Yup.object().shape({
+    name: Yup.string().required('name is required'),
+    age: Yup.string().required(`age is required`),
+  });
+  const handleCreate = () => {
+    setActive(true);
+  };
   const bottomSheetRef = React.useRef(null);
   const [imageUrl, setImageUrl] = React.useState<string>();
   const [active, setActive] = React.useState(false);
@@ -147,11 +155,67 @@ const UpdateProfile = ({navigation}) => {
               Change
             </Text>
           </Pressable>
-          <TextField label={'Full Name'} />
-          <TextField label={'Age'} />
-        </View>
-        <View mt={'50%'} mb={5}>
-          <AButtons label={'Update'} onPress={() => setActive(true)} />
+          <Formik
+            initialValues={{
+              name: '',
+              age: '',
+              password: '',
+            }}
+            validationSchema={formSchema}
+            onSubmit={values =>
+              handleCreate(values.age, values.password, values.name)
+            }>
+            {({
+              values,
+              handleChange,
+
+              handleSubmit,
+
+              errors,
+            }) => (
+              <>
+                <TextField
+                  label={'Full Name'}
+                  value={values.name}
+                  onChangeText={handleChange('name')}
+                />
+                {errors.name && (
+                  <View flexDir={'row'} alignItems={'center'} mt={1} ml={1}>
+                    <View
+                      bg={'red.500'}
+                      h={1}
+                      w={1}
+                      rounded={'full'}
+                      mx={1}></View>
+                    <Text color={'red.500'} fontSize={12}>
+                      {errors.name}
+                    </Text>
+                  </View>
+                )}
+                <TextField
+                  label={'Age'}
+                  value={values.age}
+                  onChangeText={handleChange('age')}
+                />
+                {errors.age && (
+                  <View flexDir={'row'} alignItems={'center'} mt={1} ml={1}>
+                    <View
+                      bg={'red.500'}
+                      h={1}
+                      w={1}
+                      rounded={'full'}
+                      mx={1}></View>
+                    <Text color={'red.500'} fontSize={12}>
+                      {errors.age}
+                    </Text>
+                  </View>
+                )}
+                <View mt={'50%'} mb={5}>
+                  <AButtons label={'Update'} onPress={handleSubmit} />
+                </View>
+              </>
+            )}
+          </Formik>
         </View>
       </ScrollView>
       {/* BottomSheet For adding pics */}
