@@ -87,13 +87,13 @@ const HomeScreenComp = props => {
                   alignItems={'center'}
                   justifyContent={'center'}
                   top={2}
-                  right={1}>
+                  right={3}>
                   <View
                     bg={'pro'}
                     // p={2}
                     rounded={'full'}
-                    h={6}
-                    w={6}>
+                    h={5}
+                    w={5}>
                     <Text color={'white'} textAlign={'center'} fontSize={14}>
                       i
                     </Text>

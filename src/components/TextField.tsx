@@ -13,13 +13,15 @@ const TextField = props => {
       <TextInput
         mode="outlined"
         label={props?.label}
-        // onChangeText={text => setsignin_pass(text)}
+        // placeholder={props?.label}
+        theme={{colors: {onSurfaceVariant: '#ABABAB'}}}
         style={styles.ti}
         placeholderTextColor={'#ABABAB'}
         textColor="#ABABAB"
         outlineColor={'#0000001F'}
         activeOutlineColor="#F94449"
         secureTextEntry={show === true ? true : false}
+        onFocus={() => setFocused(true)}
         outlineStyle={{borderRadius: 25}}
         right={
           props?.label === 'Password' || props?.label === 'Confirm Password' ? (
@@ -81,11 +83,12 @@ export default TextField;
 const styles = StyleSheet.create({
   ti: {
     borderRadius: 100,
+    height: 40,
     // marginHorizontal: '9%',
     marginTop: '5%',
     // width: 300,
     backgroundColor: '#2F2F2F',
-    fontSize: 17,
+    fontSize: 14,
     paddingLeft: '2%',
   },
 });

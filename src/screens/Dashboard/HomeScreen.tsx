@@ -135,7 +135,7 @@ const HomeScreen = ({navigation}) => {
         </Row>
         <HomeScreenComp data={data} />
       </ScrollView>
-      <LinearGradient
+      {/* <LinearGradient
         colors={['#C30010', '#F94449']}
         style={{
           // flex: 1,
@@ -161,7 +161,7 @@ const HomeScreen = ({navigation}) => {
             24:00:00
           </Text>
         </View>
-      </LinearGradient>
+      </LinearGradient> */}
     </ImageBackground>
   );
 };
