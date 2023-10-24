@@ -17,7 +17,7 @@ const HomeScreenComp = props => {
       {props?.data?.map(item => {
         return (
           <Pressable
-            my={2}
+            my={5}
             mb={props?.fromSearches ? -4 : 0}
             onPress={() => {
               navigation.navigate('OtherUser');
@@ -30,7 +30,7 @@ const HomeScreenComp = props => {
                 resizeMode: 'contain',
                 // borderRadius: 100,
                 height: 200,
-                width: item?.id === 1 ? 150 : 150,
+                width: 150,
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
@@ -49,14 +49,10 @@ const HomeScreenComp = props => {
                 <Image
                   alt="home"
                   source={item?.img}
-                  resizeMode="contain"
+                  resizeMode="cover"
                   borderRadius={10}
-                  h={
-                    (item?.id === 6 && '58%') ||
-                    (item?.id === 2 && '87%') ||
-                    '83%'
-                  }
-                  w={item?.id === 6 ? '57%' : '71%'}
+                  h={'83%'}
+                  w={'71%'}
                   zIndex={99}
                   position={'absolute'}
                 />
@@ -67,26 +63,25 @@ const HomeScreenComp = props => {
                 // opacity={}
 
                 // w={'80%'}
+                imageStyle={{
+                  borderRadius: 10,
+                }}
                 style={{
-                  height: 140,
+                  // resizeMode: 'cover',
+                  height: 42,
                   position: 'absolute',
                   bottom:
-                    (props?.fromSearches && -22) ||
-                    (item?.id === 6 && -12) ||
-                    -40,
+                    (props?.fromSearches && 24) || (item?.id === 6 && 14) || 17,
 
-                  width:
-                    (props?.fromSearches && 140) ||
-                    (item?.id === 6 && 80) ||
-                    100,
+                  width: (props?.fromSearches && 140) || 107,
                   zIndex: 999,
                 }}
                 resizeMode={'contain'}>
-                <View position={'absolute'} bottom={12} left={2}>
+                <View position={'absolute'} bottom={0} left={2}>
                   <Text fontSize={14} fontFamily={'Jost-Medium'}>
                     {item?.name}
                   </Text>
-                  <Text mb={1} fontSize={12} fontFamily={'Jost-Regular'}>
+                  <Text fontSize={12} fontFamily={'Jost-Regular'}>
                     {item?.status}
                   </Text>
                 </View>

@@ -38,7 +38,7 @@ const AddAge = ({navigation}) => {
             mt={2}>
             Your age will be visible to other users
           </Text>
-          <TextField label={'Age'} />
+          <TextField label={'Age'} keyboardType={'number-pad'} />
 
           <View mt={'65%'}>
             <AButtons

@@ -17,7 +17,7 @@ const SplashScreen = ({navigation}) => {
       <Image
         source={require('../../assets/spalsh.png')}
         resizeMode="contain"
-        size={'xl'}
+        size={'2xl'}
         alt="splash"
       />
     </ImageBackground>
