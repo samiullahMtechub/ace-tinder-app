@@ -21,8 +21,8 @@ const OnBoarding3 = ({navigation}) => {
       <Header right />
       <ScrollView mx={5} mt={5}>
         <OnBoardingComp
-          title={'How long have you been single / Alvailable?'}
-          listen={`I've been single/AIvailable for approximately 2,347,892,107 nanoseconds, but who's counting?`}
+          title={'How long have you been single / Available?'}
+          listen={`I've been single/Available for approximately 2,347,892,107 nanoseconds, but who's counting?`}
           onPress={() => setPressed(!pressed)}
           pressed={pressed}
           close={() => {

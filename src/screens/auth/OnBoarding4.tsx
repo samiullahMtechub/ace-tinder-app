@@ -20,7 +20,7 @@ const OnBoarding4 = ({navigation}) => {
       <Header right />
       <ScrollView mx={5} mt={5}>
         <OnBoardingComp
-          title={'What challenges have you hAId in dating?'}
+          title={'What challenges have you hald in dating?'}
           listen={`Playing basketball and watching football are my jam`}
           onPress={() => setPressed(!pressed)}
           pressed={pressed}

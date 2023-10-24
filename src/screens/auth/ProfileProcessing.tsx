@@ -35,7 +35,7 @@ const ProfileProcessing = ({navigation}) => {
           textAlign={'center'}
           fontSize={22}
           fontFamily={'Jost-SemiBold'}>
-          P[Ai]ring you with someone compatible
+          Pairing you with someone compatible
         </Text>
         <CircularProgress
           value={100}

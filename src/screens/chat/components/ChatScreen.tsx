@@ -13,15 +13,30 @@ const ChatScreen = props => {
             onPress={() => navigation.navigate('Tabs', {screen: 'AllChats'})}>
             <Entypo name={'chevron-left'} size={30} color={'white'} />
           </Pressable>
-          <Avatar source={require('../../../assets/home1.png')} h={10} w={10} />
-          <View ml={3}>
-            <Text color={'white'} fontSize={16} fontFamily={'Jost-SemiBold'}>
-              Sahara Ardia
-            </Text>
-            <Text color={'txtColor'} fontSize={12} fontFamily={'Jost-Regular'}>
-              Online
-            </Text>
-          </View>
+
+          <Pressable onPress={() => navigation.navigate('OtherUser')}>
+            <Row alignItems={'center'}>
+              <Avatar
+                source={require('../../../assets/home1.png')}
+                h={10}
+                w={10}
+              />
+              <View ml={3}>
+                <Text
+                  color={'white'}
+                  fontSize={16}
+                  fontFamily={'Jost-SemiBold'}>
+                  Sahara Ardia
+                </Text>
+                <Text
+                  color={'txtColor'}
+                  fontSize={12}
+                  fontFamily={'Jost-Regular'}>
+                  Online
+                </Text>
+              </View>
+            </Row>
+          </Pressable>
         </Row>
         <Row alignItems={'center'}>
           <Pressable onPress={() => navigation.navigate('AudioCall')}>
