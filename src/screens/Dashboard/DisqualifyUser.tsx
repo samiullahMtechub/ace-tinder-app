@@ -22,7 +22,7 @@ const DisqualifyUser = ({navigation}) => {
       <Header right />
       <ScrollView mx={5} mt={5}>
         <OnBoardingComp
-          title={`I'm now able to disqualify a user but You should tell AI why?`}
+          title={`Tell Aice why you would like to disqualify this user?`}
           listen={`Our interests and values didn't quite align, and I believe it's important to find a better match for both of us.’`}
           onPress={() => setPressed(!pressed)}
           pressed={pressed}

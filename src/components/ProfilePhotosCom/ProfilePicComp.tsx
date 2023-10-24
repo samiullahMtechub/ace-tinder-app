@@ -10,6 +10,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import AlertModal from '../Modal/AlertModal';
 import AButtons from '../button/AButtons';
 import {useNavigation} from '@react-navigation/native';
+import ImagePicker from 'react-native-image-crop-picker';
 
 const ProfilePicComp = props => {
   const navigation = useNavigation();
@@ -46,150 +47,267 @@ const ProfilePicComp = props => {
     //   setPostId(id);
   };
 
-  const handlePickImage = React.useCallback(async () => {
-    const options = {
-      maxHeight: 200,
-      maxWidth: 200,
-      selectionLimit: 1,
-      mediaType: 'photo',
-      includeBase64: true,
-    };
+  // const handlePickImage = React.useCallback(async () => {
+  //   const options = {
+  //     maxHeight: 200,
+  //     maxWidth: 200,
+  //     selectionLimit: 1,
+  //     mediaType: 'photo',
+  //     includeBase64: true,
+  //   };
 
-    launchImageLibrary(options, response => {
-      if (response.didCancel) {
-        // console.log('User cancelled image picker');
-      } else if (response.error) {
-        // console.log('Error:', response.error);
-        // setMediaType(ContentType.NONE);
-      } else if (response.customButton) {
-        // console.log('User tapped custom button:', response.customButton);
-      } else {
-        let source = response.assets?.[0]?.base64 || '';
-        // console.log("source",source);
-        switch (id) {
-          case 1:
-            setImageUrl(`data:image/png;base64,${source}`);
+  //   launchImageLibrary(options, response => {
+  //     if (response.didCancel) {
+  //       // console.log('User cancelled image picker');
+  //     } else if (response.error) {
+  //       // console.log('Error:', response.error);
+  //       // setMediaType(ContentType.NONE);
+  //     } else if (response.customButton) {
+  //       // console.log('User tapped custom button:', response.customButton);
+  //     } else {
+  //       let source = response.assets?.[0]?.base64 || '';
+  //       // console.log("source",source);
+  //       switch (id) {
+  //         case 1:
+  //           setImageUrl(`data:image/png;base64,${source}`);
 
-            break;
+  //           break;
 
-          case 2:
-            setImgurl1(`data:image/png;base64,${source}`);
+  //         case 2:
+  //           setImgurl1(`data:image/png;base64,${source}`);
 
-            break;
+  //           break;
 
-          case 3:
-            setImgurl2(`data:image/png;base64,${source}`);
+  //         case 3:
+  //           setImgurl2(`data:image/png;base64,${source}`);
 
-            break;
+  //           break;
 
-          case 4:
-            setImgurl3(`data:image/png;base64,${source}`);
+  //         case 4:
+  //           setImgurl3(`data:image/png;base64,${source}`);
 
-            break;
+  //           break;
 
-          case 5:
-            setImgurl4(`data:image/png;base64,${source}`);
-            break;
+  //         case 5:
+  //           setImgurl4(`data:image/png;base64,${source}`);
+  //           break;
 
-          case 6:
-            setImgurl5(`data:image/png;base64,${source}`);
+  //         case 6:
+  //           setImgurl5(`data:image/png;base64,${source}`);
 
-            break;
+  //           break;
 
-          case 7:
-            setImgurl6(`data:image/png;base64,${source}`);
+  //         case 7:
+  //           setImgurl6(`data:image/png;base64,${source}`);
 
-            break;
+  //           break;
 
-          case 8:
-            setImgurl7(`data:image/png;base64,${source}`);
-            setId();
-            break;
+  //         case 8:
+  //           setImgurl7(`data:image/png;base64,${source}`);
+  //           setId();
+  //           break;
 
-          case 9:
-            setImgurl8(`data:image/png;base64,${source}`);
-            setId();
-            break;
+  //         case 9:
+  //           setImgurl8(`data:image/png;base64,${source}`);
+  //           setId();
+  //           break;
 
-          // code block
-        }
-      }
-    });
-  }, [change]);
-  const handleCamera = React.useCallback(async () => {
-    const options = {
-      maxHeight: 200,
-      maxWidth: 200,
-      selectionLimit: 1,
-      mediaType: 'photo',
-      includeBase64: true,
-    };
+  //         // code block
+  //       }
+  //     }
+  //   });
+  // }, [change]);
+  const handlePickImage = async () => {
+    // console.warn('gallery')
+    const data = await ImagePicker.openPicker({
+      width: 500,
+      height: 500,
+    }).then(imageDetail => {
+      const source = imageDetail.path;
+      switch (id) {
+        case 1:
+          setImageUrl(source);
 
-    launchCamera(options, response => {
-      if (response.didCancel) {
-        // console.log('User cancelled image picker');
-      } else if (response.error) {
-        // console.log('Error:', response.error);
-        // setMediaType(ContentType.NONE);
-      } else if (response.customButton) {
-        // console.log('User tapped custom button:', response.customButton);
-      } else {
-        let source = response.assets?.[0]?.base64 || '';
+          break;
+
+        case 2:
+          setImgurl1(source);
+
+          break;
+
+        case 3:
+          setImgurl2(source);
+
+          break;
+
+        case 4:
+          setImgurl3(source);
+
+          break;
+
+        case 5:
+          setImgurl4(source);
+          break;
+
+        case 6:
+          setImgurl5(source);
+
+          break;
+
+        case 7:
+          setImgurl6(source);
+
+          break;
+
+        case 8:
+          setImgurl7(source);
+          setId();
+          break;
+
+        case 9:
+          setImgurl8(source);
+          setId();
+          break;
 
         // code block
-        // setImageUrl(`data:image/png;base64,${source}`);
-        console.log('id', change);
-        switch (id) {
-          case 1:
-            setImageUrl(`data:image/png;base64,${source}`);
+      }
+      bottomSheetRef.current.close();
+    });
+  };
+  const handleCamera = async () => {
+    // console.warn('camera')
+    const data = await ImagePicker.openCamera({
+      width: 500,
+      height: 500,
+      // cropping: true,
+    }).then(imageDetail => {
+      console.log(imageDetail);
+      console.log(imageDetail.path.split('/').pop());
+      const source = imageDetail.path;
+      console.log('id', change);
+      switch (id) {
+        case 1:
+          setImageUrl(source);
 
-            break;
+          break;
 
-          case 2:
-            setImgurl1(`data:image/png;base64,${source}`);
+        case 2:
+          setImgurl1(source);
 
-            break;
+          break;
 
-          case 3:
-            setImgurl2(`data:image/png;base64,${source}`);
+        case 3:
+          setImgurl2(source);
 
-            break;
+          break;
 
-          case 4:
-            setImgurl3(`data:image/png;base64,${source}`);
+        case 4:
+          setImgurl3(source);
 
-            break;
+          break;
 
-          case 5:
-            setImgurl4(`data:image/png;base64,${source}`);
-            break;
+        case 5:
+          setImgurl4(source);
+          break;
 
-          case 6:
-            setImgurl5(`data:image/png;base64,${source}`);
+        case 6:
+          setImgurl5(source);
 
-            break;
+          break;
 
-          case 7:
-            setImgurl6(`data:image/png;base64,${source}`);
+        case 7:
+          setImgurl6(source);
 
-            break;
+          break;
 
-          case 8:
-            setImgurl7(`data:image/png;base64,${source}`);
-            setId();
-            break;
+        case 8:
+          setImgurl7(source);
+          setId();
+          break;
 
-          case 9:
-            setImgurl8(`data:image/png;base64,${source}`);
-            setId();
-            break;
+        case 9:
+          setImgurl8(source);
+          setId();
+          break;
 
-          // code block
-        }
-        // Process the selected video
+        // code block
       }
     });
-  }, [change]);
+  };
+  //  const handleCamera = React.useCallback(async () => {
+  //     const options = {
+  //       maxHeight: 200,
+  //       maxWidth: 200,
+  //       selectionLimit: 1,
+  //       mediaType: 'photo',
+  //       includeBase64: true,
+  //     };
+
+  //     launchCamera(options, response => {
+  //       if (response.didCancel) {
+  //         // console.log('User cancelled image picker');
+  //       } else if (response.error) {
+  //         // console.log('Error:', response.error);
+  //         // setMediaType(ContentType.NONE);
+  //       } else if (response.customButton) {
+  //         // console.log('User tapped custom button:', response.customButton);
+  //       } else {
+  //         let source = response.assets?.[0]?.base64 || '';
+
+  //         // code block
+  //         // setImageUrl(`data:image/png;base64,${source}`);
+  //         console.log('id', change);
+  //         switch (id) {
+  //           case 1:
+  //             setImageUrl(`data:image/png;base64,${source}`);
+
+  //             break;
+
+  //           case 2:
+  //             setImgurl1(`data:image/png;base64,${source}`);
+
+  //             break;
+
+  //           case 3:
+  //             setImgurl2(`data:image/png;base64,${source}`);
+
+  //             break;
+
+  //           case 4:
+  //             setImgurl3(`data:image/png;base64,${source}`);
+
+  //             break;
+
+  //           case 5:
+  //             setImgurl4(`data:image/png;base64,${source}`);
+  //             break;
+
+  //           case 6:
+  //             setImgurl5(`data:image/png;base64,${source}`);
+
+  //             break;
+
+  //           case 7:
+  //             setImgurl6(`data:image/png;base64,${source}`);
+
+  //             break;
+
+  //           case 8:
+  //             setImgurl7(`data:image/png;base64,${source}`);
+  //             setId();
+  //             break;
+
+  //           case 9:
+  //             setImgurl8(`data:image/png;base64,${source}`);
+  //             setId();
+  //             break;
+
+  //           // code block
+  //         }
+  //         // Process the selected video
+  //       }
+  //     });
+  //   }, [change]);
 
   React.useEffect(() => {
     console.log('change', change);

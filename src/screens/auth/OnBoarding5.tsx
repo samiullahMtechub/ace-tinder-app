@@ -21,7 +21,7 @@ const OnBoarding5 = ({navigation}) => {
       <Header right />
       <ScrollView mx={5} mt={5}>
         <OnBoardingComp
-          title={'What are you looking for in a PAIrtner?'}
+          title={'What are you looking for in a Partner?'}
           listen={`Exploring diverse cultures and cuisines while traveling to exotic destinations around the world`}
           onPress={() => setPressed(!pressed)}
           pressed={pressed}

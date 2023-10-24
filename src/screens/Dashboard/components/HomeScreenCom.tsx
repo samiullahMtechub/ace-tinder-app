@@ -23,15 +23,17 @@ const HomeScreenComp = props => {
               navigation.navigate('OtherUser');
             }}>
             <ImageBackground
+              imageStyle={{borderRadius: 12}}
+              resizeMode={'cover'}
               source={props?.fromSearches ? null : item?.bgimg}
               style={{
-                borderRadius: 100,
+                resizeMode: 'contain',
+                // borderRadius: 100,
                 height: 200,
-                width: 150,
+                width: item?.id === 1 ? 150 : 150,
                 alignItems: 'center',
                 justifyContent: 'center',
-              }}
-              resizeMode="contain">
+              }}>
               {props?.fromSearches ? (
                 <Image
                   alt="home"
@@ -49,8 +51,12 @@ const HomeScreenComp = props => {
                   source={item?.img}
                   resizeMode="contain"
                   borderRadius={10}
-                  h={item?.id === 6 ? '70%' : '80%'}
-                  w={props?.fromSearches ? '80%' : '70%'}
+                  h={
+                    (item?.id === 6 && '58%') ||
+                    (item?.id === 2 && '87%') ||
+                    '83%'
+                  }
+                  w={item?.id === 6 ? '57%' : '71%'}
                   zIndex={99}
                   position={'absolute'}
                 />
@@ -62,19 +68,25 @@ const HomeScreenComp = props => {
 
                 // w={'80%'}
                 style={{
-                  height: 120,
+                  height: 140,
                   position: 'absolute',
-                  bottom: props?.fromSearches ? -15 : -30,
+                  bottom:
+                    (props?.fromSearches && -22) ||
+                    (item?.id === 6 && -12) ||
+                    -40,
 
-                  width: 130,
+                  width:
+                    (props?.fromSearches && 140) ||
+                    (item?.id === 6 && 80) ||
+                    100,
                   zIndex: 999,
                 }}
                 resizeMode={'contain'}>
-                <View position={'absolute'} bottom={10} left={2}>
+                <View position={'absolute'} bottom={12} left={2}>
                   <Text fontSize={14} fontFamily={'Jost-Medium'}>
                     {item?.name}
                   </Text>
-                  <Text fontSize={12} fontFamily={'Jost-Regular'}>
+                  <Text mb={1} fontSize={12} fontFamily={'Jost-Regular'}>
                     {item?.status}
                   </Text>
                 </View>
@@ -89,8 +101,8 @@ const HomeScreenComp = props => {
                   position={'absolute'}
                   alignItems={'center'}
                   justifyContent={'center'}
-                  top={2}
-                  right={3}>
+                  top={1}
+                  right={1}>
                   <View
                     bg={'pro'}
                     // p={2}
