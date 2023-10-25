@@ -14,6 +14,7 @@ const TextField = props => {
         mode="outlined"
         label={props?.label}
         // placeholder={props?.label}
+        keyboardType={props?.keyboardType}
         theme={{colors: {onSurfaceVariant: '#ABABAB'}}}
         value={props?.value}
         onChangeText={props?.onChangeText}

@@ -82,12 +82,13 @@ const HomeScreen = ({navigation}) => {
       source={require('../../assets/bg.png')}
       style={{flex: 1}}
       resizeMode="cover">
-      <ScrollView mx={5} mt={5}>
+      <ScrollView mx={5} mt={5} showsVerticalScrollIndicator={false}>
         <Image
           alignSelf="center"
           source={require('../../assets/spalsh.png')}
-          resizeMode="contain"
-          size={'lg'}
+          resizeMode="cover"
+          h={40}
+          w={40}
           alt="splash"
         />
         <Text
@@ -95,7 +96,7 @@ const HomeScreen = ({navigation}) => {
           fontSize={18}
           fontFamily={'Jost-Medium'}
           textAlign={'center'}
-          mt={3}>
+          mt={-8}>
           I'm AIce, nice to meet you
         </Text>
         <Row my={5} alignItems={'center'} justifyContent={'space-between'}>
