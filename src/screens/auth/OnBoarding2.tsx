@@ -22,7 +22,7 @@ const OnBoarding2 = ({navigation}) => {
       source={require('../../assets/bgContinue.png')}
       style={{flex: 1}}
       resizeMode="cover">
-      <Header color={'black'} />
+      <Header />
       <View mx={5} mt={5}>
         <Row
           justifyContent={'space-between'}
@@ -34,7 +34,7 @@ const OnBoarding2 = ({navigation}) => {
               source={require('../../assets/onBoarding1.png')}
               h={20}
               w={20}
-              borderColor={'primary.50'}
+              borderColor={'#F944494D'}
               borderWidth={4}
             />
             <View
@@ -59,7 +59,7 @@ const OnBoarding2 = ({navigation}) => {
             <Avatar
               source={require('../../assets/onBoarding2.png')}
               size={'xl'}
-              borderColor={'primary.50'}
+              borderColor={'#F944494D'}
               borderWidth={4}
             />
             <View
@@ -107,7 +107,7 @@ const OnBoarding2 = ({navigation}) => {
               h={20}
               w={20}
               reseizeMode={'contain'}
-              borderColor={'primary.50'}
+              borderColor={'#F944494D'}
               borderWidth={4}
             />
 
@@ -133,7 +133,7 @@ const OnBoarding2 = ({navigation}) => {
             <Avatar
               source={require('../../assets/onBoarding4.png')}
               size={'xl'}
-              borderColor={'primary.50'}
+              borderColor={'#F944494D'}
               borderWidth={4}
             />
             <View
@@ -155,29 +155,10 @@ const OnBoarding2 = ({navigation}) => {
             </View>
           </Stack>
         </Row>
-        <TouchableOpacity
-          style={{
-            backgroundColor: 'black',
-            borderRadius: 20,
-            padding: 10,
-            marginTop: 10,
-          }}
-          onPress={() => {
-            navigation.navigate('OnBoarding3');
-          }}
-          //   onPress={() => {
-          //     navigation.navigate('SignIn');
-          //   }}
-        >
-          <Text
-            fontSize={16}
-            color={'white'}
-            alignSelf={'center'}
-            fontFamily={'Jost-Regular'}
-            textAlign={'center'}>
-            Continue
-          </Text>
-        </TouchableOpacity>
+        <AButtons
+          label={'Continue'}
+          onPress={() => navigation.navigate('OnBoarding3')}
+        />
       </View>
     </ImageBackground>
   );
