@@ -21,7 +21,7 @@ const ProfileProcessing = ({navigation}) => {
   return (
     // <View flex={1}>
     <ImageBackground
-      source={require('../../assets/bgContinue.png')}
+      source={require('../../assets/processing.png')}
       style={{flex: 1}}
       resizeMode="cover">
       <View
@@ -31,6 +31,7 @@ const ProfileProcessing = ({navigation}) => {
         justifyContent={'center'}
         flex={1}>
         <Text
+          mb={2}
           color={'white'}
           textAlign={'center'}
           fontSize={22}
@@ -48,7 +49,9 @@ const ProfileProcessing = ({navigation}) => {
             navigation.navigate('Tabs', {screen: 'Home'});
           }}
         />
+
         <Text
+          mt={2}
           fontSize={16}
           fontFamily={'Jost-Regular'}
           color={'white'}
