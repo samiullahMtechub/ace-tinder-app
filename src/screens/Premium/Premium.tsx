@@ -93,18 +93,6 @@ const Premium = ({navigation}) => {
         />
         <Image
           alt="img"
-          source={require('../../assets/p4.png')}
-          // size={'2xl'}
-          borderRadius={20}
-          mx={2}
-          h={490}
-          w={300}
-          // flex={1}
-          // h={500}
-          resizeMode={'cover'}
-        />
-        <Image
-          alt="img"
           source={require('../../assets/p3.png')}
           // size={'2xl'}
           borderRadius={20}
