@@ -4,7 +4,8 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import BottomSheet from '../bottomSheet/BottomSheet';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {useNavigation} from '@react-navigation/native';
-
+import Voice from '@react-native-voice/voice';
+import Tts from 'react-native-tts';
 const OnBoardingComp = props => {
   const bottomSheetRef = React.useRef(null);
   const [active, setActive] = React.useState(false);
@@ -13,19 +14,100 @@ const OnBoardingComp = props => {
   const openBottomSheet = (id: string) => {
     if (bottomSheetRef.current) {
       bottomSheetRef.current.open();
-      setTimeout(() => {
-        setActive(true);
-      }, 1000);
+      startRecognizing();
     }
     //  (bottomSheetRef.current) {
     //     bottomSheetRef.current.close()
     // console.error(id);
     //   setPostId(id);
   };
-  console.log(
-    'ok',
-    bottomSheetRef?.current?._reactInternals?.memoizedState?.modalVisible,
-  );
+
+  React.useEffect(() => {
+    //Setting callbacks for the process status
+    Voice.onSpeechStart = onSpeechStart;
+    Voice.onSpeechEnd = onSpeechEnd;
+    Voice.onSpeechError = onSpeechError;
+    Voice.onSpeechResults = onSpeechResults;
+    Voice.onSpeechVolumeChanged = onSpeechVolumeChanged;
+
+    return () => {
+      //destroy the process after switching the screen
+      Voice.destroy().then(Voice.removeAllListeners);
+    };
+  }, []);
+  const [waves, setWaves] = React.useState('');
+  const [started, setStarted] = React.useState();
+  const [error, setError] = React.useState();
+  const [value, setValue] = React.useState('');
+  const [end, setEnd] = React.useState();
+  const onSpeechStart = e => {
+    //Invoked when .start() is called without error
+
+    setStarted('√');
+  };
+  const onSpeechEnd = e => {
+    setActive(true);
+
+    bottomSheetRef.current.close();
+  };
+  const onSpeechPartialResults = e => {
+    console.log('partial', e);
+    // setValue(e.value[0]);
+    // setValue(e.value[0]);
+    //Invoked when SpeechRecognizer stops recognition
+    // setEnd('√');
+    // setWaves(false);
+  };
+  const onSpeechError = e => {
+    //Invoked when an error occurs.
+    setError(JSON.stringify(e.error));
+    setWaves(false);
+  };
+  const onSpeechResults = e => {
+    //Invoked when SpeechRecognizer is finished recognizing
+    // console.log('Speech Recognizer', e.value[0]);
+    setValue(e.value[0]);
+  };
+
+  const onSpeechVolumeChanged = e => {
+    //Invoked when pitch that is recognized changed
+    //console.log('onSpeechVolumeChanged: ', e);
+    //  setPitch(e.value);
+  };
+  const startRecognizing = async () => {
+    //Starts listening for speech for a specific locale
+    try {
+      let res = await Voice.start('en-US');
+      //  setPitch('');
+      //  setError('');/
+      // console.log(res);
+      setStarted('');
+      //  setEnd('');
+    } catch (e) {
+      //eslint-disable-next-line
+      //console.error(e);
+    }
+  };
+  /////////////text states////////////
+  const [result, setResult] = React.useState(false);
+
+  React.useEffect(() => {
+    if (result === true) {
+      Tts.speak(props?.title);
+    } else {
+      Tts.stop();
+    }
+  }, [result]);
+  Tts.addEventListener('tts-finish', event => {
+    setResult(false);
+  });
+  Tts.addEventListener('tts-start', event => {
+    setResult(true);
+  });
+  React.useEffect(() => {
+    setWaves(prevText => prevText + ' ' + value);
+  }, [value]);
+  console.log(waves);
   return (
     <>
       <Row>
@@ -39,8 +121,8 @@ const OnBoardingComp = props => {
             ? `Tell Ai if you need furtherAssistance`
             : props?.title}
         </Text>
-        <Pressable onPress={props?.onPress}>
-          {props?.pressed === true ? (
+        <Pressable onPress={() => setResult(!result)}>
+          {result === true ? (
             <Image
               mt={3}
               ml={10}
@@ -52,7 +134,7 @@ const OnBoardingComp = props => {
               resizeMode="contain"
             />
           ) : null}
-          {props?.pressed === false ? (
+          {result === false ? (
             <Image
               mt={3}
               ml={10}
@@ -89,7 +171,7 @@ Don't settle for someone who doesn't meet your essential criteria.
 Online Dating Tips:
 Create a genuine and appealing online dating profile.
 Stay safe while dating online by following best practices`
-            : null
+            : waves
         }
         mt={10}
         bg={'grey.500'}
@@ -101,11 +183,12 @@ Stay safe while dating online by following best practices`
         fontSize={14}
         borderRadius={20}
         _focus={{borderColor: 'secondary', borderWidth: 1}}
+        onChangeText={txt => setWaves(txt)}
       />
       {props?.fromSettings && assist === true ? null : (
         <>
           <Pressable
-            onPress={openBottomSheet}
+            onPress={() => openBottomSheet()}
             alignSelf={'center'}
             mt={props?.fromSettings ? '40%' : 0}>
             <Image
@@ -151,9 +234,9 @@ Stay safe while dating online by following best practices`
           color={'txtColor'}
           fontFamily={'Jost-Regular'}
           textAlign={'center'}>
-          {active === true ? props?.listen : 'Listening...'}
+          {active === true ? waves : 'Listening...'}
         </Text>
-        {active === true ? (
+        {active === true && value != undefined ? (
           <Image
             mt={3}
             source={require('../../assets/soundWaves2.png')}
@@ -162,14 +245,14 @@ Stay safe while dating online by following best practices`
             alt={'img'}
           />
         ) : null}
+        {active === true && value === undefined && (
+          <Text color={'white'} fontSize={16} textAlign={'center'}>
+            Speak again
+          </Text>
+        )}
         <Pressable
           onPress={() => {
-            if (props?.fromSettings) {
-              navigation.navigate('AiTip');
-              bottomSheetRef.current.close();
-            } else {
-              bottomSheetRef.current.close();
-            }
+            startRecognizing();
           }}
           position="absolute"
           alignSelf={'center'}
@@ -213,3 +296,9 @@ Stay safe while dating online by following best practices`
   );
 };
 export default OnBoardingComp;
+// if (props?.fromSettings) {
+//   navigation.navigate('AiTip');
+//   bottomSheetRef.current.close();
+// } else {
+//   bottomSheetRef.current.close();
+// }
