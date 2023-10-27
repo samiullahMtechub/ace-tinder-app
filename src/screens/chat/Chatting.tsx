@@ -23,6 +23,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import {launchImageLibrary, launchCamera} from 'react-native-image-picker';
 
 import ImagePicker from 'react-native-image-crop-picker';
+import LinearGradient from 'react-native-linear-gradient';
 const Chatting = ({navigation}) => {
   const scrollRef = React.useRef(null);
   const [focus, setFocus] = React.useState(false);
@@ -112,6 +113,13 @@ const Chatting = ({navigation}) => {
     '🤠',
     // Add more emojis as needed
   ];
+
+  React.useEffect(() => {
+    if (focus === true) {
+      flatListRef.current.scrollToEnd();
+    }
+    console.log('focus', focus);
+  }, [focus, focus]);
   const openBottomSheet = (id: string) => {
     if (bottomSheetRef.current) {
       bottomSheetRef.current.open();
@@ -182,26 +190,49 @@ const Chatting = ({navigation}) => {
   };
 
   const flatListRef = React.useRef(null);
+  const [message, setMessage] = React.useState('');
   useFocusEffect(
     React.useCallback(() => {
       flatListRef.current.scrollToEnd();
-      console.log('okss');
-    }, [focus]),
+    }, [focus, chat, message]),
   );
   React.useEffect(() => {
     flatListRef.current.scrollToEnd();
-    console.log('ok');
-  }, [focus]);
+  }, [focus, chat, message]);
+
+  const sendMessage = () => {
+    const newMessage = {
+      recieved: message,
+      time: getCurrentTime(),
+    };
+    setChat(previousMessage => [...previousMessage, newMessage]);
+    console.log('new', newMessage);
+  };
+
   const renderConversation = ({item}) => {
     return (
-      <View
-        bg={item?.sent ? 'grey.500' : 'pro'}
-        borderRadius={10}
-        flex={1}
-        p={2}
-        w={'85%'}
-        mb={5}
-        alignSelf={item?.sent ? 'flex-start' : 'flex-end'}>
+      <LinearGradient
+        colors={[item?.sent ? '#2F2F2F' : '#C30010', '#F94449']}
+        style={{
+          flex: 1,
+          borderRadius: 12,
+          justifyContent: 'center',
+          alignSelf: item?.sent ? 'flex-start' : 'flex-end',
+          padding: 8,
+          marginBottom: 25,
+          padding: 10,
+          width: '88%',
+        }}
+        start={{x: 0, y: 0}}
+        end={{x: item?.sent ? 0 : 0.5, y: item?.sent ? 0 : 2}}>
+        {/* <View
+          bg={item?.sent ? 'grey.500' : 'pro'}
+          borderRadius={10}
+          flex={1}
+          p={2}
+          w={'85%'}
+          mb={5}
+          alignSelf={item?.sent ? 'flex-start' : 'flex-end'}> */}
         <Pressable onPress={() => setVisible(true)}>
           {item?.image ? ( // Check if there's an image
             <Image
@@ -219,12 +250,14 @@ const Chatting = ({navigation}) => {
               {item?.sent}
             </Text>
           ) : (
-            <Text color={item?.recieved ? 'white' : 'black'}>
+            <Text
+              color={item?.sent ? 'white' : 'black'}
+              fontFamily={'Jost-Medium'}>
               {item?.recieved}
             </Text>
           )}
 
-          <Row alignSelf={'flex-end'} alignItems={'center'} mt={4}>
+          <Row alignSelf={'flex-end'} alignItems={'center'} mt={2}>
             <Text
               color={item?.sent ? 'txtColor' : 'black'}
               mr={2}
@@ -246,7 +279,8 @@ const Chatting = ({navigation}) => {
             ) : null}
           </Row>
         </Pressable>
-      </View>
+        {/* </View> */}
+      </LinearGradient>
     );
   };
 
@@ -255,6 +289,7 @@ const Chatting = ({navigation}) => {
       <View mx={5} mt={5}>
         <ChatScreen />
       </View>
+      <Divider opacity={0.2} mt={2} />
       <View mx={5} mt={5} mb={16} flex={1}>
         <FlatList
           data={chat}
@@ -262,18 +297,25 @@ const Chatting = ({navigation}) => {
           showsVerticalScrollIndicator={false}
           renderItem={renderConversation}
           keyExtractor={(item, index) => index.toString()}
+          onContentSizeChange={() => flatListRef.current.scrollToEnd()}
+          onLayout={() => flatListRef.current.scrollToEnd()}
         />
       </View>
       {/* <View mt={5}> */}
-      <Row alignItems={'center'} position={'absolute'} bottom={5} mx={5}>
+      <Row alignItems={'center'} position={'absolute'} bottom={3} mx={5}>
         <Input
           bg={'grey.500'}
           _focus={{bg: 'grey.500'}}
           placeholder={'Type a message'}
           w={'85%'}
           color={'txtColor'}
+          value={message}
+          onChangeText={setMessage}
           p={2}
           onFocus={() => {
+            setFocus(true);
+          }}
+          onTouchStart={() => {
             setFocus(true);
           }}
           onBlur={() => {
@@ -320,7 +362,10 @@ const Chatting = ({navigation}) => {
             </Pressable>
           }
         />
-        <Pressable>
+        <Pressable
+          onPress={() => {
+            sendMessage();
+          }}>
           <Image
             source={require('../../assets/send.png')}
             h={10}
