@@ -83,7 +83,7 @@ const AudioCall = ({navigation}) => {
                   justifyContent={'center'}>
                   <Image
                     h={6}
-                    // p={2}
+                    p={0}
                     w={6}
                     resizeMode="contain"
                     source={require('../../assets/mute2.png')}

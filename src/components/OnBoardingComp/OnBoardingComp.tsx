@@ -6,9 +6,11 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import {useNavigation} from '@react-navigation/native';
 import Voice from '@react-native-voice/voice';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+
 import Tts from 'react-native-tts';
 const OnBoardingComp = props => {
   const bottomSheetRef = React.useRef(null);
+  //new commit
   const [active, setActive] = React.useState(false);
   const [assist, setAssist] = React.useState(false);
   const navigation = useNavigation();
