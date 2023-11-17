@@ -3,7 +3,7 @@ import React from 'react';
 import {ImageBackground} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Header from '../../components/Header/Header';
-
+import Ionicons from 'react-native-vector-icons/Ionicons';
 const AudioCall = ({navigation}) => {
   const [mute, setMute] = React.useState(false);
   return (
@@ -49,24 +49,17 @@ const AudioCall = ({navigation}) => {
                 h={10}
                 w={10}
                 rounded={'full'}
-                bg={'white'}
+                bg={'#F258D4'}
                 alignItems={'center'}
                 justifyContent={'center'}>
-                <Image
-                  h={6}
-                  // p={2}
-                  w={6}
-                  resizeMode="contain"
-                  source={require('../../assets/volume.png')}
-                  alt={'volume'}
-                />
+                <Ionicons name={'volume-medium'} size={25} color={'white'} />
               </View>
               <Pressable onPress={() => navigation.navigate('Chatting')}>
                 <View
                   h={16}
                   w={16}
                   rounded={'full'}
-                  bg={'white'}
+                  bg={'#F258D4'}
                   mx={8}
                   alignItems={'center'}
                   justifyContent={'center'}>
@@ -85,7 +78,7 @@ const AudioCall = ({navigation}) => {
                   h={10}
                   w={10}
                   rounded={'full'}
-                  bg={'white'}
+                  bg={'#F258D4'}
                   alignItems={'center'}
                   justifyContent={'center'}>
                   <Image
@@ -93,7 +86,7 @@ const AudioCall = ({navigation}) => {
                     // p={2}
                     w={6}
                     resizeMode="contain"
-                    source={require('../../assets/mute.png')}
+                    source={require('../../assets/mute2.png')}
                     alt={'mute'}
                   />
                 </View>
