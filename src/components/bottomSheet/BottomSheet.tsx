@@ -52,7 +52,7 @@ const BottomSheet = ({
           styles.container,
           {
             width: width,
-            backgroundColor: colorMode === 'dark' ? '#1D2939' : 'black',
+            backgroundColor: colorMode === 'dark' ? '#1D2939' : 'white',
             height: height,
             borderColor: 'grey',
             borderWidth: 0,

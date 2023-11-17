@@ -20,9 +20,9 @@ const TextField = props => {
         onChangeText={props?.onChangeText}
         style={styles.ti}
         placeholderTextColor={'#ABABAB'}
-        textColor="#ABABAB"
+        textColor="black"
         outlineColor={'#0000001F'}
-        activeOutlineColor="#F94449"
+        activeOutlineColor="#F258D4"
         secureTextEntry={show === true ? true : false}
         onFocus={() => setFocused(true)}
         outlineStyle={{borderRadius: 25}}
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     // marginHorizontal: '9%',
     marginTop: '5%',
     // width: 300,
-    backgroundColor: '#2F2F2F',
+    backgroundColor: 'white',
     fontSize: 14,
     paddingLeft: '2%',
   },

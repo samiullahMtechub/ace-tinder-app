@@ -1,14 +1,15 @@
 import {View, Text, ScrollView, Row} from 'native-base';
 import React from 'react';
 import Header from '../../components/Header/Header';
+import {ImageBackground} from 'react-native';
 
 const PrivacyPolicy = () => {
   // const
   return (
-    <View bg={'black'} flex={1}>
+    <ImageBackground source={require('../../assets/bg.png')} style={{flex: 1}}>
       <Header title={'Privacy Policy'} />
       <View mt={5} mx={5} mb={10}>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <Text
             color={'txtColor'}
             fontSize={15}
@@ -143,7 +144,7 @@ const PrivacyPolicy = () => {
           </Text>
         </ScrollView>
       </View>
-    </View>
+    </ImageBackground>
   );
 };
 export default PrivacyPolicy;

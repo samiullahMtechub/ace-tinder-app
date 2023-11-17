@@ -8,7 +8,7 @@ import {
   Divider,
 } from 'native-base';
 import React from 'react';
-import {FlatList, StyleSheet} from 'react-native';
+import {FlatList, ImageBackground, StyleSheet} from 'react-native';
 import Header from '../../components/Header/Header';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -73,7 +73,7 @@ const AllConnections = ({navigation}) => {
   ];
 
   return (
-    <View flex={1} bg={'black'}>
+    <ImageBackground source={require('../../assets/bg.png')} style={{flex: 1}}>
       <View
         mt={5}
         mx={3}
@@ -99,7 +99,7 @@ const AllConnections = ({navigation}) => {
           <HomeScreenComp data={data} fromSearches />
         </View>
       </ScrollView>
-    </View>
+    </ImageBackground>
   );
 };
 

@@ -126,7 +126,7 @@ const SignIn = ({navigation}) => {
           <Row alignSelf={'center'} my={5} mt={10}>
             <Text
               fontSize={16}
-              color={'white'}
+              color={'black'}
               fontFamily={'Jost-Regular'}
               textAlign={'center'}>
               Don't have an account?{' '}
@@ -139,7 +139,8 @@ const SignIn = ({navigation}) => {
                 fontSize={16}
                 color={'pro'}
                 alignSelf={'center'}
-                fontFamily={'Jost-Regular'}
+                underline
+                fontFamily={'Jost-SemiBold'}
                 textAlign={'center'}>
                 Create Account
               </Text>

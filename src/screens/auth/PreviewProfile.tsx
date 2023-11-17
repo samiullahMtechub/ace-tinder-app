@@ -136,19 +136,18 @@ const PreviewProfile = ({navigation}) => {
       resizeMode="cover">
       <Pressable onPress={() => navigation.goBack()}>
         <View
-          mt={5}
-          ml={5}
-          bg={'pro'}
+          // mt={5}
+          // ml={5}
+          bg={'transparent'}
           rounded={'full'}
-          p={1}
-          h={8}
-          w={8}
-          alignItems={'center'}
-          justifyContent={'center'}>
-          <Entypo name="chevron-left" size={20} color={'black'} />
+          p={4}
+          // h={8}
+          // w={8}
+        >
+          <Entypo name="chevron-left" size={30} color={'white'} />
         </View>
       </Pressable>
-      <ScrollView mx={5} mt={3}>
+      <ScrollView mx={5} showsVerticalScrollIndicator={false}>
         <View mt={5}>
           <Text fontSize={32} color={'white'} fontFamily={'Jost-SemiBold'}>
             Preview Profile
@@ -174,7 +173,7 @@ const PreviewProfile = ({navigation}) => {
               openBottomSheet();
             }}>
             <Text
-              color={'pro'}
+              color={'white'}
               fontSize={16}
               mt={3}
               fontFamily={'Jost-Medium'}

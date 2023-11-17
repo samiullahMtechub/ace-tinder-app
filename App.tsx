@@ -65,17 +65,18 @@ export default function () {
     },
     colors: {
       // Add new color
+
       primary: {
-        '50': '#ff474d',
-        '100': '#ff2b32',
-        '200': '#fe1018',
-        '300': '#ec060e',
-        '400': '#d2050c',
-        '500': '#bd090f',
-        '600': '#a90c11',
-        '700': '#960e13',
-        '800': '#841014',
-        '900': '#731114',
+        '50': '#ffecfb',
+        '100': '#fec4f2',
+        '200': '#fba0e7',
+        '300': '#f57edb',
+        '400': '#f258d1',
+        '500': '#eb49c8',
+        '600': '#e23bbe',
+        '700': '#d72eb2',
+        '800': '#c02da0',
+        '900': '#a72f8d',
       },
 
       second: {
@@ -109,7 +110,7 @@ export default function () {
         500: '#2F2F2F',
       },
       secondary: '#C30010',
-      pro: '#F94449',
+      pro: 'white',
       loc: '#FCFCFC',
       txtColor: '#CCCCCC',
     },

@@ -21,6 +21,7 @@ import {
   Row,
   ScrollView,
   Stack,
+  FavouriteIcon,
 } from 'native-base';
 import {SwipeListView} from 'react-native-swipe-list-view';
 // import {MaterialIcons, Ionicons} from '@expo/vector-icons';
@@ -92,33 +93,28 @@ function AllChats({navigation}) {
   return (
     <ImageBackground source={require('../../assets/bg.png')} style={{flex: 1}}>
       <Row mt={5} mx={6} justifyContent={'space-between'} alignItems={'center'}>
-        <Text color={'pro'} fontSize={26} fontFamily={'Jost-SemiBold'}>
+        <Image
+          source={require('../../assets/onboardlogo.png')}
+          h={16}
+          w={16}
+          alt={'im'}
+          resizeMode={'contain'}
+        />
+        <Text
+          color={'pro'}
+          fontSize={30}
+          fontFamily={'Diagramm-Regular'}
+          textAlign={'center'}>
+          Chats
+        </Text>
+
+        <Text
+          color={'transparent'}
+          fontSize={26}
+          fontFamily={'Jost-SemiBold'}
+          textAlign={'center'}>
           Chat
         </Text>
-        <Row alignItems={'center'}>
-          <Pressable onPress={() => navigation.navigate('CallHistory')}>
-            <Image
-              source={require('../../assets/callhistory.png')}
-              h={5}
-              w={5}
-              resizeMode={'contain'}
-              alt={'chat'}
-            />
-          </Pressable>
-          <Pressable
-            onPress={() => {
-              navigation.navigate('Search');
-            }}>
-            <Image
-              ml={4}
-              source={require('../../assets/search.png')}
-              h={5}
-              w={5}
-              resizeMode={'contain'}
-              alt={'chat'}
-            />
-          </Pressable>
-        </Row>
       </Row>
       <ScrollView>
         <Row
@@ -131,9 +127,7 @@ function AllChats({navigation}) {
             <Text color={'white'} fontSize={16} fontFamily={'Jost-SemiBold'}>
               Connections
             </Text>
-            <Text color={'txtColor'} fontSize={10} ml={2}>
-              (20)
-            </Text>
+            <FavouriteIcon color={'primary.400'} h={5} w={5} ml={2} />
           </Row>
           <Pressable
             onPress={() => {
@@ -178,17 +172,38 @@ function AllChats({navigation}) {
             })}
           </ScrollView>
         </View>
-        <Text
+        <Row
           mt={6}
           mb={3}
           mx={6}
-          textAlign="left"
-          fontSize={16}
-          fontFamily={'Jost-SemiBold'}
-          color={'white'}>
-          Converstations
-        </Text>
-
+          alignItems={'center'}
+          justifyContent={'space-between'}>
+          <Text
+            textAlign="left"
+            fontSize={16}
+            fontFamily={'Jost-SemiBold'}
+            color={'white'}>
+            Converstations
+          </Text>
+          <Row alignItems={'center'}>
+            <Pressable onPress={() => navigation.navigate('CallHistory')}>
+              <Image
+                source={require('../../assets/callhistory.png')}
+                h={5}
+                w={5}
+                resizeMode={'contain'}
+                alt={'chat'}
+              />
+            </Pressable>
+            <Pressable
+              ml={3}
+              onPress={() => {
+                navigation.navigate('Search');
+              }}>
+              <Ionicons name={'search-outline'} size={20} color={'white'} />
+            </Pressable>
+          </Row>
+        </Row>
         <Basic
           close={() => {
             setLayer(false);
@@ -202,11 +217,11 @@ function AllChats({navigation}) {
         onPress={() => navigation.navigate('Games')}
         position={'absolute'}
         bottom={0}
-        right={0}>
+        right={4}>
         <Image
           source={require('../../assets/games.png')}
-          h={20}
-          w={20}
+          h={16}
+          w={16}
           alt={'img'}
         />
       </Pressable>
@@ -308,19 +323,19 @@ function Basic(props) {
   const renderItem = ({item, index}) => (
     <Box mx={5}>
       <Pressable
-        my={2}
+        my={1}
         borderColor={'grey.500'}
         onPress={() => navigation.navigate('Chatting')}
         alignItems="center"
-        bg="black"
+        bg="white"
         // borderBottomColor="trueGray.200"View
         borderWidth={1}
         borderRadius={12}
         justifyContent="center"
-        height={50}
+        height={60}
         underlayColor={'#AAA'}
         _pressed={{
-          bg: 'black',
+          bg: 'white',
         }}
         p={2}>
         <HStack
@@ -343,23 +358,23 @@ function Basic(props) {
               ) : null}
             </Stack>
             <Box ml={5}>
-              <Text color={'white'} fontFamily={'Jost-SemiBold'} fontSize={14}>
+              <Text color={'black'} fontFamily={'Jost-SemiBold'} fontSize={14}>
                 {item?.name}
               </Text>
-              <Text color={'txtColor'} fontSize={12} numberOfLines={1}>
+              <Text color={'grey.400'} fontSize={12} numberOfLines={1}>
                 {item?.message}
               </Text>
             </Box>
           </HStack>
           <Box alignItems={'center'}>
-            <Text color={'txtColor'} mb={1} fontSize={10} numberOfLines={1}>
+            <Text color={'grey.400'} mb={1} fontSize={10} numberOfLines={1}>
               {item?.time}
             </Text>
             {item?.status === 'sent' ? (
               <Icon
                 size="4"
                 _light={{
-                  color: 'txtColor',
+                  color: 'grey.400',
                 }}
                 _dark={{
                   color: 'coolGray.400',
@@ -373,10 +388,12 @@ function Basic(props) {
                 rounded={'full'}
                 h={4}
                 w={4}
-                bg={'pro'}
+                bg={'primary.400'}
                 alignItems={'center'}
                 justifyContent={'center'}>
-                <Text fontSize={10}>{item?.recieved}</Text>
+                <Text fontSize={10} color={'white'}>
+                  {item?.recieved}
+                </Text>
               </Box>
             ) : null}
           </Box>
@@ -388,11 +405,11 @@ function Basic(props) {
   const renderHiddenItem = (data, rowMap) => (
     <HStack pr={6} mt={2}>
       <Pressable
-        p={4}
+        // p={}
         ml="auto"
-        cursor="pointer"
-        borderRadius={10}
-        bg="#F9444933"
+        // cursor="pointer"
+        // borderRadius={10}
+        // bg="#F9444933"
         justifyContent="center"
         onPress={() => navigation.navigate('Report')}
         _pressed={{
@@ -400,37 +417,35 @@ function Basic(props) {
         }}>
         <Image
           source={require('../../assets/report.png')}
-          h={4}
-          w={4}
+          h={12}
+          w={12}
           alt={'img'}
-          resizeMode={'contain'}
+          resizeMode={'cover'}
         />
       </Pressable>
       <Pressable
         mx={2}
-        px={4}
+        // px={4}
         cursor="pointer"
-        borderRadius={10}
-        bg="#F9444933"
-        justifyContent="center"
+        // borderRadius={10}
+
         onPress={() => navigation.navigate('Disqualify')}
         _pressed={{
           opacity: 0.5,
         }}>
         <Image
           source={require('../../assets/delete-user.png')}
-          h={4}
-          w={4}
+          h={12}
+          w={12}
           alt={'img'}
-          resizeMode={'contain'}
+          resizeMode={'cover'}
         />
       </Pressable>
       <Pressable
-        px={4}
-        cursor="pointer"
+        // px={4}
+        // cursor="pointer"
         borderRadius={10}
-        bg="#F9444933"
-        justifyContent="center"
+        // justifyContent="center"
         onPress={() => {
           props.open && props.open('open');
           setActive(true);
@@ -440,10 +455,10 @@ function Basic(props) {
         }}>
         <Image
           source={require('../../assets/bin.png')}
-          h={4}
-          w={4}
+          h={12}
+          w={12}
           alt={'img'}
-          resizeMode={'contain'}
+          resizeMode={'cover'}
         />
       </Pressable>
     </HStack>

@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/AntDesign';
 
 import Octicons from 'react-native-vector-icons/Octicons';
 import Feather from 'react-native-vector-icons/Feather';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import SignIn from '../../screens/auth/SignIn';
 import OnBoarding from '../../screens/auth/OnBoarding';
 import AddAge from '../../screens/auth/AddAge';
@@ -21,13 +22,13 @@ const BottomTabs = () => {
       screenOptions={{
         headerShown: false,
         tabBarHideOnKeyboard: true,
-        tabBarActiveTintColor: '#F94449',
+        tabBarActiveTintColor: '#f258d1',
         tabBarShowLabel: false,
         headerShadowVisible: false,
         tabBarStyle: [
           {
-            backgroundColor: 'black',
-            borderColor: '#F94449',
+            backgroundColor: 'white',
+            borderColor: '#f258d1',
             // height: '8%',
           },
         ],
@@ -38,10 +39,10 @@ const BottomTabs = () => {
         options={{
           tabBarIcon: ({focused}) => (
             <View alignItems={'center'} justifyContent={'center'}>
-              <Octicons
-                name="home"
-                size={22}
-                style={{color: focused ? '#F94449' : 'white'}}
+              <MaterialIcons
+                name="home-filled"
+                size={28}
+                style={{color: focused ? '#f258d1' : '#2F2F2F'}}
               />
             </View>
           ),
@@ -107,7 +108,7 @@ const BottomTabs = () => {
               <Feather
                 name="settings"
                 size={22}
-                style={{color: focused ? '#F94449' : 'white'}}
+                style={{color: focused ? '#f258d1' : '#2F2F2F'}}
               />
             </View>
           ),

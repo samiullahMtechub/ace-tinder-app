@@ -42,17 +42,17 @@ const Games = () => {
     },
   ];
   return (
-    <View flex={1} bg={'black'}>
-      <Header />
+    <ImageBackground source={require('../../assets/bg.png')} style={{flex: 1}}>
+      <Header title={'Let the Game Begin!'} />
       <ScrollView>
         <View mx={5} mt={5}>
-          <Text
+          {/* <Text
             color={'white'}
             fontSize={18}
             mb={5}
             fontFamily={'Jost-SemiBold'}>
             Let the Game Begin!
-          </Text>
+          </Text> */}
           {data?.map(item => {
             return (
               <ImageBackground
@@ -104,7 +104,7 @@ const Games = () => {
           })}
         </View>
       </ScrollView>
-    </View>
+    </ImageBackground>
   );
 };
 export default Games;

@@ -5,6 +5,7 @@ import BottomSheet from '../bottomSheet/BottomSheet';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {useNavigation} from '@react-navigation/native';
 import Voice from '@react-native-voice/voice';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import Tts from 'react-native-tts';
 const OnBoardingComp = props => {
   const bottomSheetRef = React.useRef(null);
@@ -48,7 +49,7 @@ const OnBoardingComp = props => {
   const onSpeechEnd = e => {
     setActive(true);
 
-    bottomSheetRef.current.close();
+    bottomSheetRef?.current?.close();
   };
   const onSpeechPartialResults = e => {
     console.log('partial', e);
@@ -61,7 +62,7 @@ const OnBoardingComp = props => {
   const onSpeechError = e => {
     //Invoked when an error occurs.
     setError(JSON.stringify(e.error));
-    setWaves(false);
+    // setWaves(false);
   };
   const onSpeechResults = e => {
     //Invoked when SpeechRecognizer is finished recognizing
@@ -105,51 +106,54 @@ const OnBoardingComp = props => {
     setResult(true);
   });
   React.useEffect(() => {
-    setWaves(prevText => prevText + ' ' + value);
+    if (value !== '' && value !== ' ') {
+      setWaves(prevText => prevText + ' ' + value);
+    }
   }, [value]);
   console.log(waves);
   return (
     <>
-      <Row>
+      <Pressable onPress={() => setResult(!result)} alignSelf={'center'} p={4}>
+        {result === true ? (
+          <Image
+            // ml={10}
+            // alignSelf={'flex-start'}
+            source={require('../../assets/soundWaves2.png')}
+            alt={'img'}
+            h={10}
+            w={10}
+            resizeMode="contain"
+          />
+        ) : null}
+        {result === false ? (
+          <Ionicons name={'volume-medium'} size={25} color={'white'} />
+        ) : // <Image
+        //   // ml={10}
+        //   // alignSelf={'flex-start'}
+        //   source={require('../../assets/volume.png')}
+        //   alt={'img'}
+        //   h={6}
+        //   w={6}
+        //   resizeMode="contain"
+        // />
+        null}
+      </Pressable>
+      <Row justifyContent={'center'} mx={8}>
         <Text
           fontSize={28}
-          w={'78%'}
+          // w={'78%'}
           color={'white'}
           fontFamily={'Jost-SemiBold'}
-          textAlign={'left'}>
+          textAlign={'center'}>
           {props?.fromSettings && assist === true
-            ? `Tell Ai if you need furtherAssistance`
+            ? `Tell Ai if you need further Assistance`
             : props?.title}
         </Text>
-        <Pressable onPress={() => setResult(!result)}>
-          {result === true ? (
-            <Image
-              mt={3}
-              ml={10}
-              alignSelf={'flex-start'}
-              source={require('../../assets/sound-wave.png')}
-              alt={'img'}
-              h={6}
-              w={6}
-              resizeMode="contain"
-            />
-          ) : null}
-          {result === false ? (
-            <Image
-              mt={3}
-              ml={10}
-              alignSelf={'flex-start'}
-              source={require('../../assets/volume.png')}
-              alt={'img'}
-              h={6}
-              w={6}
-              resizeMode="contain"
-            />
-          ) : null}
-        </Pressable>
       </Row>
       <TextArea
-        placeholder={`e.g ${props?.listen}`}
+        placeholder={
+          waves === '' ? `e.g ${props?.listen}` : `e.g ${props?.listen}`
+        }
         value={
           props?.fromSettings && assist === true
             ? `Dating can be an exciting and fulfilling experience when approached with the right mindset and strategies. This guide will provide you with practical tips and advice to help you navigate the world of dating effectively. Whether you're just starting out or looking to enhance your dating experiences, these principles can help you build healthy and meaningful connections.
@@ -174,15 +178,15 @@ Stay safe while dating online by following best practices`
             : waves
         }
         mt={10}
-        bg={'grey.500'}
-        placeholderTextColor={'grey.400'}
+        bg={'white'}
+        placeholderTextColor={'#999'}
         p={4}
         h={props?.fromSettings && assist === true ? 'full' : 40}
-        color={'txtColor'}
+        color={'#999'}
         borderWidth={0}
         fontSize={14}
         borderRadius={20}
-        _focus={{borderColor: 'secondary', borderWidth: 1}}
+        _focus={{borderColor: 'primaryu', borderWidth: 0, bg: 'white'}}
         onChangeText={txt => setWaves(txt)}
       />
       {props?.fromSettings && assist === true ? null : (
@@ -193,7 +197,7 @@ Stay safe while dating online by following best practices`
             mt={props?.fromSettings ? '40%' : 0}>
             <Image
               mt={10}
-              source={require('../../assets/mic.png')}
+              source={require('../../assets/assist.png')}
               h={10}
               w={10}
               resizeMode={'contain'}
@@ -222,7 +226,7 @@ Stay safe while dating online by following best practices`
             borderColor={'white'}
             borderWidth={2}
             rounded={'full'}>
-            <Entypo name={'cross'} color={'white'} size={18} />
+            <Entypo name={'cross'} color={'black'} size={18} />
           </View>
         </Pressable>
         <Text
@@ -231,19 +235,20 @@ Stay safe while dating online by following best practices`
           alignSelf="center"
           w={'90%'}
           mt={9}
-          color={'txtColor'}
+          color={'black'}
           fontFamily={'Jost-Regular'}
           textAlign={'center'}>
           {active === true ? waves : 'Listening...'}
         </Text>
         {active === true && value != undefined ? (
-          <Image
-            mt={3}
-            source={require('../../assets/soundWaves2.png')}
-            h={20}
-            resizeMode="contain"
-            alt={'img'}
-          />
+          <Row mt={3} alignItems={'center'} justifyContent={'center'}>
+            <Image
+              source={require('../../assets/sound-wave.png')}
+              h={20}
+              resizeMode="contain"
+              alt={'img'}
+            />
+          </Row>
         ) : null}
         {active === true && value === undefined && (
           <Text color={'white'} fontSize={16} textAlign={'center'}>

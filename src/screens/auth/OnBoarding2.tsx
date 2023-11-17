@@ -5,6 +5,7 @@ import {
   Box,
   Center,
   Circle,
+  FavouriteIcon,
   Image,
   Row,
   Stack,
@@ -19,7 +20,7 @@ const OnBoarding2 = ({navigation}) => {
   return (
     // <View flex={1}>
     <ImageBackground
-      source={require('../../assets/bgContinue.png')}
+      source={require('../../assets/bg.png')}
       style={{flex: 1}}
       resizeMode="cover">
       <Header />
@@ -34,11 +35,11 @@ const OnBoarding2 = ({navigation}) => {
               source={require('../../assets/onBoarding1.png')}
               h={20}
               w={20}
-              borderColor={'#F944494D'}
+              borderColor={'primary.100'}
               borderWidth={4}
             />
             <View
-              bg={'white'}
+              bg={'primary.400'}
               rounded={'full'}
               p={1}
               position={'absolute'}
@@ -46,24 +47,18 @@ const OnBoarding2 = ({navigation}) => {
               justifyContent={'center'}
               bottom={5}
               right={-8}>
-              <Image
-                source={require('../../assets/heart.png')}
-                alt={'img'}
-                h={5}
-                w={5}
-                resizeMode="contain"
-              />
+              <FavouriteIcon color={'white'} h={6} w={6} />
             </View>
           </Stack>
           <Stack>
             <Avatar
               source={require('../../assets/onBoarding2.png')}
               size={'xl'}
-              borderColor={'#F944494D'}
+              borderColor={'primary.100'}
               borderWidth={4}
             />
             <View
-              bg={'white'}
+              bg={'primary.400'}
               rounded={'full'}
               p={1}
               position={'absolute'}
@@ -71,13 +66,7 @@ const OnBoarding2 = ({navigation}) => {
               justifyContent={'center'}
               top={1}
               left={0}>
-              <Image
-                source={require('../../assets/heart.png')}
-                alt={'img'}
-                h={5}
-                w={5}
-                resizeMode="contain"
-              />
+              <FavouriteIcon color={'white'} h={6} w={6} />
             </View>
           </Stack>
         </Row>
@@ -106,13 +95,12 @@ const OnBoarding2 = ({navigation}) => {
               source={require('../../assets/onBoarding3.png')}
               h={20}
               w={20}
-              reseizeMode={'contain'}
-              borderColor={'#F944494D'}
+              borderColor={'primary.100'}
               borderWidth={4}
             />
 
             <View
-              bg={'white'}
+              bg={'primary.400'}
               rounded={'full'}
               p={1}
               position={'absolute'}
@@ -120,24 +108,18 @@ const OnBoarding2 = ({navigation}) => {
               justifyContent={'center'}
               bottom={2}
               right={0}>
-              <Image
-                source={require('../../assets/heart.png')}
-                alt={'img'}
-                h={5}
-                w={5}
-                resizeMode="contain"
-              />
+              <FavouriteIcon color={'white'} h={6} w={6} />
             </View>
           </Stack>
           <Stack>
             <Avatar
               source={require('../../assets/onBoarding4.png')}
               size={'xl'}
-              borderColor={'#F944494D'}
+              borderColor={'primary.100'}
               borderWidth={4}
             />
             <View
-              bg={'white'}
+              bg={'primary.400'}
               rounded={'full'}
               p={1}
               position={'absolute'}
@@ -145,13 +127,7 @@ const OnBoarding2 = ({navigation}) => {
               justifyContent={'center'}
               bottom={3}
               left={0}>
-              <Image
-                source={require('../../assets/heart.png')}
-                alt={'img'}
-                h={5}
-                w={5}
-                resizeMode="contain"
-              />
+              <FavouriteIcon color={'white'} h={6} w={6} />
             </View>
           </Stack>
         </Row>

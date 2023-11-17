@@ -9,8 +9,8 @@ const NotifiComp = props => {
       {props?.data?.map(item => {
         return (
           <View
-            borderColor={item?.status === 'early' ? 'pro' : 'grey.500'}
-            bg={item?.status === 'early' ? '#F9444933' : null}
+            borderColor={item?.status === 'early' ? 'primary.400' : 'grey.500'}
+            bg={item?.status === 'early' ? 'white' : 'white'}
             mb={5}
             borderWidth={1}
             borderRadius={10}
@@ -28,7 +28,7 @@ const NotifiComp = props => {
                   position={'absolute'}
                   right={5}
                   top={0}
-                  color={'txtColor'}
+                  color={'black'}
                   fontSize={10}
                   fontFamily={'Jost-Regular'}>
                   {item?.time}
@@ -39,7 +39,7 @@ const NotifiComp = props => {
                   <VStack>
                     <Row alignItems={'center'} justifyContent={'space-between'}>
                       <Text
-                        color={'white'}
+                        color={'black'}
                         fontSize={14}
                         fontFamily={'Jost-Medium'}>
                         {item?.title}
@@ -48,7 +48,7 @@ const NotifiComp = props => {
                     <Text
                       numberOfLines={1}
                       mt={2}
-                      color={'txtColor'}
+                      color={'grey.400'}
                       fontSize={12}
                       fontFamily={'Jost-Regular'}>
                       {item?.message}

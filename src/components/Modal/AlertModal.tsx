@@ -32,8 +32,9 @@ export default function ({
     <Modal isOpen={modalVisible}>
       <Modal.Content
         w={'80%'}
+        borderRadius={20}
         h={btntxt2 ? '40%' : '35%'}
-        _light={{bg: 'black'}}
+        _light={{bg: 'white'}}
         // alignItems={'flex-start'}
         _dark={{bg: 'black'}}>
         {fromPremium ? (
@@ -42,8 +43,7 @@ export default function ({
             flex={1}
             // w={40}
             alignItems={'center'}
-            alignSelf={'center'}
-            s>
+            alignSelf={'center'}>
             <Lottie
               source={require('../../assets/spinner.json')}
               autoPlay
@@ -100,7 +100,7 @@ export default function ({
               mx={5}
               // w={'100%'}
               textAlign="center"
-              color={'pro'}
+              color={'black'}
               fontFamily={'Jost-SemiBold'}
               fontSize={20}>
               {heading}
@@ -111,7 +111,7 @@ export default function ({
               fontSize={14}
               mx={5}
               textAlign={'center'}
-              color={'white'}>
+              color={'grey.400'}>
               {message}
             </Text>
             {/* <View w={'60%'} alignSelf={'center'} my={6}>
@@ -125,7 +125,7 @@ export default function ({
                 justifyContent={'space-around'}
                 mx={5}>
                 <Pressable onPress={cancelPress}>
-                  <Text color={'pro'} fontSize={16}>
+                  <Text color={'black'} fontSize={16}>
                     Cancel
                   </Text>
                 </Pressable>

@@ -12,6 +12,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import BottomSheet from '../../components/bottomSheet/BottomSheet';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Header from '../../components/Header/Header';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import {StyleSheet, ImageBackground, Dimensions} from 'react-native';
 var {width, height} = Dimensions.get('window');
 const AiTip = ({navigation}) => {
@@ -42,43 +43,34 @@ const AiTip = ({navigation}) => {
         <View mb={5}>
           <Header right fromAiTip />
         </View>
+        <Pressable onPress={() => setPressed(true)} alignSelf={'center'}>
+          {pressed === true ? (
+            <Image
+              mt={3}
+              ml={10}
+              alignSelf={'flex-start'}
+              source={require('../../assets/soundWaves2.png')}
+              alt={'img'}
+              h={10}
+              w={10}
+              resizeMode="contain"
+            />
+          ) : null}
+          {pressed === false ? (
+            <Ionicons name={'volume-medium'} size={25} color={'white'} />
+          ) : null}
+        </Pressable>
         <ScrollView mx={5} mb={2}>
-          <Row>
-            <Text
-              fontSize={28}
-              w={'78%'}
-              color={'white'}
-              fontFamily={'Jost-SemiBold'}
-              textAlign={'left'}>
-              Tell Ai if you need furtherAssistance
-            </Text>
-            <Pressable onPress={() => setPressed(true)}>
-              {pressed === true ? (
-                <Image
-                  mt={3}
-                  ml={10}
-                  alignSelf={'flex-start'}
-                  source={require('../../assets/sound-wave.png')}
-                  alt={'img'}
-                  h={6}
-                  w={6}
-                  resizeMode="contain"
-                />
-              ) : null}
-              {pressed === false ? (
-                <Image
-                  mt={3}
-                  ml={10}
-                  alignSelf={'flex-start'}
-                  source={require('../../assets/volume.png')}
-                  alt={'img'}
-                  h={6}
-                  w={6}
-                  resizeMode="contain"
-                />
-              ) : null}
-            </Pressable>
-          </Row>
+          <Text
+            fontSize={28}
+            // w={'78%'}
+
+            color={'white'}
+            fontFamily={'Jost-SemiBold'}
+            textAlign={'center'}>
+            Tell Ai if you need further Assistance
+          </Text>
+
           <TextArea
             value={`Dating can be an exciting and fulfilling experience when approached with the right mindset and strategies. This guide will provide you with practical tips and advice to help you navigate the world of dating effectively. Whether you're just starting out or looking to enhance your dating experiences, these principles can help you build healthy and meaningful connections.
 Set Clear Intentions:
@@ -143,7 +135,7 @@ Stay safe while dating online by following best practices`}
             fontFamily={'Jost-Regular'}
             textAlign={'center'}>
             {active === true
-              ? `Tell Ai if you need furtherAssistance`
+              ? `Tell Ai if you need further Assistance`
               : 'Listening...'}
           </Text>
           {active === true ? (
@@ -182,7 +174,7 @@ Stay safe while dating online by following best practices`}
           bottom={5}
           position={'absolute'}>
           <View
-            bg={'pro'}
+            // bg={'pro'}
             rounded={'full'}
             h={12}
             w={12}
