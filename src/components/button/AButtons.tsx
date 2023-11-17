@@ -1,5 +1,5 @@
 import {StyleSheet, TouchableOpacity} from 'react-native';
-import {Button, Image, Text, View} from 'native-base';
+import {Button, FavouriteIcon, Image, Text, View} from 'native-base';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -13,10 +13,10 @@ const AButtons = props => {
           //   activeOpacity={0.7}
           onPress={() => {}}>
           <LinearGradient
-            colors={['#C30010', '#F94449']}
-            style={{flex: 1, borderRadius: 25, justifyContent: 'center'}}
-            start={{x: 0, y: 0}}
-            end={{x: 1, y: 1}}>
+            colors={['#AC0077', '#AC0077']}
+            style={{flex: 1, justifyContent: 'center', borderRadius: 25}}
+            start={{x: 0, y: 0.9}}
+            end={{x: 0.8, y: 0}}>
             <Text
               alignSelf={'center'}
               color={'white'}
@@ -33,27 +33,27 @@ const AButtons = props => {
           //   activeOpacity={0.7}
           onPress={() => {}}>
           <LinearGradient
-            colors={['#C30010', '#F94449']}
+            colors={['#A90074', '#A90074']}
             style={{
               flex: 1,
-              borderRadius: 25,
               justifyContent: 'center',
-              padding: 8,
+              borderRadius: 25,
+              padding: 5,
             }}
-            start={{x: 0, y: 0}}
-            end={{x: 1, y: 1}}>
+            start={{x: 0, y: 0.9}}
+            end={{x: 0.8, y: 0}}>
             <View
               flexDir={'row'}
               alignItems={'center'}
               justifyContent={'space-between'}>
-              <View bg={'white'} rounded={'full'} p={1} alignItems={'center'}>
-                <Image
-                  source={require('../../assets/heart.png')}
-                  alt={'img'}
-                  h={5}
-                  w={5}
-                  resizeMode="contain"
-                />
+              <View
+                bg={'primary.400'}
+                rounded={'full'}
+                p={2}
+                ml={1}
+                alignItems={'center'}
+                justifyContent={'center'}>
+                <FavouriteIcon color={'white'} h={6} w={6} />
               </View>
               <Text
                 alignSelf={'center'}

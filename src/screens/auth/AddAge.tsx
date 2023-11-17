@@ -40,7 +40,7 @@ const AddAge = ({navigation}) => {
           </Text>
           <TextField label={'Age'} keyboardType={'number-pad'} />
 
-          <View mt={'65%'}>
+          <View mt={'94%'}>
             <AButtons
               label={'Next'}
               onPress={() => navigation.navigate('AddPhotos')}

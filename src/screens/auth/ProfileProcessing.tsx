@@ -21,7 +21,7 @@ const ProfileProcessing = ({navigation}) => {
   return (
     // <View flex={1}>
     <ImageBackground
-      source={require('../../assets/processing.png')}
+      source={require('../../assets/bg.png')}
       style={{flex: 1}}
       resizeMode="cover">
       <View
@@ -40,7 +40,7 @@ const ProfileProcessing = ({navigation}) => {
         </Text>
         <CircularProgress
           value={100}
-          inActiveStrokeColor={'#F94449'}
+          inActiveStrokeColor={'#fec4f2'}
           inActiveStrokeOpacity={0.2}
           activeStrokeColor="white"
           progressValueColor={'#fff'}

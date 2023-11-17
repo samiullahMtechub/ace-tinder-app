@@ -11,7 +11,7 @@ const OnBoarding = ({navigation}) => {
       source={require('../../assets/bg.png')}
       style={{flex: 1}}
       resizeMode="cover">
-      <View mx={5} mt={5}>
+      <View mx={5} mt={5} flex={1} justifyContent={'center'}>
         <View mx={4}>
           <Text color={'white'} fontSize={35} fontFamily={'Jost-SemiBold'}>
             The future of
@@ -28,15 +28,23 @@ const OnBoarding = ({navigation}) => {
             matches
           </Text>
         </View>
-        <Center>
+        <Center flex={1} justifyContent={'center'}>
+          <Image
+            source={require('../../assets/onboardlogo.png')}
+            resizeMode="contain"
+            size={'xl'}
+            alt="splash"
+          />
           <Row>
-            <Image
-              mt={0}
-              source={require('../../assets/onboard.png')}
-              alt={'onbaording'}
-              h={300}
-              resizeMode="contain"
-            />
+            <Text fontSize={50} color={'white'} fontFamily={'Diagramm-Regular'}>
+              fate
+            </Text>
+            <Text
+              fontSize={50}
+              color={'primary.400'}
+              fontFamily={'Jost-Medium'}>
+              .
+            </Text>
           </Row>
         </Center>
         <View mt={10}>
@@ -61,7 +69,7 @@ const OnBoarding = ({navigation}) => {
           <Row alignSelf={'center'} my={5}>
             <Text
               fontSize={16}
-              color={'white'}
+              color={'black'}
               fontFamily={'Jost-Regular'}
               textAlign={'center'}>
               Already have an account?{' '}
@@ -71,10 +79,11 @@ const OnBoarding = ({navigation}) => {
                 navigation.navigate('SignIn');
               }}>
               <Text
+                underline
                 fontSize={16}
-                color={'pro'}
+                color={'white'}
                 alignSelf={'center'}
-                fontFamily={'Jost-Regular'}
+                fontFamily={'Jost-SemiBold'}
                 textAlign={'center'}>
                 Sign In
               </Text>

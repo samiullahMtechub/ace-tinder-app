@@ -23,8 +23,8 @@ const AddName = ({navigation}) => {
       style={{flex: 1}}
       resizeMode="cover">
       <Header />
-      <ScrollView mx={5} mt={5}>
-        <View mt={12}>
+      <ScrollView mx={5} mt={5} flex={1}>
+        <View mt={12} flex={1}>
           <Text fontSize={32} color={'white'} fontFamily={'Jost-SemiBold'}>
             Your Full Name
           </Text>
@@ -39,13 +39,12 @@ const AddName = ({navigation}) => {
             Yes, that should be your real name
           </Text>
           <TextField label={'Full Name'} />
-
-          <View mt={'65%'}>
-            <AButtons
-              label={'Next'}
-              onPress={() => navigation.navigate('AddAge')}
-            />
-          </View>
+        </View>
+        <View mt={'94%'}>
+          <AButtons
+            label={'Next'}
+            onPress={() => navigation.navigate('AddAge')}
+          />
         </View>
       </ScrollView>
     </ImageBackground>

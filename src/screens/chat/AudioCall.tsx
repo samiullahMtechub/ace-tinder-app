@@ -9,7 +9,7 @@ const AudioCall = ({navigation}) => {
   return (
     <>
       <LinearGradient
-        colors={['#C30010', '#F94449']}
+        colors={['#AC0077', '#AC0077']}
         style={{flex: 1, justifyContent: 'center'}}
         start={{x: 0, y: 0}}
         end={{x: 1, y: 1}}>

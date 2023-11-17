@@ -9,7 +9,7 @@ import {
   Pressable,
   Divider,
 } from 'native-base';
-import {FlatList} from 'react-native';
+import {FlatList, ImageBackground} from 'react-native';
 import React, {useState} from 'react';
 import ChatScreen from './components/ChatScreen';
 import {useFocusEffect} from '@react-navigation/native';
@@ -211,8 +211,9 @@ const Chatting = ({navigation}) => {
 
   const renderConversation = ({item}) => {
     return (
-      <LinearGradient
-        colors={[item?.sent ? '#2F2F2F' : '#C30010', '#F94449']}
+      <View
+        // colors={[item?.sent ?  : '#F095DE', '#F095DE']}
+        bg={item?.sent ? 'white' : '#F095DE'}
         style={{
           flex: 1,
           borderRadius: 12,
@@ -222,9 +223,7 @@ const Chatting = ({navigation}) => {
           marginBottom: 25,
           padding: 10,
           width: '88%',
-        }}
-        start={{x: 0, y: 0}}
-        end={{x: item?.sent ? 0 : 0.5, y: item?.sent ? 0 : 2}}>
+        }}>
         {/* <View
           bg={item?.sent ? 'grey.500' : 'pro'}
           borderRadius={10}
@@ -246,12 +245,12 @@ const Chatting = ({navigation}) => {
             <Text
               fontSize={13}
               fontFamily={'Jost-Medium'}
-              color={item?.sent ? 'white' : 'black'}>
+              color={item?.sent ? 'black' : 'black'}>
               {item?.sent}
             </Text>
           ) : (
             <Text
-              color={item?.sent ? 'white' : 'black'}
+              color={item?.sent ? 'black' : 'black'}
               fontFamily={'Jost-Medium'}>
               {item?.recieved}
             </Text>
@@ -259,7 +258,7 @@ const Chatting = ({navigation}) => {
 
           <Row alignSelf={'flex-end'} alignItems={'center'} mt={2}>
             <Text
-              color={item?.sent ? 'txtColor' : 'black'}
+              color={item?.sent ? 'grey.400' : 'black'}
               mr={2}
               fontSize={10}>
               {item?.time}
@@ -280,12 +279,15 @@ const Chatting = ({navigation}) => {
           </Row>
         </Pressable>
         {/* </View> */}
-      </LinearGradient>
+      </View>
     );
   };
 
   return (
-    <View bg={'black'} flex={1}>
+    <ImageBackground
+      source={require('../../assets/bg.png')}
+      // bg={'black'}
+      style={{flex: 1}}>
       <View mx={5} mt={5}>
         <ChatScreen />
       </View>
@@ -304,8 +306,8 @@ const Chatting = ({navigation}) => {
       {/* <View mt={5}> */}
       <Row alignItems={'center'} position={'absolute'} bottom={3} mx={5}>
         <Input
-          bg={'grey.500'}
-          _focus={{bg: 'grey.500'}}
+          bg={'#00000061'}
+          _focus={{bg: '#00000061'}}
           placeholder={'Type a message'}
           w={'85%'}
           color={'txtColor'}
@@ -392,7 +394,7 @@ const Chatting = ({navigation}) => {
             onPress={() => {
               bottomSheetRef.current.close();
             }}>
-            <Entypo name={'cross'} color={'white'} size={18} />
+            <Entypo name={'cross'} color={'black'} size={18} />
           </Pressable>
         </View>
 
@@ -403,11 +405,11 @@ const Chatting = ({navigation}) => {
             // bottomSheetRef.current.close();
           }}>
           <Row alignItems={'center'}>
-            <Feather name={'camera'} size={20} color={'#F94449'} />
+            <Feather name={'camera'} size={20} color={'#F258D4'} />
             <Text
               mx={2}
               fontSize={16}
-              color={'white'}
+              color={'black'}
               fontFamily={'Jost-Medium'}>
               Upload from Camera
             </Text>
@@ -424,12 +426,12 @@ const Chatting = ({navigation}) => {
             <MaterialCommunityIcons
               name={'image-outline'}
               size={20}
-              color={'#F94449'}
+              color={'#F258D4'}
             />
             <Text
               mx={2}
               fontSize={16}
-              color={'white'}
+              color={'black'}
               fontFamily={'Jost-Medium'}>
               Upload from Gallery
             </Text>
@@ -493,7 +495,7 @@ const Chatting = ({navigation}) => {
           navigation.navigate('AiFeedback');
           setVisible(false);
         }}></AlertModal>
-    </View>
+    </ImageBackground>
     // </View>
   );
 };

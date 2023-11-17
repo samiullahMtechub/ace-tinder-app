@@ -57,35 +57,39 @@ const HomeScreenComp = props => {
                   position={'absolute'}
                 />
               )}
+              {item?.name !== 'anon' && (
+                <ImageBackground
+                  source={item?.blur}
+                  // opacity={}
 
-              <ImageBackground
-                source={item?.blur}
-                // opacity={}
+                  // w={'80%'}
+                  imageStyle={{
+                    borderRadius: 10,
+                  }}
+                  style={{
+                    // resizeMode: 'cover',
+                    height: 42,
+                    position: 'absolute',
+                    bottom:
+                      (props?.fromSearches && 24) ||
+                      (item?.id === 6 && 14) ||
+                      17,
 
-                // w={'80%'}
-                imageStyle={{
-                  borderRadius: 10,
-                }}
-                style={{
-                  // resizeMode: 'cover',
-                  height: 42,
-                  position: 'absolute',
-                  bottom:
-                    (props?.fromSearches && 24) || (item?.id === 6 && 14) || 17,
+                    width: (props?.fromSearches && 140) || 107,
+                    zIndex: 999,
+                  }}
+                  resizeMode={'contain'}>
+                  <View position={'absolute'} bottom={0} left={2}>
+                    <Text fontSize={14} fontFamily={'Jost-Medium'}>
+                      {item?.name}
+                    </Text>
+                    <Text fontSize={12} fontFamily={'Jost-Regular'}>
+                      {item?.status}
+                    </Text>
+                  </View>
+                </ImageBackground>
+              )}
 
-                  width: (props?.fromSearches && 140) || 107,
-                  zIndex: 999,
-                }}
-                resizeMode={'contain'}>
-                <View position={'absolute'} bottom={0} left={2}>
-                  <Text fontSize={14} fontFamily={'Jost-Medium'}>
-                    {item?.name}
-                  </Text>
-                  <Text fontSize={12} fontFamily={'Jost-Regular'}>
-                    {item?.status}
-                  </Text>
-                </View>
-              </ImageBackground>
               {props?.fromSearches ? null : (
                 <Pressable
                   onPress={() => {
@@ -97,11 +101,12 @@ const HomeScreenComp = props => {
                   alignItems={'center'}
                   justifyContent={'center'}
                   top={1}
+                  rounded={'full'}
+                  bg={'primary.400'}
                   right={1}>
                   <View
-                    bg={'pro'}
                     // p={2}
-                    rounded={'full'}
+
                     h={5}
                     w={5}>
                     <Text color={'white'} textAlign={'center'} fontSize={14}>

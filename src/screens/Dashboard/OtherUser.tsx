@@ -101,7 +101,7 @@ const OtherUser = ({navigation, route}) => {
               <View w={'80%'}>
                 <View position={'absolute'} zIndex={5}>
                   <Image
-                    source={require('../../assets/unSelectedChat.png')}
+                    source={require('../../assets/mes.png')}
                     h={5}
                     w={5}
                     alt={'chat'}
@@ -119,8 +119,8 @@ const OtherUser = ({navigation, route}) => {
               <Pressable onPress={() => navigation.navigate('Games')}>
                 <Image
                   source={require('../../assets/games.png')}
-                  h={20}
-                  w={20}
+                  h={16}
+                  w={16}
                   alt={'img'}
                 />
               </Pressable>

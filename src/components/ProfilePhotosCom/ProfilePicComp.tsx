@@ -326,8 +326,8 @@ const ProfilePicComp = props => {
             borderStyle={'dashed'}
             borderWidth={imageUrl ? 0 : 2}
             mr={5}
-            bg={'grey.500'}
-            borderColor={'txtColor'}
+            bg={'white'}
+            borderColor={'black'}
             h={'24'}
             borderRadius={20}
             alignItems={'center'}
@@ -352,18 +352,18 @@ const ProfilePicComp = props => {
                     right={-4}
                     top={-7}>
                     <View
-                      bg={'pro'}
+                      bg={'primary.400'}
                       rounded={'full'}
 
                       // borderWidth={2}
                     >
-                      <Entypo name={'cross'} color={'black'} size={18} />
+                      <Entypo name={'cross'} color={'white'} size={18} />
                     </View>
                   </Pressable>
                 </Stack>
               </>
             ) : (
-              <AntDesign name="pluscircleo" color={'#CCCCCC'} size={30} />
+              <AntDesign name="pluscircleo" color={'black'} size={30} />
             )}
           </View>
         </Pressable>
@@ -376,8 +376,8 @@ const ProfilePicComp = props => {
             borderStyle={'dashed'}
             borderWidth={imgurl1 ? 0 : 2}
             mr={5}
-            bg={'grey.500'}
-            borderColor={'txtColor'}
+            bg={'white'}
+            borderColor={'black'}
             h={'24'}
             borderRadius={20}
             alignItems={'center'}
@@ -402,18 +402,18 @@ const ProfilePicComp = props => {
                     right={-4}
                     top={-7}>
                     <View
-                      bg={'pro'}
+                      bg={'primary.400'}
                       rounded={'full'}
 
                       // borderWidth={2}
                     >
-                      <Entypo name={'cross'} color={'black'} size={18} />
+                      <Entypo name={'cross'} color={'white'} size={18} />
                     </View>
                   </Pressable>
                 </Stack>
               </>
             ) : (
-              <AntDesign name="pluscircleo" color={'#CCCCCC'} size={30} />
+              <AntDesign name="pluscircleo" color={'black'} size={30} />
             )}
           </View>
         </Pressable>
@@ -426,8 +426,8 @@ const ProfilePicComp = props => {
             borderStyle={'dashed'}
             borderWidth={imgurl2 ? 0 : 2}
             mr={5}
-            bg={'grey.500'}
-            borderColor={'txtColor'}
+            bg={'white'}
+            borderColor={'black'}
             h={'24'}
             borderRadius={20}
             alignItems={'center'}
@@ -452,18 +452,18 @@ const ProfilePicComp = props => {
                     right={-4}
                     top={-7}>
                     <View
-                      bg={'pro'}
+                      bg={'primary.400'}
                       rounded={'full'}
 
                       // borderWidth={2}
                     >
-                      <Entypo name={'cross'} color={'black'} size={18} />
+                      <Entypo name={'cross'} color={'white'} size={18} />
                     </View>
                   </Pressable>
                 </Stack>
               </>
             ) : (
-              <AntDesign name="pluscircleo" color={'#CCCCCC'} size={30} />
+              <AntDesign name="pluscircleo" color={'black'} size={30} />
             )}
           </View>
         </Pressable>
@@ -476,8 +476,8 @@ const ProfilePicComp = props => {
             borderStyle={'dashed'}
             borderWidth={imgurl3 ? 0 : 2}
             mr={5}
-            bg={'grey.500'}
-            borderColor={'txtColor'}
+            bg={'white'}
+            borderColor={'black'}
             h={'24'}
             borderRadius={20}
             alignItems={'center'}
@@ -502,18 +502,18 @@ const ProfilePicComp = props => {
                     right={-4}
                     top={-7}>
                     <View
-                      bg={'pro'}
+                      bg={'primary.400'}
                       rounded={'full'}
 
                       // borderWidth={2}
                     >
-                      <Entypo name={'cross'} color={'black'} size={18} />
+                      <Entypo name={'cross'} color={'white'} size={18} />
                     </View>
                   </Pressable>
                 </Stack>
               </>
             ) : (
-              <AntDesign name="pluscircleo" color={'#CCCCCC'} size={30} />
+              <AntDesign name="pluscircleo" color={'black'} size={30} />
             )}
           </View>
         </Pressable>
@@ -526,8 +526,8 @@ const ProfilePicComp = props => {
             borderStyle={'dashed'}
             borderWidth={imgurl4 ? 0 : 2}
             mr={5}
-            bg={'grey.500'}
-            borderColor={'txtColor'}
+            bg={'white'}
+            borderColor={'black'}
             h={'24'}
             borderRadius={20}
             alignItems={'center'}
@@ -553,17 +553,17 @@ const ProfilePicComp = props => {
                     top={-7}>
                     <View
                       rounded={'full'}
-                      bg={'pro'}
+                      bg={'primary.400'}
 
                       // borderWidth={2}
                     >
-                      <Entypo name={'cross'} color={'black'} size={18} />
+                      <Entypo name={'cross'} color={'white'} size={18} />
                     </View>
                   </Pressable>
                 </Stack>
               </>
             ) : (
-              <AntDesign name="pluscircleo" color={'#CCCCCC'} size={30} />
+              <AntDesign name="pluscircleo" color={'black'} size={30} />
             )}
           </View>
         </Pressable>
@@ -576,8 +576,8 @@ const ProfilePicComp = props => {
             borderStyle={'dashed'}
             borderWidth={imgurl5 ? 0 : 2}
             mr={5}
-            bg={'grey.500'}
-            borderColor={'txtColor'}
+            bg={'white'}
+            borderColor={'black'}
             h={'24'}
             borderRadius={20}
             alignItems={'center'}
@@ -602,18 +602,18 @@ const ProfilePicComp = props => {
                     right={-4}
                     top={-7}>
                     <View
-                      bg={'pro'}
+                      bg={'primary.400'}
                       rounded={'full'}
 
                       // borderWidth={2}
                     >
-                      <Entypo name={'cross'} color={'black'} size={18} />
+                      <Entypo name={'cross'} color={'white'} size={18} />
                     </View>
                   </Pressable>
                 </Stack>
               </>
             ) : (
-              <AntDesign name="pluscircleo" color={'#CCCCCC'} size={30} />
+              <AntDesign name="pluscircleo" color={'black'} size={30} />
             )}
           </View>
         </Pressable>
@@ -626,8 +626,8 @@ const ProfilePicComp = props => {
             borderStyle={'dashed'}
             borderWidth={imgurl6 ? 0 : 2}
             mr={5}
-            bg={'grey.500'}
-            borderColor={'txtColor'}
+            bg={'white'}
+            borderColor={'black'}
             h={'24'}
             borderRadius={20}
             alignItems={'center'}
@@ -652,18 +652,18 @@ const ProfilePicComp = props => {
                     right={-4}
                     top={-7}>
                     <View
-                      bg={'pro'}
+                      bg={'primary.400'}
                       rounded={'full'}
 
                       // borderWidth={2}
                     >
-                      <Entypo name={'cross'} color={'black'} size={18} />
+                      <Entypo name={'cross'} color={'white'} size={18} />
                     </View>
                   </Pressable>
                 </Stack>
               </>
             ) : (
-              <AntDesign name="pluscircleo" color={'#CCCCCC'} size={30} />
+              <AntDesign name="pluscircleo" color={'black'} size={30} />
             )}
           </View>
         </Pressable>
@@ -676,8 +676,8 @@ const ProfilePicComp = props => {
             borderStyle={'dashed'}
             borderWidth={imgurl7 ? 0 : 2}
             mr={5}
-            bg={'grey.500'}
-            borderColor={'txtColor'}
+            bg={'white'}
+            borderColor={'black'}
             h={'24'}
             borderRadius={20}
             alignItems={'center'}
@@ -702,18 +702,18 @@ const ProfilePicComp = props => {
                     right={-4}
                     top={-7}>
                     <View
-                      bg={'pro'}
+                      bg={'primary.400'}
                       rounded={'full'}
 
                       // borderWidth={2}
                     >
-                      <Entypo name={'cross'} color={'black'} size={18} />
+                      <Entypo name={'cross'} color={'white'} size={18} />
                     </View>
                   </Pressable>
                 </Stack>
               </>
             ) : (
-              <AntDesign name="pluscircleo" color={'#CCCCCC'} size={30} />
+              <AntDesign name="pluscircleo" color={'black'} size={30} />
             )}
           </View>
         </Pressable>
@@ -726,8 +726,8 @@ const ProfilePicComp = props => {
             borderStyle={'dashed'}
             borderWidth={imgurl8 ? 0 : 2}
             mr={5}
-            bg={'grey.500'}
-            borderColor={'txtColor'}
+            bg={'white'}
+            borderColor={'black'}
             h={'24'}
             borderRadius={20}
             alignItems={'center'}
@@ -752,18 +752,18 @@ const ProfilePicComp = props => {
                     right={-4}
                     top={-7}>
                     <View
-                      bg={'pro'}
+                      bg={'primary.400'}
                       rounded={'full'}
 
                       // borderWidth={2}
                     >
-                      <Entypo name={'cross'} color={'black'} size={18} />
+                      <Entypo name={'cross'} color={'white'} size={18} />
                     </View>
                   </Pressable>
                 </Stack>
               </>
             ) : (
-              <AntDesign name="pluscircleo" color={'#CCCCCC'} size={30} />
+              <AntDesign name="pluscircleo" color={'black'} size={30} />
             )}
           </View>
         </Pressable>
@@ -783,7 +783,7 @@ const ProfilePicComp = props => {
             top={5}
             // borderWidth={2}
             rounded={'full'}>
-            <Entypo name={'cross'} color={'white'} size={18} />
+            <Entypo name={'cross'} color={'black'} size={18} />
           </View>
         </Pressable>
         <Pressable
@@ -794,11 +794,11 @@ const ProfilePicComp = props => {
             bottomSheetRef.current.close();
           }}>
           <Row alignItems={'center'}>
-            <Feather name={'camera'} size={20} color={'#F94449'} />
+            <Feather name={'camera'} size={20} color={'#F258D4'} />
             <Text
               mx={2}
               fontSize={16}
-              color={'white'}
+              color={'black'}
               fontFamily={'Jost-Medium'}>
               Upload from Camera
             </Text>
@@ -815,12 +815,12 @@ const ProfilePicComp = props => {
             <MaterialCommunityIcons
               name={'image-outline'}
               size={20}
-              color={'#F94449'}
+              color={'#F258D4'}
             />
             <Text
               mx={2}
               fontSize={16}
-              color={'white'}
+              color={'black'}
               fontFamily={'Jost-Medium'}>
               Upload from Gallery
             </Text>

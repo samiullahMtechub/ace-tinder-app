@@ -2,6 +2,7 @@ import {View, Text, ScrollView} from 'native-base';
 import React from 'react';
 import NotifiComp from './components/NotifiComp';
 import Header from '../../components/Header/Header';
+import {ImageBackground} from 'react-native';
 
 const Notifications = () => {
   const data = [
@@ -72,14 +73,14 @@ const Notifications = () => {
     },
   ];
   return (
-    <View flex={1} bg={'black'}>
+    <ImageBackground source={require('../../assets/bg.png')} style={{flex: 1}}>
       <Header title={'Notifications'} />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View m={5}>
           <NotifiComp data={data} />
         </View>
       </ScrollView>
-    </View>
+    </ImageBackground>
   );
 };
 export default Notifications;

@@ -17,6 +17,7 @@ import AButtons from '../../components/button/AButtons';
 import TextField from '../../components/TextField';
 import Header from '../../components/Header/Header';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import HomeScreenComp from './components/HomeScreenCom';
 import LinearGradient from 'react-native-linear-gradient';
 var {width, height} = Dimensions.get('window');
@@ -24,7 +25,7 @@ const HomeScreen = ({navigation}) => {
   const data = [
     {
       id: 1,
-      bgimg: require('../../assets/Aspades.png'),
+      bgimg: require('../../assets/kingbg.png'),
       blur: require('../../assets/blur1.png'),
       img: require('../../assets/home1.png'),
       name: 'Isabell',
@@ -32,7 +33,7 @@ const HomeScreen = ({navigation}) => {
     },
     {
       id: 2,
-      bgimg: require('../../assets/kingbg.png'),
+      bgimg: require('../../assets/8bgclub.png'),
       blur: require('../../assets/blur2.png'),
       img: require('../../assets/home2.png'),
       name: 'Robert',
@@ -59,10 +60,10 @@ const HomeScreen = ({navigation}) => {
 
     {
       id: 5,
-      bgimg: require('../../assets/8bgclub.png'),
-      blur: require('../../assets/blur5.png'),
-      img: require('../../assets/home1.png'),
-      name: 'Emily',
+      bgimg: require('../../assets/anon.png'),
+      // blur: require('../../assets/blur5.png'),
+      // img: require('../../assets/home1.png'),
+      name: 'anon',
       status: 'Offline',
     },
 
@@ -83,49 +84,42 @@ const HomeScreen = ({navigation}) => {
       style={{flex: 1}}
       resizeMode="cover">
       <ScrollView mx={5} mt={5} showsVerticalScrollIndicator={false}>
-        <Image
-          alignSelf="center"
-          source={require('../../assets/spalsh.png')}
-          resizeMode="cover"
-          h={40}
-          w={40}
-          alt="splash"
-        />
-        <Text
-          color={'white'}
-          fontSize={18}
-          fontFamily={'Jost-Medium'}
-          textAlign={'center'}
-          mt={-8}>
-          I'm AIce, nice to meet you
-        </Text>
+        <Row justifyContent={'center'}>
+          <Text
+            color={'white'}
+            fontSize={50}
+            fontFamily={'Diagramm-Regular'}
+            textAlign={'center'}>
+            fate
+          </Text>
+          <Text
+            color={'primary.400'}
+            fontSize={50}
+            fontFamily={'Jost-Medium'}
+            textAlign={'center'}>
+            .
+          </Text>
+        </Row>
         <Row my={5} alignItems={'center'} justifyContent={'space-between'}>
           <Text fontSize={22} fontFamily={'Jost-SemiBold'} color={'pro'}>
-            Connections
+            Matches
           </Text>
           <Row>
             <Pressable
               onPress={() => {
                 navigation.navigate('Search');
               }}>
-              <Ionicons name={'search-outline'} size={20} color={'#F94449'} />
+              <Ionicons name={'search-outline'} size={20} color={'white'} />
             </Pressable>
             <Pressable
+              ml={4}
               onPress={() => {
                 navigation.navigate('Notifications');
               }}>
               <Stack>
-                <Image
-                  ml={3}
-                  alignSelf="center"
-                  source={require('../../assets/bell.png')}
-                  resizeMode="contain"
-                  h={5}
-                  w={5}
-                  alt="splash"
-                />
+                <FontAwesome name={'bell'} color={'white'} size={20} />
                 <View
-                  bg={'white'}
+                  bg={'primary.50'}
                   h={2}
                   w={2}
                   rounded={'full'}

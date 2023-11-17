@@ -52,7 +52,7 @@ const Settings = ({navigation}) => {
         </Text>
         <View h={16} my={5} mb={10}>
           <LinearGradient
-            colors={['#C30010', '#F94449']}
+            colors={['#AC0077', '#AC0077']}
             style={{flex: 1, borderRadius: 18, justifyContent: 'center'}}
             start={{x: 0, y: 0}}
             end={{x: 1, y: 1}}>

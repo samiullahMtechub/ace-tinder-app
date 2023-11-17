@@ -56,7 +56,7 @@ const AddLocation = ({navigation}) => {
             <Pressable onPress={() => navigation.navigate('PreviewProfile')}>
               <Text
                 my={5}
-                color={'pro'}
+                color={'white'}
                 fontSize={16}
                 fontFamily={'Jost-Medium'}
                 textAlign={'center'}>

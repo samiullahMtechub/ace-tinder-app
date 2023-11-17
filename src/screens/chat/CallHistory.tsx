@@ -9,6 +9,7 @@ import {
 } from 'native-base';
 import React from 'react';
 import Header from '../../components/Header/Header';
+import {ImageBackground} from 'react-native';
 
 const CallHistory = ({navigation}) => {
   const data = [
@@ -70,15 +71,15 @@ const CallHistory = ({navigation}) => {
     },
   ];
   return (
-    <View flex={1} bg={'black'}>
+    <ImageBackground source={require('../../assets/bg.png')} style={{flex: 1}}>
       <Header title={'Call History'} />
       <View m={5}>
         <ScrollView>
           {data?.map(item => {
             return (
               <View
-                borderColor={'grey.500'}
-                borderWidth={1}
+                borderColor={'white'}
+                borderWidth={0.5}
                 borderRadius={10}
                 p={2}
                 my={2}>
@@ -130,7 +131,7 @@ const CallHistory = ({navigation}) => {
           })}
         </ScrollView>
       </View>
-    </View>
+    </ImageBackground>
   );
 };
 export default CallHistory;

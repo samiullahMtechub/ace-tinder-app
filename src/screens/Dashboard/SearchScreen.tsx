@@ -90,6 +90,9 @@ const SearchScreen = ({navigation}) => {
 
     // Clear the input
     setSearchText('');
+    setTimeout(() => {
+      setFocued(false);
+    }, 1000);
   };
 
   const highlightMatches = item => {
@@ -148,10 +151,10 @@ const SearchScreen = ({navigation}) => {
   const renderItem = ({item}) => highlightMatches(item);
 
   return (
-    <View flex={1} bg={'black'}>
+    <View flex={1} bg={'white'}>
       <View mt={5} mx={3} flexDir={'row'} alignItems={'center'}>
         <Pressable onPress={() => navigation.goBack()}>
-          <Entypo name={'chevron-left'} size={30} color={'white'} />
+          <Entypo name={'chevron-left'} size={30} color={'black'} />
         </Pressable>
         <Input
           onTouchStart={() => setFocued(true)}
@@ -162,21 +165,24 @@ const SearchScreen = ({navigation}) => {
             //   setFocued(false);
             // }, 2000);
           }}
-          backgroundColor={'#2F2F2F'}
+          backgroundColor={'white'}
           value={searchText}
           onChangeText={setSearchText}
           mx={4}
           borderRadius={12}
+          borderColor={'primary.400'}
+          borderWidth={0.5}
+          _focused={{bg: 'white'}}
           placeholder="search here"
           color={'txtColor'}
           fontSize={14}
-          borderWidth={0}
+          // borderWidth={0}
           w={'85%'}
         />
       </View>
       <ScrollView>
         <View mx={5} my={5}>
-          <Text color={'pro'} fontSize={18} fontFamily={'Jost-Medium'}>
+          <Text color={'black'} fontSize={18} fontFamily={'Jost-Medium'}>
             Recent Searches
           </Text>
           <HomeScreenComp data={data} fromSearches />
@@ -184,7 +190,7 @@ const SearchScreen = ({navigation}) => {
       </ScrollView>
       {focused === true && (
         <View
-          bg={'#2F2F2F'}
+          bg={'white'}
           position={'absolute'}
           borderRadius={10}
           zIndex={999}
@@ -224,12 +230,12 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   historyItem: {
-    color: '#CCCCCC',
+    color: '#979797',
     fontSize: 16,
     marginBottom: 5,
   },
   found: {
-    color: 'white',
+    color: 'black',
     fontSize: 16,
     marginBottom: 5,
   },

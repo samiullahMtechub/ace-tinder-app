@@ -17,6 +17,7 @@ import AButtons from '../../components/button/AButtons';
 import TextField from '../../components/TextField';
 import Header from '../../components/Header/Header';
 import {launchImageLibrary, launchCamera} from 'react-native-image-picker';
+import Feather from 'react-native-vector-icons/Feather';
 
 const AddProfile = ({navigation, route}) => {
   const image = route?.params;
@@ -101,17 +102,22 @@ const AddProfile = ({navigation, route}) => {
             <Avatar alignSelf={'center'} source={{uri: imageUrl}} size={'xl'} />
           ) : (
             <Avatar
-              source={require('../../assets/profileBack.png')}
+              borderStyle={'dashed'}
+              borderWidth={1.5}
+              borderColor={'black'}
+              // source={require('../../assets/profileBack.png')}
+              bg={'white'}
               size={'xl'}
-              alignSelf={'center'}
-            />
+              alignSelf={'center'}>
+              <Feather name={'camera'} size={20} color={'#F258D4'} />
+            </Avatar>
           )}
           {imageUrl ? (
             <Pressable onPress={() => setImageUrl()}>
               <Text
                 alignSelf={'center'}
                 mt={4}
-                color={'pro'}
+                color={'white'}
                 fontFamily={'Jost-Medium'}>
                 Change
               </Text>
@@ -121,7 +127,7 @@ const AddProfile = ({navigation, route}) => {
               <Text
                 alignSelf={'center'}
                 mt={4}
-                color={'pro'}
+                color={'white'}
                 fontFamily={'Jost-Medium'}>
                 Select from Previous Photos
               </Text>
@@ -142,7 +148,7 @@ const AddProfile = ({navigation, route}) => {
                   textAlign={'center'}
                   fontSize={16}
                   fontFamily={'Jost-Medium'}
-                  color={'pro'}>
+                  color={'white'}>
                   Choose a Photo
                 </Text>
               </Pressable>

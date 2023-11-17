@@ -30,15 +30,15 @@ const styles = StyleSheet.create({
     // borderWidth: 2,\C
     justifyContent: 'center',
     alignItems: 'center',
-    color: '#CCCCCC',
+    color: 'black',
     borderRadius: 30,
     borderColor: '#00000030',
     textAlign: 'center',
-    backgroundColor: '#2F2F2F',
+    backgroundColor: 'white',
   },
   focusCell: {
     borderColor: '#F94449',
-    borderWidth: 1,
+    borderWidth: 0,
   },
 });
 
